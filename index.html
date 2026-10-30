@@ -257,7 +257,7 @@ html:not([lang="en"]) [data-en] { display: none !important; }
 /* ==========================================================================
    Hero
    ========================================================================== */
-.hero { position: relative; padding: calc(var(--nav-h) + clamp(48px, 9vw, 120px)) 0 clamp(48px, 6vw, 80px); overflow: hidden; }
+.hero { position: relative; isolation: isolate; padding: calc(var(--nav-h) + clamp(48px, 9vw, 120px)) 0 clamp(48px, 6vw, 80px); overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .hero__bg::before {
   content: ""; position: absolute; inset: 0;
@@ -274,7 +274,7 @@ html:not([lang="en"]) [data-en] { display: none !important; }
   background: radial-gradient(circle, rgba(212, 255, 63, .13), transparent 60%);
   filter: blur(20px);
 }
-.hero__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(32px, 4.5vw, 72px); align-items: center; }
 .pill {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 7px 14px 7px 10px; border-radius: 999px;
@@ -283,38 +283,138 @@ html:not([lang="en"]) [data-en] { display: none !important; }
 }
 .pill__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); animation: pulse 2.4s var(--ease) infinite; }
 @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(212, 255, 63, 0); } }
-.hero__title { margin-top: 28px; font-size: clamp(48px, 7.4vw, 108px); line-height: 1.02; letter-spacing: -.04em; font-weight: 600; }
-html[lang="en"] .hero__title { font-size: clamp(40px, 5vw, 72px); line-height: 1.02; }
+.hero__title { margin-top: 28px; font-size: clamp(48px, 6.6vw, 100px); line-height: 1.02; letter-spacing: -.04em; font-weight: 600; }
+html[lang="en"] .hero__title { font-size: clamp(40px, 4.6vw, 66px); line-height: 1.02; }
 .hero__title em { font-style: normal; color: var(--accent); }
 .hero__lead { margin-top: 28px; max-width: 560px; font-size: clamp(16px, 1.5vw, 18px); color: var(--muted); }
 .hero__lead strong { color: var(--text); font-weight: 500; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 
-.hero__visual { position: relative; margin: 0; aspect-ratio: 1; width: 100%; max-width: 560px; justify-self: end; }
-.orbit { width: 100%; height: 100%; overflow: visible; }
+/* 首屏右侧：可切换的交付物示例 */
+.showcase { position: relative; margin: 0; width: 100%; max-width: 640px; justify-self: end; }
+.showcase__orbit { position: absolute; left: 50%; top: 50%; width: 128%; max-width: none; height: auto; aspect-ratio: 1; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; opacity: .7; }
+.orbit { overflow: visible; }
 .orbit__path { stroke: var(--line-3); stroke-width: 1; }
 .orbit__ring { stroke: var(--line-2); transform-box: fill-box; transform-origin: center; animation: spin 80s linear infinite; }
 .orbit__halo { transform-box: fill-box; transform-origin: center; animation: breathe 5s ease-in-out infinite; }
 .orbit__e { fill: var(--accent); }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes breathe { 50% { transform: scale(1.12); opacity: .7; } }
-.chip {
-  position: absolute; display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 14px; border-radius: 999px; white-space: nowrap;
-  background: rgba(21, 21, 19, .8); border: 1px solid var(--line-2);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  font-size: 13px; color: var(--text);
-  animation: float 6s ease-in-out infinite;
+@keyframes blink { 50% { opacity: .25; } }
+
+.showcase__window {
+  position: relative; overflow: hidden; border-radius: 22px;
+  border: 1px solid var(--line-2); background: rgba(19, 19, 17, .8);
+  -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 50px 120px -50px rgba(0, 0, 0, .95), inset 0 1px 0 rgba(243, 241, 234, .05);
 }
-.chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.chip--1 { top: 12%; left: 0; }
-.chip--2 { top: 44%; right: -2%; animation-delay: -2s; }
-.chip--3 { bottom: 10%; left: 12%; animation-delay: -4s; }
-@keyframes float { 50% { transform: translateY(-8px); } }
-.hero__visual figcaption {
-  position: absolute; right: 0; bottom: -8px;
-  font: 400 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim);
+.showcase__bar { display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 16px; border-bottom: 1px solid var(--line); }
+.showcase__dots { display: flex; gap: 6px; }
+.showcase__dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--surface-3); }
+.showcase__label { font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.showcase__live { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.showcase__live i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 1.6s ease-in-out infinite; }
+.showcase__tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 12px 12px 0; }
+.showcase__tabs button {
+  position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 8px;
+  height: 42px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--line); background: none; cursor: pointer;
+  color: var(--muted); font: 500 14px/1 var(--font-body); white-space: nowrap;
+  transition: color .25s, background-color .25s, border-color .25s;
 }
+.showcase__tabs button svg { width: 16px; height: 16px; flex-shrink: 0; }
+.showcase__tabs button:hover { color: var(--text); }
+.showcase__tabs button[aria-selected="true"] { color: var(--text); background: var(--surface-2); border-color: var(--line-2); }
+.showcase__tabs button[aria-selected="true"] svg { color: var(--accent); }
+.showcase__prog { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; }
+.showcase.is-auto [aria-selected="true"] .showcase__prog { animation: sc-prog 7s linear forwards; }
+.showcase:hover .showcase__prog, .showcase:focus-within .showcase__prog, .showcase.is-paused .showcase__prog { animation-play-state: paused !important; }
+@keyframes sc-prog { to { transform: scaleX(1); } }
+
+.showcase__panels { display: grid; padding: 16px; }
+.sc-panel {
+  grid-area: 1 / 1; display: flex; flex-direction: column; gap: 14px;
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease), visibility 0s linear .4s;
+}
+.sc-panel.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity .45s var(--ease) .05s, transform .45s var(--ease) .05s, visibility 0s; }
+.sc-desc { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.sc-demo { flex: 1; padding: 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--bg-2); }
+.sc-foot { display: grid; gap: 12px; }
+.sc-deliv { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.sc-deliv ul { display: contents; }
+.sc-k { margin-right: 4px; font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+.sc-deliv li { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 12.5px; }
+.sc-deliv li::before { content: ""; width: 12px; height: 12px; -webkit-mask: var(--i-check) center / contain no-repeat; mask: var(--i-check) center / contain no-repeat; background: var(--accent); }
+.sc-plan { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.sc-plan a { display: inline-flex; align-items: baseline; gap: 6px; color: var(--text); text-decoration: none; font-weight: 500; }
+.sc-plan a b { font: 600 16px/1 var(--font-display); color: var(--accent); }
+.sc-plan a .arrow { transition: transform .25s var(--ease); }
+.sc-plan a:hover .arrow { transform: translateX(3px); }
+.showcase__cap { margin-top: 14px; text-align: right; font: 400 11px/1.4 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+
+/* 示例界面 */
+.demo-row { display: flex; align-items: center; gap: 12px; }
+.demo-ava { width: 36px; height: 36px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: var(--surface-3); border: 1px solid var(--line-2); font: 600 14px/1 var(--font-display); color: var(--accent); }
+.demo-title b { display: block; font-size: 14px; font-weight: 500; }
+.demo-title small { font-size: 12px; color: var(--muted); }
+.demo-badge { margin-left: auto; display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--accent); font-size: 11px; font-weight: 500; white-space: nowrap; }
+.meters { display: grid; grid-template-columns: max-content minmax(0, 1fr) auto; align-items: center; gap: 11px 12px; margin: 16px 0; }
+.meters li { display: contents; }
+.meters li > span { font-size: 13px; color: var(--muted); }
+.meters li > i { position: relative; height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; }
+.meters li > i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 3px; background: rgba(243, 241, 234, .5); transition: width .9s var(--ease); }
+.sc-panel.is-active .meters li > i::after { width: var(--v); }
+.meters li:nth-child(2) > i::after { transition-delay: .08s; }
+.meters li:nth-child(3) > i::after { transition-delay: .16s; }
+.meters li:nth-child(4) > i::after { transition-delay: .24s; }
+.meters li.is-focus > i::after { background: var(--accent); }
+.meters li.is-focus > span { color: var(--text); }
+.meters li > b { min-width: 2ch; text-align: right; font: 600 13px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.demo-note { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-size: 13px; line-height: 1.6; }
+.demo-note__k { margin-bottom: 6px; font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+
+.demo-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 12px; color: var(--muted); }
+.demo-rec { display: inline-flex; align-items: center; gap: 6px; color: #FF8F6B; font: 500 11px/1 var(--font-mono); letter-spacing: .06em; }
+.demo-rec i { width: 7px; height: 7px; border-radius: 50%; background: #FF8F6B; animation: blink 1.4s ease-in-out infinite; }
+.demo-time { margin-left: auto; font: 500 12px/1 var(--font-mono); color: var(--text); }
+.demo-split { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; align-items: stretch; }
+.chat { display: grid; gap: 8px; align-content: start; }
+.msg { max-width: 94%; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface-2); font-size: 13px; line-height: 1.55; opacity: 0; transform: translateY(6px); transition: opacity .4s var(--ease), transform .4s var(--ease); }
+.msg b { display: block; margin-bottom: 3px; font: 500 11px/1.3 var(--font-mono); letter-spacing: .04em; color: var(--muted); }
+.msg--ai { justify-self: start; border-top-left-radius: 4px; }
+.msg--ai b { color: var(--accent); }
+.msg--me { justify-self: end; border-top-right-radius: 4px; background: var(--surface-3); }
+.sc-panel.is-active .msg { opacity: 1; transform: none; }
+.sc-panel.is-active .msg:nth-child(2) { transition-delay: .45s; }
+.sc-panel.is-active .msg:nth-child(3) { transition-delay: .9s; }
+.rubric, .ticket { display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.rubric__k { font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rubric ul { display: grid; gap: 7px; }
+.rubric li { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+.rubric li > span { color: var(--muted); }
+.rubric li > b, .rubric__total > b { font-family: var(--font-display); font-weight: 600; font-variant-numeric: tabular-nums; }
+.rubric small { font-size: 11px; font-weight: 500; color: var(--muted); }
+.rubric__total { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--line-2); display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; color: var(--muted); }
+.rubric__total > b { font-size: 26px; line-height: 1; letter-spacing: -.03em; color: var(--text); }
+.rubric__note { font-size: 11.5px; color: var(--dim); }
+.ticket__head { display: flex; align-items: center; justify-content: space-between; font: 600 14px/1 var(--font-mono); }
+.tag--hot { height: 22px; font-size: 11px; color: #FF9B7A; border-color: rgba(255, 143, 107, .4); background: rgba(255, 143, 107, .1); }
+.ticket__meta { display: grid; gap: 7px; }
+.ticket__meta div { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; }
+.ticket__meta dt { color: var(--muted); }
+.ticket__meta dd { text-align: right; }
+.track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: auto; }
+.track li { position: relative; padding-top: 12px; font-size: 11px; color: var(--dim); white-space: nowrap; }
+.track li::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 2px; background: var(--surface-3); }
+.track li.is-done { color: var(--muted); }
+.track li.is-done::before { background: rgba(243, 241, 234, .5); }
+.track li.is-now { color: var(--accent); }
+.track li.is-now::before { background: var(--accent); animation: blink 1.6s ease-in-out infinite; }
+.demo-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.demo-kpis div { display: flex; flex-direction: column-reverse; gap: 6px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.demo-kpis dt { font-size: 11.5px; color: var(--muted); }
+.demo-kpis dd { font: 600 20px/1 var(--font-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.demo-kpis dd small { margin-left: 2px; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
 
 .stats {
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -326,16 +426,27 @@ html[lang="en"] .hero__title { font-size: clamp(40px, 5vw, 72px); line-height: 1
 .stats dd small { font-size: .5em; color: var(--muted); margin-left: 2px; font-weight: 500; }
 .stats dt { font-size: 14px; color: var(--muted); }
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   .hero__grid { grid-template-columns: 1fr; }
-  .hero__visual { justify-self: center; max-width: 400px; margin-top: 24px; }
+  .showcase { justify-self: stretch; max-width: 680px; margin-top: 16px; }
+}
+@media (max-width: 960px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stats > div:nth-child(3) { padding-left: 0; border-left: 0; }
   .stats > div:nth-child(n + 3) { border-top: 1px solid var(--line); margin-top: 24px; }
 }
+@media (max-width: 560px) {
+  .demo-split { grid-template-columns: 1fr; }
+  .showcase__panels { padding: 12px; }
+  .sc-demo { padding: 12px; }
+  .showcase__tabs { padding: 10px 10px 0; gap: 4px; }
+  .showcase__tabs button { gap: 6px; padding: 0 6px; font-size: 13px; }
+}
+@media (max-width: 420px) {
+  .showcase__tabs button svg { display: none; }
+}
 @media (max-width: 520px) {
   .hero__ctas .btn { flex: 1 1 100%; }
-  .chip { font-size: 12px; padding: 6px 11px; }
   .stats > div { padding-right: 12px; }
   .stats > div + div { padding-left: 16px; }
 }
@@ -559,9 +670,9 @@ html[lang="en"] .hero__title { font-size: clamp(40px, 5vw, 72px); line-height: 1
   background: rgba(28, 28, 25, .92); border: 1px solid var(--line-2);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .8);
-  transform: translateY(140%); transition: transform .4s var(--ease);
+  transform: translateY(140%); visibility: hidden; transition: transform .4s var(--ease), visibility 0s linear .4s;
 }
-.calc-bar.is-visible { transform: none; }
+.calc-bar.is-visible { transform: none; visibility: visible; transition: transform .4s var(--ease), visibility 0s; }
 .calc-bar small { display: block; font-size: 11px; color: var(--muted); }
 .calc-bar strong { font: 600 20px/1.1 var(--font-display); letter-spacing: -.02em; }
 @media (min-width: 961px) { .calc-bar { display: none; } }
@@ -709,7 +820,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
 </style>
@@ -783,8 +894,8 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
         </div>
       </div>
 
-      <figure class="hero__visual reveal" aria-hidden="true">
-        <svg class="orbit" viewBox="0 0 520 520" fill="none">
+      <div class="showcase reveal" id="showcase">
+        <svg class="orbit showcase__orbit" viewBox="0 0 520 520" fill="none" aria-hidden="true">
           <defs>
             <radialGradient id="halo" cx="50%" cy="50%" r="50%">
               <stop offset="0" stop-color="#D4FF3F" stop-opacity=".22"/>
@@ -817,11 +928,137 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
           <circle cx="260" cy="260" r="46" fill="#F3F1EA" opacity=".06"/>
           <circle cx="260" cy="260" r="30" fill="url(#core)"/>
         </svg>
-        <span class="chip chip--1"><i></i><span data-zh>AI 硬件部署</span><span data-en>Hardware deployment</span></span>
-        <span class="chip chip--2"><i></i><span data-zh>总裁 AI 顾问</span><span data-en>Executive advisory</span></span>
-        <span class="chip chip--3"><i></i><span data-zh>7×24 全天候售后</span><span data-en>24/7 support</span></span>
-        <figcaption><span data-zh>Fig.01 — 人是核心，智能环绕</span><span data-en>Fig.01 — People at the core</span></figcaption>
-      </figure>
+        <div class="showcase__window">
+          <div class="showcase__bar">
+            <span class="showcase__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="showcase__label"><span data-zh>交付物示例</span><span data-en>Sample deliverables</span></span>
+            <span class="showcase__live" aria-hidden="true"><i></i>Demo</span>
+          </div>
+
+          <!-- 案例标签：新增案例时复制一个按钮 + 一个面板，id 对应即可 -->
+          <div class="showcase__tabs" role="tablist" aria-label="交付物示例" data-aria-zh="交付物示例" data-aria-en="Sample deliverables">
+            <button type="button" role="tab" id="sct-edu" aria-controls="scp-edu" aria-selected="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5"/></svg>
+              <span data-zh>学生评估</span><span data-en>Assessment</span><i class="showcase__prog" aria-hidden="true"></i>
+            </button>
+            <button type="button" role="tab" id="sct-exam" aria-controls="scp-exam" aria-selected="false" tabindex="-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+              <span data-zh>AI 考官</span><span data-en>AI Examiner</span><i class="showcase__prog" aria-hidden="true"></i>
+            </button>
+            <button type="button" role="tab" id="sct-prop" aria-controls="scp-prop" aria-selected="false" tabindex="-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h2a2 2 0 0 1 2 2v10M3 21h18M8 7h4M8 11h4M8 15h4"/></svg>
+              <span data-zh>物业管理</span><span data-en>Property</span><i class="showcase__prog" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="showcase__panels">
+            <!-- 学生评估 -->
+            <div class="sc-panel is-active" id="scp-edu" role="tabpanel" aria-labelledby="sct-edu">
+              <p class="sc-desc"><span data-zh>为学校和培训机构部署的学情评估系统：AI 读取作业、测验与课堂记录，为每位学生生成个性化评估报告。</span><span data-en>A learning-assessment system for schools and training centers. AI reads homework, quizzes and class notes, then writes a personalized report for every student.</span></p>
+              <div class="sc-demo">
+                <div class="demo-row">
+                  <span class="demo-ava" aria-hidden="true">A</span>
+                  <div class="demo-title"><b><span data-zh>学生 A · 初二（3）班</span><span data-en>Student A · Grade 8, Class 3</span></b><small><span data-zh>期中学情评估 · 秋季学期</span><span data-en>Mid-term assessment · Fall term</span></small></div>
+                  <span class="demo-badge"><span data-zh>AI 生成</span><span data-en>AI-generated</span></span>
+                </div>
+                <ul class="meters">
+                  <li style="--v: 86%"><span><span data-zh>知识掌握</span><span data-en>Knowledge</span></span><i></i><b>86</b></li>
+                  <li style="--v: 78%"><span><span data-zh>逻辑推理</span><span data-en>Reasoning</span></span><i></i><b>78</b></li>
+                  <li class="is-focus" style="--v: 64%"><span><span data-zh>语言表达</span><span data-en>Expression</span></span><i></i><b>64</b></li>
+                  <li style="--v: 91%"><span><span data-zh>学习习惯</span><span data-en>Study habits</span></span><i></i><b>91</b></li>
+                </ul>
+                <div class="demo-note">
+                  <p class="demo-note__k"><span data-zh>AI 评语</span><span data-en>AI comment</span></p>
+                  <p><span data-zh>几何证明思路清晰，书面表达偏简略。建议每周 2 次「讲题」练习，把推理过程完整说出来。</span><span data-en>Clear reasoning on geometry proofs, but written answers are brief. Suggest two "explain it aloud" sessions a week to spell out each step.</span></p>
+                </div>
+              </div>
+              <div class="sc-foot">
+                <div class="sc-deliv"><span class="sc-k"><span data-zh>交付物</span><span data-en>Deliverables</span></span><ul><li><span data-zh>评估报告自动生成</span><span data-en>Auto-generated reports</span></li><li><span data-zh>学情知识库</span><span data-en>Learning knowledge base</span></li><li><span data-zh>教师与家长端</span><span data-en>Teacher &amp; parent views</span></li></ul></div>
+                <div class="sc-plan">
+                <span><span data-zh>参考配置：专业版部署 + 基础版售后</span><span data-en>Suggested: Professional + Basic Support</span></span>
+                <a href="#calculator" data-preset="deploy:pro,support:basic" data-preset-exact><span data-zh>首年预估</span><span data-en>First year</span> <b data-estimate="deploy:pro,support:basic">¥0</b><span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+              </div>
+            </div>
+
+            <!-- AI 考官 -->
+            <div class="sc-panel" id="scp-exam" role="tabpanel" aria-labelledby="sct-exam">
+              <p class="sc-desc"><span data-zh>面向考试与认证机构的 AI 口试考官：按题库出题、实时追问，并依据评分细则逐项打分，每一分都有据可查。</span><span data-en>An AI oral examiner for testing and certification bodies. It draws from your question bank, asks follow-ups in real time, and scores each criterion against your rubric, with the reasoning on record.</span></p>
+              <div class="sc-demo">
+                <div class="demo-top">
+                  <span class="demo-rec"><i aria-hidden="true"></i><span data-zh>录制中</span><span data-en>REC</span></span>
+                  <span><span data-zh>职业资格口试 · 第 3 / 5 题</span><span data-en>Certification oral exam · Q3 of 5</span></span>
+                  <span class="demo-time">02:14</span>
+                </div>
+                <div class="demo-split">
+                  <div class="chat">
+                    <p class="msg msg--ai"><b><span data-zh>AI 考官</span><span data-en>AI examiner</span></b><span data-zh>请描述一次你处理客户投诉的经历，以及关键步骤。</span><span data-en>Describe a time you handled a customer complaint, and the key steps you took.</span></p>
+                    <p class="msg msg--me"><b><span data-zh>考生</span><span data-en>Candidate</span></b><span data-zh>客户因发货延迟很生气，我先道歉、核对订单号，再……</span><span data-en>A customer was upset about a late delivery. I apologized, checked the order, then…</span></p>
+                    <p class="msg msg--ai"><b><span data-zh>AI 考官 · 追问</span><span data-en>AI examiner · follow-up</span></b><span data-zh>核对订单后，你如何向客户同步进度？</span><span data-en>After checking the order, how did you keep the customer updated?</span></p>
+                  </div>
+                  <div class="rubric">
+                    <p class="rubric__k"><span data-zh>实时评分</span><span data-en>Live scoring</span></p>
+                    <ul>
+                      <li><span><span data-zh>内容完整</span><span data-en>Completeness</span></span><b>8<small>/10</small></b></li>
+                      <li><span><span data-zh>逻辑结构</span><span data-en>Structure</span></span><b>7<small>/10</small></b></li>
+                      <li><span><span data-zh>语言表达</span><span data-en>Delivery</span></span><b>9<small>/10</small></b></li>
+                    </ul>
+                    <p class="rubric__total"><span><span data-zh>当前得分</span><span data-en>Score so far</span></span><b>24<small>/30</small></b></p>
+                    <p class="rubric__note"><span data-zh>每项打分附评分依据</span><span data-en>Every score cites the rubric</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="sc-foot">
+                <div class="sc-deliv"><span class="sc-k"><span data-zh>交付物</span><span data-en>Deliverables</span></span><ul><li><span data-zh>题库与评分细则</span><span data-en>Question bank &amp; rubric</span></li><li><span data-zh>实时语音转写</span><span data-en>Live transcription</span></li><li><span data-zh>成绩报告与审计记录</span><span data-en>Score reports &amp; audit trail</span></li></ul></div>
+                <div class="sc-plan">
+                <span><span data-zh>参考配置：旗舰版部署 + 全天候售后</span><span data-en>Suggested: Flagship + 24/7 Support</span></span>
+                <a href="#calculator" data-preset="deploy:flagship,support:allday" data-preset-exact><span data-zh>首年预估</span><span data-en>First year</span> <b data-estimate="deploy:flagship,support:allday">¥0</b><span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+              </div>
+            </div>
+
+            <!-- 物业管理 -->
+            <div class="sc-panel" id="scp-prop" role="tabpanel" aria-labelledby="sct-prop">
+              <p class="sc-desc"><span data-zh>为物业公司部署的 AI 管家：业主在企业微信里一句话报修，AI 自动识别问题、生成工单，并派给对应的维修班组。</span><span data-en>An AI concierge for property managers. Residents report an issue in one WeCom message, and AI classifies it, opens a work order and dispatches the right maintenance team.</span></p>
+              <div class="sc-demo">
+                <div class="demo-split">
+                  <div class="chat">
+                    <p class="msg msg--me"><b><span data-zh>业主 · 企业微信</span><span data-en>Resident · WeCom</span></b><span data-zh>3 号楼 1202，卫生间天花板在滴水，挺急的</span><span data-en>Bldg 3, Unit 1202. The bathroom ceiling is dripping. It's urgent.</span></p>
+                    <p class="msg msg--ai"><b><span data-zh>AI 管家</span><span data-en>AI concierge</span></b><span data-zh>已为您创建工单 WO-1029，维修师傅预计 30 分钟内上门。</span><span data-en>Work order WO-1029 is open. A technician will arrive in about 30 minutes.</span></p>
+                  </div>
+                  <div class="ticket">
+                    <div class="ticket__head"><span>WO-1029</span><span class="tag tag--hot"><span data-zh>紧急</span><span data-en>Urgent</span></span></div>
+                    <dl class="ticket__meta">
+                      <div><dt><span data-zh>类型</span><span data-en>Type</span></dt><dd><span data-zh>水电维修 · 漏水</span><span data-en>Plumbing · Leak</span></dd></div>
+                      <div><dt><span data-zh>指派</span><span data-en>Assigned</span></dt><dd><span data-zh>维修二组</span><span data-en>Team 2</span></dd></div>
+                      <div><dt><span data-zh>预计到达</span><span data-en>ETA</span></dt><dd><span data-zh>30 分钟</span><span data-en>30 min</span></dd></div>
+                    </dl>
+                    <ol class="track">
+                      <li class="is-done"><span data-zh>已受理</span><span data-en>Received</span></li>
+                      <li class="is-done"><span data-zh>已派单</span><span data-en>Assigned</span></li>
+                      <li class="is-now"><span data-zh>处理中</span><span data-en>On site</span></li>
+                      <li><span data-zh>已完成</span><span data-en>Done</span></li>
+                    </ol>
+                  </div>
+                </div>
+                <dl class="demo-kpis">
+                  <div><dt><span data-zh>今日报修</span><span data-en>Reported today</span></dt><dd>18</dd></div>
+                  <div><dt><span data-zh>AI 自动派单</span><span data-en>Auto-dispatched</span></dt><dd>16<small>/18</small></dd></div>
+                  <div><dt><span data-zh>平均派单用时</span><span data-en>Avg. dispatch time</span></dt><dd>1<small><span data-zh>分钟</span><span data-en>min</span></small></dd></div>
+                </dl>
+              </div>
+              <div class="sc-foot">
+                <div class="sc-deliv"><span class="sc-k"><span data-zh>交付物</span><span data-en>Deliverables</span></span><ul><li><span data-zh>业主 AI 管家</span><span data-en>Resident AI concierge</span></li><li><span data-zh>自动派单</span><span data-en>Auto-dispatch</span></li><li><span data-zh>工单看板</span><span data-en>Work-order dashboard</span></li></ul></div>
+                <div class="sc-plan">
+                <span><span data-zh>参考配置：专业版部署 + 全天候售后</span><span data-en>Suggested: Professional + 24/7 Support</span></span>
+                <a href="#calculator" data-preset="deploy:pro,support:allday" data-preset-exact><span data-zh>首年预估</span><span data-en>First year</span> <b data-estimate="deploy:pro,support:allday">¥0</b><span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="showcase__cap"><span data-zh>Fig.01 — 界面为交付物示意，数据为演示样例</span><span data-en>Fig.01 — Illustrative deliverables, demo data</span></p>
+      </div>
     </div>
 
     <dl class="stats reveal">
@@ -1993,7 +2230,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   }
 
   /* ---------- 价格 Tab ---------- */
-  const tabs = $$('[role="tab"]');
+  const tabs = $$('#pricing [role="tab"]');
   const billingBox = $('#billing');
   function selectTab(id, focus) {
     tabs.forEach((tab) => {
@@ -2255,17 +2492,72 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   });
 
   // 价格卡片「按此方案估算」→ 预设计算器
+  // data-preset="deploy:pro,support:basic"；带 data-preset-exact 时只保留这些服务，其余选项恢复默认
   $$('[data-preset]').forEach((btn) => btn.addEventListener('click', () => {
-    const [svc, tier] = btn.dataset.preset.split(':');
-    state[svc].on = true;
-    state[svc].tier = tier;
-    if (svc === 'deploy' && tier === 'flagship') state.deploy.kb = 0;
+    const pairs = btn.dataset.preset.split(',').map((p) => p.split(':'));
+    if (btn.hasAttribute('data-preset-exact')) {
+      ['deploy', 'support', 'advisory'].forEach((k) => { state[k].on = false; });
+      Object.assign(state.deploy, { integration: 0, kb: 0, onsite: 0, training: 0, rush: false });
+      state.support.billing = billing = 'monthly';
+      renderSupportPrices();
+    }
+    pairs.forEach(([svc, tier]) => { state[svc].on = true; state[svc].tier = tier; });
+    if (state.deploy.tier === 'flagship') state.deploy.kb = 0;
     syncInputs();
     renderCalc(true);
-    const block = $(`[data-block="${svc}"]`);
-    block.classList.add('is-flash');
-    setTimeout(() => block.classList.remove('is-flash'), 1600);
+    pairs.forEach(([svc]) => {
+      const block = $(`[data-block="${svc}"]`);
+      block.classList.add('is-flash');
+      setTimeout(() => block.classList.remove('is-flash'), 1600);
+    });
   }));
+
+  /* ---------- 首屏交付物示例 ---------- */
+  // 参考配置的首年费用（月付、无加购），与计算器套用该配置后的结果一致
+  function estimate(spec) {
+    const pairs = spec.split(',').map((p) => p.split(':'));
+    const subtotal = pairs.reduce((sum, [svc, tier]) => sum + (svc === 'support' ? PRICING.support[tier] * 12 : PRICING[svc][tier]), 0);
+    const rate = PRICING.bundle[pairs.length] || 1;
+    return subtotal - Math.round(subtotal * (1 - rate));
+  }
+  $$('[data-estimate]').forEach((el) => { el.textContent = fmt(estimate(el.dataset.estimate)); });
+
+  const showcase = $('#showcase');
+  const scTabs = $$('[role="tab"]', showcase);
+  function showCase(i, focus) {
+    const n = (i + scTabs.length) % scTabs.length;
+    scTabs.forEach((tab, j) => {
+      const on = j === n;
+      tab.setAttribute('aria-selected', String(on));
+      tab.tabIndex = on ? 0 : -1;
+      document.getElementById(tab.getAttribute('aria-controls')).classList.toggle('is-active', on);
+      if (on && focus) tab.focus();
+    });
+  }
+  const stopAuto = () => showcase.classList.remove('is-auto');
+  scTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => { stopAuto(); showCase(i); });
+    tab.addEventListener('keydown', (e) => {
+      const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: scTabs.length - 1 }[e.key];
+      if (to === undefined) return;
+      e.preventDefault();
+      stopAuto();
+      showCase(to, true);
+    });
+    // 自动轮播：进度条走完切到下一个；悬停、聚焦、滚出视口时暂停；手动切换后停止
+    $('.showcase__prog', tab).addEventListener('animationend', () => {
+      if (showcase.classList.contains('is-auto')) showCase(i + 1);
+    });
+  });
+  if (!reduceMotion) {
+    showcase.classList.add('is-auto');
+    let offscreen = false;
+    const syncPause = () => showcase.classList.toggle('is-paused', offscreen || document.hidden);
+    document.addEventListener('visibilitychange', syncPause);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { offscreen = !e.isIntersecting; syncPause(); }).observe(showcase);
+    }
+  }
 
   // 复制
   const toast = $('#toast');
