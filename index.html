@@ -269,14 +269,14 @@ html:not([lang="en"]) [data-en] { display: none !important; }
 /* ==========================================================================
    Hero
    ========================================================================== */
-.hero { position: relative; isolation: isolate; padding: calc(var(--nav-h) + clamp(24px, 3vw, 40px)) 0 clamp(48px, 6vw, 80px); overflow: hidden; }
+.hero { position: relative; isolation: isolate; padding: calc(var(--nav-h) + clamp(40px, 6vw, 88px)) 0 clamp(48px, 6vw, 80px); overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .hero__bg::after {
   content: ""; position: absolute; width: 900px; height: 900px; right: -220px; top: -160px;
   background: radial-gradient(circle, rgba(169, 188, 255, .10), transparent 60%);
   filter: blur(20px);
 }
-.hero__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); gap: clamp(28px, 3.5vw, 52px); align-items: center; }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
 .pill {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 7px 14px 7px 10px; border-radius: 999px;
@@ -285,23 +285,68 @@ html:not([lang="en"]) [data-en] { display: none !important; }
 }
 .pill__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); animation: pulse 2.4s var(--ease) infinite; }
 @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(169, 188, 255, 0); } }
-.hero__title { margin-top: 28px; font-size: clamp(44px, 5.6vw, 84px); line-height: 1.02; letter-spacing: -.04em; font-weight: 600; }
-html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height: 1.02; }
+.hero__title { margin-top: 28px; font-size: clamp(44px, 6vw, 92px); line-height: 1.02; letter-spacing: -.04em; font-weight: 600; }
+html[lang="en"] .hero__title { font-size: clamp(38px, 4.4vw, 64px); line-height: 1.02; }
 .hero__title em, .about__statement em { font-style: normal; color: var(--accent); background: var(--sheen); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .hero__lead { margin-top: 28px; max-width: 560px; font-size: clamp(16px, 1.5vw, 18px); color: var(--muted); }
 .hero__lead strong { color: var(--text); font-weight: 500; }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 
-/* 首屏右侧：可切换的交付物示例 */
-.showcase { position: relative; margin: 0; width: 100%; justify-self: stretch; }
-.showcase__orbit { position: absolute; left: 50%; top: 50%; width: 112%; max-width: none; height: auto; aspect-ratio: 1; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; opacity: .7; }
-.orbit { overflow: visible; }
-.orbit__path { stroke: var(--line-3); stroke-width: 1; }
-.orbit__ring { stroke: var(--line-2); transform-box: fill-box; transform-origin: center; animation: spin 80s linear infinite; }
-.orbit__halo { transform-box: fill-box; transform-origin: center; animation: breathe 5s ease-in-out infinite; }
-.orbit__e { fill: var(--accent); }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes breathe { 50% { transform: scale(1.12); opacity: .7; } }
+/* 首屏右侧：五大业务列表 */
+.biz-list { border-top: 1px solid var(--line-2); }
+.biz-list__head { display: flex; justify-content: space-between; padding: 14px 4px; font: 500 11px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line-2); }
+.biz-list__head span:last-child { color: var(--accent); }
+.biz-list a { position: relative; display: grid; grid-template-columns: 2.4em minmax(0, 1fr) auto; gap: 16px; align-items: start; padding: 18px 12px 18px 4px; border-bottom: 1px solid var(--line-2); text-decoration: none; transition: background-color .3s; }
+.biz-list a::before { content: ""; position: absolute; left: 0; top: -1px; bottom: -1px; width: 2px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .35s var(--ease); }
+.biz-list a:hover, .biz-list a:focus-visible { background: linear-gradient(90deg, rgba(169, 188, 255, .06), transparent 75%); }
+.biz-list a:hover::before, .biz-list a:focus-visible::before { transform: none; }
+.biz-list__no { padding-left: 10px; font: 500 12px/1.9 var(--font-mono); color: var(--accent); }
+.biz-list__title { display: block; font: 600 clamp(17px, 1.5vw, 20px)/1.35 var(--font-display); letter-spacing: -.015em; }
+.biz-list__en { display: block; margin-top: 3px; font: 500 10.5px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+html[lang="en"] .biz-list__en { display: none; }
+.biz-list__desc { display: block; margin-top: 6px; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+.biz-list__arrow { margin-top: 2px; color: var(--dim); transition: transform .3s var(--ease), color .3s; }
+.biz-list a:hover .biz-list__arrow, .biz-list a:focus-visible .biz-list__arrow { transform: translateX(4px); color: var(--text); }
+
+/* 交付案例：左侧案例列表 + 右侧看板 */
+.showcase { position: relative; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 20px; align-items: start; }
+.showcase__side { position: sticky; top: calc(var(--nav-h) + 20px); display: grid; gap: 10px; }
+.showcase__nav { display: grid; gap: 8px; }
+.showcase__nav [role="tab"] {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(16, 18, 22, .7);
+  color: var(--text); text-align: left; cursor: pointer; font: inherit;
+  transition: background-color .25s, border-color .25s, box-shadow .25s;
+}
+.showcase__nav [role="tab"]:hover { border-color: var(--line-2); background: var(--surface); }
+.showcase__nav [role="tab"][aria-selected="true"] { background: var(--surface-2); border-color: var(--accent-line); box-shadow: inset 3px 0 0 var(--accent); }
+.scn__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: var(--surface-3); color: var(--muted); transition: background-color .25s, color .25s; }
+.scn__icon svg { width: 19px; height: 19px; }
+[aria-selected="true"] .scn__icon { background: var(--accent-soft); color: var(--accent); }
+.scn__text { min-width: 0; }
+.scn__text b { display: block; font-size: 14.5px; font-weight: 600; line-height: 1.3; }
+.scn__text small { display: block; margin-top: 2px; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scn__price { text-align: right; white-space: nowrap; }
+.scn__price small { display: block; font-size: 10.5px; color: var(--dim); }
+.scn__price b { display: block; margin-top: 2px; font: 600 13px/1 var(--font-display); color: var(--ink-2, #C3C8D2); font-variant-numeric: tabular-nums; }
+.scn__cta { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 14px; border: 1px dashed var(--line-2); color: var(--muted); text-decoration: none; font-size: 13px; transition: border-color .25s, color .25s; }
+.scn__cta b { color: var(--text); font-weight: 600; white-space: nowrap; }
+.scn__cta:hover { border-color: var(--accent-line); color: var(--text); }
+.showcase__main { min-width: 0; }
+@media (max-width: 1100px) {
+  .showcase { grid-template-columns: minmax(0, 1fr); }
+  .showcase__side { position: static; }
+  .showcase__nav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+  .showcase__nav [role="tab"] { flex: 0 0 auto; width: auto; min-width: 230px; scroll-snap-align: start; }
+  .scn__cta { display: none; }
+  .sc-panel:not(.is-active) { display: none; }
+}
+@media (max-width: 520px) {
+  .showcase__nav [role="tab"] { min-width: 200px; grid-template-columns: 34px minmax(0, 1fr); }
+  .scn__icon { width: 34px; height: 34px; }
+  .scn__price { display: none; }
+}
+
 @keyframes blink { 50% { opacity: .25; } }
 
 .showcase__window {
@@ -315,21 +360,6 @@ html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height:
 .showcase__label { font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .showcase__live { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font: 500 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
 .showcase__live i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 1.6s ease-in-out infinite; }
-.showcase__tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 12px 12px 0; }
-.showcase__tabs button {
-  position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 8px;
-  height: 38px; padding: 0 10px; border-radius: 11px; border: 1px solid var(--line); background: none; cursor: pointer;
-  color: var(--muted); font: 500 14px/1 var(--font-body); white-space: nowrap;
-  transition: color .25s, background-color .25s, border-color .25s;
-}
-.showcase__tabs button svg { width: 16px; height: 16px; flex-shrink: 0; }
-.showcase__tabs button:hover { color: var(--text); }
-.showcase__tabs button[aria-selected="true"] { color: var(--text); background: var(--surface-2); border-color: var(--line-2); }
-.showcase__tabs button[aria-selected="true"] svg { color: var(--accent); }
-.showcase__prog { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; }
-.showcase.is-auto [aria-selected="true"] .showcase__prog { animation: sc-prog 7s linear forwards; }
-.showcase:hover .showcase__prog, .showcase:focus-within .showcase__prog, .showcase.is-paused .showcase__prog { animation-play-state: paused !important; }
-@keyframes sc-prog { to { transform: scaleX(1); } }
 
 .showcase__panels { display: grid; padding: 14px; }
 .sc-panel {
@@ -527,6 +557,92 @@ html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height:
 .ev p { margin-top: 4px; font-size: 12px; line-height: 1.5; color: var(--ink-2); }
 .ev .ev__hint { margin: 0; color: var(--muted); }
 
+
+/* 健康管理 OS */
+.dash--health { grid-template-rows: auto 1fr auto; }
+.dash--health .dash__row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.w--sleep { display: flex; flex-direction: column; }
+.cols { flex: 1; display: grid; grid-template-rows: minmax(150px, 1fr) auto; }
+.cols__plot { position: relative; display: flex; align-items: flex-end; gap: 2px; border-bottom: 1px solid var(--axis); }
+.cols__band { position: absolute; left: 0; right: 0; bottom: 70%; height: 20%; background: rgba(169, 188, 255, .08); border-block: 1px solid rgba(169, 188, 255, .18); }
+.col { position: relative; flex: 1; display: flex; justify-content: center; align-items: flex-end; height: 100%; outline: none; }
+.col i { width: min(16px, 70%); border-radius: 4px 4px 0 0; background: var(--c-self); transform-origin: bottom; transform: scaleY(0); transition: transform .6s var(--ease), filter .2s; }
+.sc-panel.is-active .col i { transform: none; }
+.col.is-low i { background: var(--st-warn); }
+.col.is-on i, .col:focus-visible i { filter: brightness(1.25); }
+.cols__x { display: flex; justify-content: space-between; margin-top: 5px; font-size: 10px; color: var(--dim); }
+.labs { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content max-content; align-items: center; gap: 10px 12px; }
+.lab__name { font-size: 12.5px; line-height: 1.3; }
+.lab__name small { display: block; font-size: 10px; color: var(--dim); }
+.lab__track { position: relative; height: 24px; outline: none; border-radius: 4px; }
+.lab__track:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+.lab__track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: var(--surface-3); }
+.lab__band { position: absolute; top: 50%; height: 10px; margin-top: -5px; border-radius: 3px; background: rgba(238, 241, 245, .16); }
+.lab__dot { position: absolute; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--st-good); box-shadow: 0 0 0 2px var(--w-bg); }
+.lab__dot.is-warn { background: var(--st-warn); }
+.lab__val { font: 600 13px/1 var(--font-display); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.st { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--ink-2); white-space: nowrap; }
+.st i { width: 7px; height: 7px; border-radius: 50%; }
+.st--good i { background: var(--st-good); }
+.st--warn i { background: var(--st-warn); }
+.advice { display: grid; gap: 8px; margin-top: 10px; }
+.advice li { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); gap: 10px; align-items: baseline; font-size: 12.5px; line-height: 1.55; color: var(--ink-2); }
+
+/* 日程管理 */
+.dash--sched { grid-template-rows: auto 1fr; }
+.dash--sched .dash__row { grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); }
+.w--cal { display: flex; flex-direction: column; }
+.cal { flex: 1; display: grid; grid-template-columns: 34px repeat(5, minmax(0, 1fr)); grid-template-rows: auto minmax(270px, 1fr); gap: 6px; }
+.cal__d { font-size: 11px; color: var(--muted); text-align: center; }
+.cal__d b { margin-left: 4px; color: var(--text); font-weight: 600; }
+.cal__t { position: relative; }
+.cal__t span { position: absolute; right: 0; transform: translateY(-50%); font-size: 9.5px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.cal__col { position: relative; border-radius: 8px; background-color: rgba(238, 241, 245, .015); background-image: linear-gradient(var(--grid) 1px, transparent 1px); background-size: 100% calc(100% / 9); }
+.cev { position: absolute; left: 3px; right: 3px; display: flex; flex-direction: column; gap: 1px; padding: 4px 6px; border-radius: 6px; color: #fff; font-size: 10.5px; line-height: 1.25; overflow: hidden; outline: none; box-shadow: 0 0 0 1px var(--w-bg); transition: filter .2s, box-shadow .2s; }
+.cev b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px; }
+.cev span { opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cev--meet { background: #3987e5; }
+.cev--focus { background: #199e70; }
+.cev--client { background: #d95926; }
+.cev--other { background: #3a3f48; color: var(--ink-2); }
+.cev.is-flag { box-shadow: 0 0 0 2px var(--st-warn); }
+.cev.is-new { animation: ev-in .55s var(--ease); }
+.cev:hover, .cev:focus-visible { filter: brightness(1.15); z-index: 2; }
+.cev__ai { position: absolute; top: 3px; right: 5px; font-size: 9px; font-style: normal; }
+@keyframes ev-in { from { opacity: 0; transform: scale(.92); } }
+.sched-side { display: grid; gap: 10px; align-content: start; }
+.segbar { display: flex; gap: 2px; height: 28px; margin: 4px 0 12px; }
+.segbar .seg { display: flex; align-items: center; min-width: 0; padding-left: 7px; border-radius: 4px; font: 600 11px/1 var(--font-display); font-style: normal; color: #fff; outline: none; transition: flex-grow .6s var(--ease), filter .2s; }
+.segbar .seg:hover, .segbar .seg:focus-visible { filter: brightness(1.18); }
+.ai-card { display: flex; flex-direction: column; gap: 10px; border-color: var(--accent-line); background: linear-gradient(160deg, rgba(169, 188, 255, .09), var(--w-bg) 60%); }
+.ai-card__k { font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.ai-card__t { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+.ai-card .btn { align-self: flex-start; }
+
+/* 资产配置 OS */
+.dash--asset { grid-template-rows: auto 1fr; }
+.dash--asset .dash__row { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+.w--nav { display: flex; flex-direction: column; }
+.nav-plot { min-height: 210px; }
+.lc .g { stroke: var(--grid); stroke-width: 1; }
+.lc .ax { font-size: 10px; fill: var(--dim); }
+.lc .ln { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s var(--ease) .1s; }
+.sc-panel.is-active .lc .ln { stroke-dashoffset: 0; }
+.lc .end, .lc .xh__d { stroke: var(--w-bg); stroke-width: 2; }
+.lc .pill text { font: 600 10.5px var(--font-display); }
+.lc .xh__l { stroke: var(--line-3); stroke-width: 1; }
+.lc .hitbox { fill: transparent; cursor: crosshair; }
+.alloc { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: center; gap: 8px 10px; }
+.alloc .segbar { margin: 0; }
+.alloc__label { font-size: 11.5px; color: var(--muted); }
+.w--alloc .legend { margin-top: 10px; }
+.drift__title { margin-top: 14px; font: 500 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.drift { margin-top: 6px; }
+.drift__row { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+.drift__row b { font-weight: 600; }
+.drift__chg { color: var(--muted); font-variant-numeric: tabular-nums; }
+.drift__act { font: 600 12.5px/1 var(--font-display); white-space: nowrap; text-align: right; }
+
 /* 图表提示框 */
 .sc-tip { position: absolute; left: 0; top: 0; z-index: 5; min-width: 120px; max-width: 240px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line-2); background: rgba(20, 23, 28, .97); box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .85); font-size: 11.5px; pointer-events: none; opacity: 0; transition: opacity .15s; }
 .sc-tip.is-on { opacity: 1; }
@@ -537,9 +653,13 @@ html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height:
 .sc-tip__row span { color: var(--muted); }
 
 @container (max-width: 620px) {
-  .dash--edu .dash__row:first-child, .dash--edu .dash__row:last-child, .dash--prop .dash__row { grid-template-columns: minmax(0, 1fr); }
+  .dash--edu .dash__row:first-child, .dash--edu .dash__row:last-child, .dash--prop .dash__row,
+  .dash--health .dash__row, .dash--sched .dash__row, .dash--asset .dash__row { grid-template-columns: minmax(0, 1fr); }
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero-num { font-size: 48px; }
+}
+@container (max-width: 520px) {
+  .cev b, .cev span { display: none; }
 }
 
 .stats {
@@ -554,8 +674,6 @@ html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height:
 
 @media (max-width: 1200px) {
   .hero__grid { grid-template-columns: 1fr; }
-  .showcase { margin-top: 16px; }
-  .sc-panel:not(.is-active) { display: none; }
 }
 @media (max-width: 960px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
@@ -564,11 +682,6 @@ html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height:
 }
 @media (max-width: 560px) {
   .showcase__panels { padding: 10px; }
-  .showcase__tabs { padding: 10px 10px 0; gap: 4px; }
-  .showcase__tabs button { gap: 6px; padding: 0 6px; font-size: 13px; }
-}
-@media (max-width: 420px) {
-  .showcase__tabs button svg { display: none; }
 }
 @media (max-width: 520px) {
   .hero__ctas .btn { flex: 1 1 100%; }
@@ -604,34 +717,51 @@ html[lang="en"] .hero__title { font-size: clamp(36px, 3.8vw, 56px); line-height:
 /* ==========================================================================
    Services
    ========================================================================== */
-.services { display: grid; gap: 20px; }
-.service { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(20px, 3vw, 40px); padding: clamp(24px, 3.5vw, 48px); border-radius: var(--r-xl); border: 1px solid var(--line); background: linear-gradient(180deg, rgba(238, 241, 245, .02), transparent); }
-.service__intro { display: flex; flex-direction: column; gap: 18px; }
-.service__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.service__icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-line); }
-.service__icon svg { width: 24px; height: 24px; }
-.service__num { font: 500 12px/1 var(--font-mono); letter-spacing: .12em; color: var(--dim); }
-.service h3 { font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -.03em; }
-.service__desc { font-size: 17px; color: var(--text); }
-.service__fit { font-size: 15px; color: var(--muted); }
-.service__fit b { color: var(--text); font-weight: 500; }
-.service__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); }
-.service__price .from { font-size: 14px; color: var(--muted); }
-.service__price strong { font: 600 32px/1 var(--font-display); letter-spacing: -.03em; }
-.service__price .unit { font-size: 14px; color: var(--muted); }
-.service__detail { padding: clamp(20px, 2.6vw, 32px); display: flex; flex-direction: column; gap: 28px; }
 .service__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .service__cols h4, .service__meta dt { font: 500 12px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
 .service__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 24px; border-top: 1px solid var(--line); }
 .service__meta dt { margin-bottom: 10px; }
 .service__meta dd { font-size: 15px; }
-@media (max-width: 960px) {
-  .service { grid-template-columns: 1fr; }
-  .service__price { margin-top: 0; }
-}
 @media (max-width: 600px) {
   .service__cols, .service__meta { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Services：五条业务
+   ========================================================================== */
+.biz { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.biz__card { grid-column: span 2; display: flex; flex-direction: column; gap: 16px; padding: clamp(22px, 2.4vw, 30px); }
+.biz__card:nth-child(-n + 2) { grid-column: span 3; }
+.biz__top { display: flex; align-items: center; justify-content: space-between; }
+.biz__icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-line); }
+.biz__icon svg { width: 22px; height: 22px; }
+.biz__no { font: 500 12px/1 var(--font-mono); letter-spacing: .12em; color: var(--dim); }
+.biz__card h3 { font-size: clamp(21px, 2vw, 26px); letter-spacing: -.025em; line-height: 1.25; }
+.biz__en { margin-top: 6px; font: 500 11px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+html[lang="en"] .biz__en { display: none; }
+.biz__desc { font-size: 15px; color: var(--ink-2, #C3C8D2); line-height: 1.65; }
+.biz__card .list { gap: 10px; }
+.biz__card .list li { font-size: 14px; color: var(--muted); }
+.biz__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.biz__price { font-size: 13px; color: var(--muted); }
+.biz__price strong { font: 600 17px/1 var(--font-display); color: var(--text); letter-spacing: -.02em; }
+@media (max-width: 960px) {
+  .biz { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .biz__card, .biz__card:nth-child(-n + 2) { grid-column: span 1; }
+  .biz__card:last-child { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .biz { grid-template-columns: minmax(0, 1fr); }
+  .biz__card:last-child { grid-column: auto; }
+}
+
+/* 价格区：服务范围（包含 / 不包含） */
+.scope { margin-top: 16px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--surface); }
+.scope summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 500; }
+.scope summary::-webkit-details-marker { display: none; }
+.scope summary::after { content: ""; flex-shrink: 0; width: 20px; height: 20px; -webkit-mask: var(--i-plus) center / contain no-repeat; mask: var(--i-plus) center / contain no-repeat; background: var(--muted); transition: transform .3s var(--ease), background-color .2s; }
+.scope[open] summary::after { transform: rotate(45deg); background: var(--accent); }
+.scope__body { display: grid; gap: 24px; padding: 4px 20px 22px; }
 
 /* ==========================================================================
    Pricing
@@ -967,7 +1097,8 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
     </a>
 
     <nav class="nav__links" aria-label="Primary">
-      <a href="#services"><span data-zh>业务范围</span><span data-en>Services</span></a>
+      <a href="#cases"><span data-zh>案例</span><span data-en>Cases</span></a>
+      <a href="#services"><span data-zh>业务</span><span data-en>Practices</span></a>
       <a href="#pricing"><span data-zh>价格</span><span data-en>Pricing</span></a>
       <a href="#calculator"><span data-zh>费用计算</span><span data-en>Estimator</span></a>
       <a href="#process"><span data-zh>合作流程</span><span data-en>Process</span></a>
@@ -986,7 +1117,8 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   </div>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <a href="#services"><span data-zh>业务范围</span><span data-en>Services</span><span aria-hidden="true">→</span></a>
+    <a href="#cases"><span data-zh>交付案例</span><span data-en>Case studies</span><span aria-hidden="true">→</span></a>
+    <a href="#services"><span data-zh>业务范围</span><span data-en>Practices</span><span aria-hidden="true">→</span></a>
     <a href="#pricing"><span data-zh>价格方案</span><span data-en>Pricing</span><span aria-hidden="true">→</span></a>
     <a href="#calculator"><span data-zh>费用计算器</span><span data-en>Cost estimator</span><span aria-hidden="true">→</span></a>
     <a href="#process"><span data-zh>合作流程</span><span data-en>Process</span><span aria-hidden="true">→</span></a>
@@ -1004,78 +1136,131 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   <div class="container">
     <div class="hero__grid">
       <div class="hero__copy">
-        <p class="pill reveal"><span class="pill__dot"></span><span data-zh>AI 部署 · 顾问 · 一站式解决方案</span><span data-en>AI deployment · Advisory · End-to-end</span></p>
+        <p class="pill reveal"><span class="pill__dot"></span><span data-zh>AI 基础设施 · 普惠算力 · 创业加速</span><span data-en>AI infrastructure · Computing · Venture growth</span></p>
         <h1 class="hero__title reveal">
           <span data-zh>以人为核，<br><em>智能环绕。</em></span>
           <span data-en>People at the core.<br><em>Intelligence<br>in orbit.</em></span>
         </h1>
         <p class="hero__lead reveal">
-          <span data-zh>从机房里的第一台 AI 服务器，到董事会上的 AI 战略——CV-Etron 提供 <strong>AI 硬件部署、总裁 AI 顾问与全天候售后</strong> 的一站式解决方案。明码标价，交付闭环，让智能真正服务于人。</span>
-          <span data-en>From the first AI server in your rack to the AI strategy in your boardroom, CV-Etron delivers <strong>hardware deployment, executive AI advisory and 24/7 support</strong> as one end-to-end service. Published prices, full accountability, and intelligence that truly serves people.</span>
+          <span data-zh>CV-Etron 把 <strong>企业级 AI 基础设施、普惠算力、AI 商业验证与早期融资资源</strong> 连在一起：帮企业把 AI 真正用起来，也帮创业者把专业和想法做成可持续的事业。</span>
+          <span data-en>CV-Etron brings together <strong>enterprise AI infrastructure, accessible computing, AI-powered business validation and early-stage capital</strong>, so companies can put AI to work and founders can turn expertise and ideas into lasting businesses.</span>
         </p>
         <div class="hero__ctas reveal">
           <a class="btn btn--accent btn--lg" href="#pricing"><span data-zh>查看价格</span><span data-en>See pricing</span><span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost btn--lg" href="#calculator"><span data-zh>30 秒估算费用</span><span data-en>Estimate in 30 seconds</span></a>
+          <a class="btn btn--ghost btn--lg" href="#cases"><span data-zh>浏览交付案例</span><span data-en>Browse case studies</span></a>
         </div>
       </div>
 
-      <div class="showcase reveal" id="showcase">
-        <svg class="orbit showcase__orbit" viewBox="0 0 520 520" fill="none" aria-hidden="true">
-          <defs>
-            <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-              <stop offset="0" stop-color="#A9BCFF" stop-opacity=".22"/>
-              <stop offset="1" stop-color="#A9BCFF" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="core" cx="40%" cy="35%" r="70%">
-              <stop offset="0" stop-color="#FFFFFF"/>
-              <stop offset="1" stop-color="#C9CFDA"/>
-            </radialGradient>
-            <filter id="glow" x="-200%" y="-200%" width="500%" height="500%">
-              <feGaussianBlur stdDeviation="5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <path id="orbit-path" d="M38 260a222 84 0 1 0 444 0a222 84 0 1 0-444 0"/>
-          </defs>
-          <circle class="orbit__ring" cx="260" cy="260" r="252" stroke-dasharray="2 7"/>
-          <circle class="orbit__halo" cx="260" cy="260" r="180" fill="url(#halo)"/>
-          <g transform="rotate(-30 260 260)">
-            <use href="#orbit-path" class="orbit__path"/>
-            <circle class="orbit__e" r="7" filter="url(#glow)"><animateMotion dur="10s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion></circle>
-          </g>
-          <g transform="rotate(30 260 260)">
-            <use href="#orbit-path" class="orbit__path"/>
-            <circle class="orbit__e" r="6" filter="url(#glow)"><animateMotion dur="14s" begin="-5s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion></circle>
-          </g>
-          <g transform="rotate(90 260 260)">
-            <use href="#orbit-path" class="orbit__path"/>
-            <circle class="orbit__e" r="5" filter="url(#glow)"><animateMotion dur="18s" begin="-11s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion></circle>
-          </g>
-          <circle cx="260" cy="260" r="46" fill="#EEF1F5" opacity=".06"/>
-          <circle cx="260" cy="260" r="30" fill="url(#core)"/>
-        </svg>
+      <nav class="biz-list reveal" aria-label="五大业务" data-aria-zh="五大业务" data-aria-en="Our five practices">
+        <p class="biz-list__head"><span data-zh>五大业务</span><span data-en>Our practices</span><span>05</span></p>
+        <a href="#biz-1">
+          <span class="biz-list__no">01</span>
+          <span class="biz-list__main">
+            <span class="biz-list__title"><span data-zh>企业级 AI 基础设施</span><span data-en>Enterprise-Grade AI Infrastructure</span></span>
+            <span class="biz-list__en">Enterprise-Grade AI Infrastructure</span>
+            <span class="biz-list__desc"><span data-zh>可靠、可扩展的 AI 基础设施，支撑模型部署、推理与业务应用。</span><span data-en>Reliable, scalable AI infrastructure for model deployment, inference, and business applications.</span></span>
+          </span>
+          <span class="biz-list__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#biz-2">
+          <span class="biz-list__no">02</span>
+          <span class="biz-list__main">
+            <span class="biz-list__title"><span data-zh>中小企业普惠算力</span><span data-en>Accessible Computing for SMBs</span></span>
+            <span class="biz-list__en">Accessible Computing for SMBs</span>
+            <span class="biz-list__desc"><span data-zh>灵活、高性价比的算力方案，让中小企业也用得起 AI、做得起创新。</span><span data-en>Flexible, cost-effective computing solutions that make AI adoption and innovation accessible to small and medium-sized businesses.</span></span>
+          </span>
+          <span class="biz-list__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#biz-3">
+          <span class="biz-list__no">03</span>
+          <span class="biz-list__main">
+            <span class="biz-list__title"><span data-zh>AI 商业验证</span><span data-en>AI-Powered Business Validation</span></span>
+            <span class="biz-list__en">AI-Powered Business Validation</span>
+            <span class="biz-list__desc"><span data-zh>用 AI 做需求验证、商业模式测试与流程自动化，加速从想法到市场。</span><span data-en>AI-powered demand validation, business model testing, and workflow automation to accelerate the journey from idea to market.</span></span>
+          </span>
+          <span class="biz-list__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#biz-4">
+          <span class="biz-list__no">04</span>
+          <span class="biz-list__main">
+            <span class="biz-list__title"><span data-zh>早期创业融资对接</span><span data-en>Venture Capital Access for Early-Stage Startups</span></span>
+            <span class="biz-list__en">Venture Capital Access for Early-Stage Startups</span>
+            <span class="biz-list__desc"><span data-zh>为 A 轮前的初创团队对接投资人与创投资源，提升融资准备度，助力早期成长。</span><span data-en>Investor connections and venture resources for pre-Series A startups, supporting fundraising readiness and early-stage growth.</span></span>
+          </span>
+          <span class="biz-list__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#biz-5">
+          <span class="biz-list__no">05</span>
+          <span class="biz-list__main">
+            <span class="biz-list__title"><span data-zh>赋能独立创业者</span><span data-en>Empowering Independent Entrepreneurs</span></span>
+            <span class="biz-list__en">Empowering Independent Entrepreneurs</span>
+            <span class="biz-list__desc"><span data-zh>整合 AI、算力与资本，帮助创业者和独立专业人士把专业与想法变成可持续的事业。</span><span data-en>Bringing together AI, computing, and capital access to help founders and independent professionals turn expertise and ideas into sustainable businesses.</span></span>
+          </span>
+          <span class="biz-list__arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </div>
+
+    <dl class="stats reveal">
+      <div><dt><span data-zh>资深互联网专家团队</span><span data-en>Team of internet veterans</span></dt><dd>AI Native</dd></div>
+      <div><dt><span data-zh>全天候值守</span><span data-en>Always-on coverage</span></dt><dd>7×24</dd></div>
+      <div><dt><span data-zh>最快响应</span><span data-en>Fastest response</span></dt><dd>15<small>min</small></dd></div>
+      <div><dt><span data-zh>数据留在企业内部</span><span data-en>Data stays in-house</span></dt><dd>100<small>%</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============================== 01 交付案例 ============================== -->
+<section class="section section--cases" id="cases">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow"><span class="num">01</span><span class="bar"></span><span data-zh>交付案例</span><span data-en>Case studies</span></p>
+      <h2><span data-zh>6 套 AI 系统，点开就能体验</span><span data-en>Six AI systems you can try right here</span></h2>
+      <p class="lead"><span data-zh>左侧选择案例，右侧的看板可以直接操作。界面为交付物示意，数据均为演示样例。</span><span data-en>Pick a case on the left and use the dashboard on the right. Interfaces are illustrative and all data is demo data.</span></p>
+    </header>
+    <div class="showcase reveal" id="showcase">
+      <div class="showcase__side">
+        <div class="showcase__nav" role="tablist" aria-orientation="vertical" aria-label="交付案例" data-aria-zh="交付案例" data-aria-en="Case studies">
+          <button type="button" role="tab" id="sct-edu" aria-controls="scp-edu" aria-selected="true">
+            <span class="scn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5"/></svg></span>
+            <span class="scn__text"><b><span data-zh>学生评估</span><span data-en>Assessment</span></b><small><span data-zh>综合素质评价</span><span data-en>Whole-student evaluation</span></small></span>
+            <span class="scn__price"><small><span data-zh>首年</span><span data-en>1st yr</span></small><b data-estimate="deploy:pro,support:basic">¥0</b></span>
+          </button>
+          <button type="button" role="tab" id="sct-exam" aria-controls="scp-exam" aria-selected="false" tabindex="-1">
+            <span class="scn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+            <span class="scn__text"><b><span data-zh>AI 考官</span><span data-en>AI Examiner</span></b><small><span data-zh>临床技能考核</span><span data-en>Clinical skills exams</span></small></span>
+            <span class="scn__price"><small><span data-zh>首年</span><span data-en>1st yr</span></small><b data-estimate="deploy:flagship,support:allday">¥0</b></span>
+          </button>
+          <button type="button" role="tab" id="sct-prop" aria-controls="scp-prop" aria-selected="false" tabindex="-1">
+            <span class="scn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h2a2 2 0 0 1 2 2v10M3 21h18M8 7h4M8 11h4M8 15h4"/></svg></span>
+            <span class="scn__text"><b><span data-zh>物业管理</span><span data-en>Property</span></b><small><span data-zh>团队绩效与健康度</span><span data-en>Team performance</span></small></span>
+            <span class="scn__price"><small><span data-zh>首年</span><span data-en>1st yr</span></small><b data-estimate="deploy:pro,support:allday">¥0</b></span>
+          </button>
+          <button type="button" role="tab" id="sct-health" aria-controls="scp-health" aria-selected="false" tabindex="-1">
+            <span class="scn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/><path d="M3.5 12h4l2-3 3 6 2-3h6"/></svg></span>
+            <span class="scn__text"><b><span data-zh>健康管理 OS</span><span data-en>Health OS</span></b><small><span data-zh>健康评分与异常提醒</span><span data-en>Health scores & alerts</span></small></span>
+            <span class="scn__price"><small><span data-zh>首年</span><span data-en>1st yr</span></small><b data-estimate="deploy:pro,support:basic">¥0</b></span>
+          </button>
+          <button type="button" role="tab" id="sct-sched" aria-controls="scp-sched" aria-selected="false" tabindex="-1">
+            <span class="scn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h3M8 17h6"/></svg></span>
+            <span class="scn__text"><b><span data-zh>日程管理</span><span data-en>Scheduling</span></b><small><span data-zh>AI 排程与专注时间</span><span data-en>AI scheduling & focus</span></small></span>
+            <span class="scn__price"><small><span data-zh>首年</span><span data-en>1st yr</span></small><b data-estimate="deploy:starter,support:basic">¥0</b></span>
+          </button>
+          <button type="button" role="tab" id="sct-asset" aria-controls="scp-asset" aria-selected="false" tabindex="-1">
+            <span class="scn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12A9 9 0 1 1 12 3v9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg></span>
+            <span class="scn__text"><b><span data-zh>资产配置 OS</span><span data-en>Asset OS</span></b><small><span data-zh>配置偏离与调仓</span><span data-en>Allocation & rebalancing</span></small></span>
+            <span class="scn__price"><small><span data-zh>首年</span><span data-en>1st yr</span></small><b data-estimate="deploy:pro,support:allday">¥0</b></span>
+          </button>
+        </div>
+        <a class="scn__cta" href="#contact"><span data-zh>需要类似的系统？</span><span data-en>Need something similar?</span><b><span data-zh>预约演示</span><span data-en>Book a demo</span> →</b></a>
+      </div>
+      <div class="showcase__main">
         <div class="showcase__window">
           <div class="showcase__bar">
             <span class="showcase__dots" aria-hidden="true"><i></i><i></i><i></i></span>
             <span class="showcase__label"><span data-zh>交付物示例</span><span data-en>Sample deliverables</span></span>
             <span class="showcase__live" aria-hidden="true"><i></i>Demo</span>
           </div>
-
-          <!-- 案例标签：新增案例时复制一个按钮 + 一个面板，id 对应即可 -->
-          <div class="showcase__tabs" role="tablist" aria-label="交付物示例" data-aria-zh="交付物示例" data-aria-en="Sample deliverables">
-            <button type="button" role="tab" id="sct-edu" aria-controls="scp-edu" aria-selected="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.2 2.7 3 6 3s6-1.8 6-3v-5"/></svg>
-              <span data-zh>学生评估</span><span data-en>Assessment</span><i class="showcase__prog" aria-hidden="true"></i>
-            </button>
-            <button type="button" role="tab" id="sct-exam" aria-controls="scp-exam" aria-selected="false" tabindex="-1">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
-              <span data-zh>AI 考官</span><span data-en>AI Examiner</span><i class="showcase__prog" aria-hidden="true"></i>
-            </button>
-            <button type="button" role="tab" id="sct-prop" aria-controls="scp-prop" aria-selected="false" tabindex="-1">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h2a2 2 0 0 1 2 2v10M3 21h18M8 7h4M8 11h4M8 15h4"/></svg>
-              <span data-zh>物业管理</span><span data-en>Property</span><i class="showcase__prog" aria-hidden="true"></i>
-            </button>
-          </div>
-
           <div class="showcase__panels">
             <!-- 学生评估：综合素质评价 -->
             <div class="sc-panel is-active" id="scp-edu" role="tabpanel" aria-labelledby="sct-edu">
@@ -1198,19 +1383,129 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
               </div>
               </div>
             </div>
+            <!-- 健康管理 OS -->
+            <div class="sc-panel" id="scp-health" role="tabpanel" aria-labelledby="sct-health">
+              <p class="sc-desc"><span data-zh>个人与家庭健康管理：AI 汇总体检、睡眠与运动数据，给出健康评分、异常提醒和个性化建议。</span><span data-en>AI turns checkups, sleep and activity data into a health score, early alerts and personal advice.</span></p>
+              <div class="dash dash--health">
+                <div class="kpis">
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>健康评分</span><span data-en>Health score</span></p><p class="kpi__value">82<small>/ 100</small></p><p class="kpi__note"><span class="delta-good">▲ 3</span> <span data-zh>较上月</span><span data-en>vs last month</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>静息心率</span><span data-en>Resting heart rate</span></p><p class="kpi__value">62<small>bpm</small></p><p class="kpi__note"><span class="delta-good">▼ 2</span> <span data-zh>较上月</span><span data-en>vs last month</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>平均睡眠</span><span data-en>Avg. sleep</span></p><p class="kpi__value"><span id="hl-sleep-avg">0</span><small><span data-zh>小时</span><span data-en>h</span></small></p><p class="kpi__note"><span id="hl-sleep-note"></span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>本周运动</span><span data-en>Activity this week</span></p><p class="kpi__value">186<small><span data-zh>分钟</span><span data-en>min</span></small></p><p class="kpi__note"><span class="delta-good">✓</span> <span data-zh>目标 150 分钟</span><span data-en>goal 150 min</span></p></div>
+                </div>
+                <div class="dash__row">
+                  <div class="w w--sleep">
+                    <div class="w__head">
+                      <div><p class="w__title"><span data-zh>睡眠时长</span><span data-en>Sleep</span></p><p class="w__sub"><span data-zh>近 14 天 · 目标 7–9 小时</span><span data-en>Last 14 days · goal 7–9 h</span></p></div>
+                      <div class="legend"><span><i class="k k--bar" style="background: var(--c-self)"></i><span data-zh>达标</span><span data-en>On target</span></span><span><i class="k k--bar" style="background: var(--st-warn)"></i><span data-zh>不足 7 小时</span><span data-en>Under 7 h</span></span><span><i class="k k--bar" style="background: rgba(169, 188, 255, .18)"></i><span data-zh>目标区间</span><span data-en>Goal band</span></span></div>
+                    </div>
+                    <div class="cols" id="viz-sleep"></div>
+                  </div>
+                  <div class="w w--labs">
+                    <div class="w__head"><div><p class="w__title"><span data-zh>体检指标</span><span data-en>Checkup results</span></p><p class="w__sub"><span data-zh>2026 年 10 月体检 · 浅色区间为参考范围</span><span data-en>Oct 2026 checkup · light band = reference range</span></p></div></div>
+                    <div class="labs" id="viz-labs"></div>
+                  </div>
+                </div>
+                <div class="w w--advice">
+                  <p class="w__title"><span data-zh>AI 健康建议</span><span data-en>AI health advice</span></p>
+                  <ul class="advice">
+                    <li><span class="st st--warn"><i></i><span data-zh>偏高</span><span data-en>High</span></span><span><span data-zh>总胆固醇 5.6，高于参考上限 5.2：建议少吃油炸食品和动物内脏，3 个月后复查。</span><span data-en>Total cholesterol is 5.6, above the 5.2 limit. Cut back on fried food and organ meats, and retest in 3 months.</span></span></li>
+                    <li><span class="st st--warn"><i></i><span data-zh>提醒</span><span data-en>Heads-up</span></span><span id="hl-sleep-advice"></span></li>
+                    <li><span class="st st--good"><i></i><span data-zh>达标</span><span data-en>On track</span></span><span><span data-zh>本周运动 186 分钟，已达到每周 150 分钟的建议量。</span><span data-en>186 minutes of activity this week, above the recommended 150.</span></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sc-foot">
+                <div class="sc-deliv"><span class="sc-k"><span data-zh>交付物</span><span data-en>Deliverables</span></span><ul><li><span data-zh>健康档案与评分</span><span data-en>Health records & score</span></li><li><span data-zh>异常指标提醒</span><span data-en>Abnormal result alerts</span></li><li><span data-zh>AI 健康建议</span><span data-en>AI health advice</span></li></ul></div>
+                <div class="sc-plan">
+                <span><span data-zh>专业版部署 + 基础版售后</span><span data-en>Professional + Basic Support</span></span>
+                <a href="#calculator" data-preset="deploy:pro,support:basic" data-preset-exact><span data-zh>首年预估</span><span data-en>First year</span> <b data-estimate="deploy:pro,support:basic">¥0</b><span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+              </div>
+            </div>
+
+            <!-- 日程管理 -->
+            <div class="sc-panel" id="scp-sched" role="tabpanel" aria-labelledby="sct-sched">
+              <p class="sc-desc"><span data-zh>AI 日程管家：自动排程、识别会议过载，为你和团队守住专注时间。</span><span data-en>An AI scheduler that plans your week, spots meeting overload and protects focus time.</span></p>
+              <div class="dash dash--sched">
+                <div class="kpis">
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>本周会议</span><span data-en>Meetings</span></p><p class="kpi__value"><span id="sd-meet-n">0</span><small><span data-zh>场</span><span data-en></span></small></p><p class="kpi__note"><span data-zh>含站会与 1:1</span><span data-en>incl. stand-ups and 1:1s</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>会议时长</span><span data-en>Meeting time</span></p><p class="kpi__value"><span id="sd-meet-h">0</span><small><span data-zh>小时</span><span data-en>h</span></small></p><p class="kpi__note"><span data-zh>不含客户会议</span><span data-en>excl. client meetings</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>专注时间</span><span data-en>Focus time</span></p><p class="kpi__value"><span id="sd-focus-h">0</span><small><span data-zh>小时</span><span data-en>h</span></small></p><p class="kpi__note"><span data-zh>由 AI 自动排入</span><span data-en>scheduled by AI</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>会议准时率</span><span data-en>On-time starts</span></p><p class="kpi__value">93<small>%</small></p><p class="kpi__note"><span data-zh>上周迟到 1 次</span><span data-en>1 late start last week</span></p></div>
+                </div>
+                <div class="dash__row">
+                  <div class="w w--cal">
+                    <div class="w__head">
+                      <div><p class="w__title"><span data-zh>下周日程</span><span data-en>Next week</span></p><p class="w__sub"><span data-zh>11 月 9 日 – 13 日 · ✦ 为 AI 自动排入</span><span data-en>Nov 9–13 · ✦ scheduled by AI</span></p></div>
+                      <div class="legend"><span><i class="k k--bar" style="background: #3987e5"></i><span data-zh>会议</span><span data-en>Meetings</span></span><span><i class="k k--bar" style="background: #199e70"></i><span data-zh>专注</span><span data-en>Focus</span></span><span><i class="k k--bar" style="background: #d95926"></i><span data-zh>客户</span><span data-en>Clients</span></span><span><i class="k k--bar" style="background: #3a3f48"></i><span data-zh>其他</span><span data-en>Other</span></span></div>
+                    </div>
+                    <div class="cal" id="viz-cal"></div>
+                  </div>
+                  <div class="sched-side">
+                    <div class="w">
+                      <div class="w__head"><div><p class="w__title"><span data-zh>时间分配</span><span data-en>Time split</span></p><p class="w__sub" id="sd-total"></p></div></div>
+                      <div class="segbar" id="viz-split"></div>
+                      <div class="legend"><span><i class="k k--bar" style="background: #199e70"></i><span data-zh>专注</span><span data-en>Focus</span></span><span><i class="k k--bar" style="background: #3987e5"></i><span data-zh>会议</span><span data-en>Meetings</span></span><span><i class="k k--bar" style="background: #d95926"></i><span data-zh>客户</span><span data-en>Clients</span></span><span><i class="k k--bar" style="background: #3a3f48"></i><span data-zh>其他</span><span data-en>Other</span></span></div>
+                    </div>
+                    <div class="w ai-card">
+                      <p class="ai-card__k">✦ <span data-zh>AI 建议</span><span data-en>AI suggestion</span></p>
+                      <p class="ai-card__t" id="sd-ai-text" aria-live="polite"></p>
+                      <button class="btn btn--accent btn--sm" type="button" id="sd-adopt"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sc-foot">
+                <div class="sc-deliv"><span class="sc-k"><span data-zh>交付物</span><span data-en>Deliverables</span></span><ul><li><span data-zh>AI 智能排程</span><span data-en>AI scheduling</span></li><li><span data-zh>团队日历</span><span data-en>Team calendar</span></li><li><span data-zh>时间分配分析</span><span data-en>Time analytics</span></li></ul></div>
+                <div class="sc-plan">
+                <span><span data-zh>入门版部署 + 基础版售后</span><span data-en>Starter + Basic Support</span></span>
+                <a href="#calculator" data-preset="deploy:starter,support:basic" data-preset-exact><span data-zh>首年预估</span><span data-en>First year</span> <b data-estimate="deploy:starter,support:basic">¥0</b><span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+              </div>
+            </div>
+
+            <!-- 资产配置 OS -->
+            <div class="sc-panel" id="scp-asset" role="tabpanel" aria-labelledby="sct-asset">
+              <p class="sc-desc"><span data-zh>家庭与企业资产配置：AI 汇总各类资产，跟踪收益与回撤，发现配置偏离并给出调仓建议。</span><span data-en>AI consolidates holdings, tracks return and drawdown, flags allocation drift and drafts rebalancing.</span></p>
+              <div class="dash dash--asset">
+                <div class="kpis">
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>总资产</span><span data-en>Total assets</span></p><p class="kpi__value"><span data-zh>¥1,286</span><span data-en>¥12.86</span><small><span data-zh>万</span><span data-en>M</span></small></p><p class="kpi__note"><span data-zh>截至 11 月 6 日</span><span data-en>as of Nov 6</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>近 12 个月收益</span><span data-en>12-month return</span></p><p class="kpi__value"><span id="as-ret">0</span><small>%</small></p><p class="kpi__note"><span id="as-ret-note"></span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>最大回撤</span><span data-en>Max drawdown</span></p><p class="kpi__value"><span id="as-dd">0</span><small>%</small></p><p class="kpi__note"><span data-zh>按月末净值计算</span><span data-en>month-end values</span></p></div>
+                  <div class="w kpi"><p class="kpi__label"><span data-zh>夏普比率</span><span data-en>Sharpe ratio</span></p><p class="kpi__value">1.32<small></small></p><p class="kpi__note"><span data-zh>近 12 个月</span><span data-en>last 12 months</span></p></div>
+                </div>
+                <div class="dash__row">
+                  <div class="w w--nav">
+                    <div class="w__head">
+                      <div><p class="w__title"><span data-zh>组合净值</span><span data-en>Portfolio value</span></p><p class="w__sub"><span data-zh>近 12 个月 · 期初为 100</span><span data-en>Last 12 months · start = 100</span></p></div>
+                      <div class="legend"><span><i class="k k--line" style="background: #3987e5"></i><span data-zh>组合</span><span data-en>Portfolio</span></span><span><i class="k k--line" style="background: var(--c-avg)"></i><span data-zh>基准</span><span data-en>Benchmark</span></span></div>
+                    </div>
+                    <div class="trend__plot nav-plot" id="viz-nav"><svg class="lc" tabindex="0" role="img" aria-label="组合净值" data-aria-zh="组合净值，近 12 个月。用左右方向键逐月查看" data-aria-en="Portfolio value over 12 months. Use the arrow keys to step through months"></svg></div>
+                  </div>
+                  <div class="w w--alloc">
+                    <div class="w__head"><div><p class="w__title"><span data-zh>资产配置</span><span data-en>Allocation</span></p><p class="w__sub"><span data-zh>当前与目标比例</span><span data-en>Current vs target</span></p></div></div>
+                    <div class="alloc" id="viz-alloc"></div>
+                    <div class="legend" id="as-legend"></div>
+                    <p class="drift__title">✦ <span data-zh>AI 调仓建议</span><span data-en>AI rebalancing</span></p>
+                    <div class="drift" id="viz-drift"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="sc-foot">
+                <div class="sc-deliv"><span class="sc-k"><span data-zh>交付物</span><span data-en>Deliverables</span></span><ul><li><span data-zh>资产全景看板</span><span data-en>Holdings dashboard</span></li><li><span data-zh>配置偏离提醒</span><span data-en>Drift alerts</span></li><li><span data-zh>AI 调仓建议</span><span data-en>AI rebalancing</span></li></ul></div>
+                <div class="sc-plan">
+                <span><span data-zh>专业版部署 + 全天候售后</span><span data-en>Professional + 24/7 Support</span></span>
+                <a href="#calculator" data-preset="deploy:pro,support:allday" data-preset-exact><span data-zh>首年预估</span><span data-en>First year</span> <b data-estimate="deploy:pro,support:allday">¥0</b><span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+              </div>
+            </div>
           </div>
           <div class="sc-tip" id="sc-tip" aria-hidden="true"></div>
         </div>
-        <p class="showcase__cap"><span data-zh>Fig.01 — 界面为交付物示意，数据为演示样例</span><span data-en>Fig.01 — Illustrative deliverables, demo data</span></p>
+        <p class="showcase__cap"><span data-zh>界面为交付物示意，数据为演示样例</span><span data-en>Illustrative interfaces, demo data</span></p>
       </div>
     </div>
-
-    <dl class="stats reveal">
-      <div><dt><span data-zh>资深互联网专家团队</span><span data-en>Team of internet veterans</span></dt><dd>AI Native</dd></div>
-      <div><dt><span data-zh>全天候值守</span><span data-en>Always-on coverage</span></dt><dd>7×24</dd></div>
-      <div><dt><span data-zh>最快响应</span><span data-en>Fastest response</span></dt><dd>15<small>min</small></dd></div>
-      <div><dt><span data-zh>数据留在企业内部</span><span data-en>Data stays in-house</span></dt><dd>100<small>%</small></dd></div>
-    </dl>
   </div>
 </section>
 
@@ -1241,164 +1536,74 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   </div>
 </section>
 
-<!-- ============================== 01 业务范围 ============================== -->
+<!-- ============================== 02 业务范围 ============================== -->
 <section class="section" id="services">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow"><span class="num">01</span><span class="bar"></span><span data-zh>业务范围</span><span data-en>What we do</span></p>
-      <h2><span data-zh>三项服务，覆盖 AI 落地的全过程</span><span data-en>Three services. The whole AI journey, covered.</span></h2>
-      <p class="lead"><span data-zh>可以只选一项，也可以组合成一站式方案。每项服务做什么、不做什么，都在这里写清楚。</span><span data-en>Choose one, or combine them into a single end-to-end engagement. What each service includes, and what it doesn't, is spelled out below.</span></p>
+      <p class="eyebrow"><span class="num">02</span><span class="bar"></span><span data-zh>业务范围</span><span data-en>What we do</span></p>
+      <h2><span data-zh>五条业务线，从 AI 落地到创业成长</span><span data-en>Five practices, from AI adoption to venture growth</span></h2>
+      <p class="lead"><span data-zh>企业可以按需选择单项服务；创业者可以在这里一站式获得 AI、算力与资本支持。</span><span data-en>Companies can pick a single practice. Founders can get AI, computing and capital support in one place.</span></p>
     </header>
-
-    <div class="services">
-      <!-- 服务 1：AI 硬件部署 -->
-      <article class="service reveal" id="svc-deploy">
-        <div class="service__intro">
-          <div class="service__top">
-            <span class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></span>
-            <span class="tag"><span data-zh>一次性项目</span><span data-en>One-time project</span></span>
-          </div>
-          <span class="service__num">S—01</span>
-          <h3><span data-zh>AI 硬件部署</span><span data-en>AI Hardware Deployment</span></h3>
-          <p class="service__desc"><span data-zh>把大模型装进你自己的机房。从选型、采购到上线，数据全程不出企业。</span><span data-en>Put large language models in your own server room. From sizing and sourcing to go-live, your data never leaves the building.</span></p>
-          <p class="service__fit"><b><span data-zh>适合：</span><span data-en>Best for: </span></b><span data-zh>重视数据安全、想让员工用上 AI，但不愿把资料传到公网的企业。</span><span data-en>companies that want their teams using AI without sending sensitive data to the public cloud.</span></p>
-          <div class="service__price">
-            <span class="from"><span data-zh>起价</span><span data-en>From</span></span>
-            <strong data-price="deploy.starter">¥19,800</strong>
-            <span class="unit"><span data-zh>/ 项目</span><span data-en>/ project</span></span>
-          </div>
-          <a class="link-arrow" href="#pricing" data-goto-tab="deploy"><span data-zh>查看部署套餐</span><span data-en>See deployment plans</span><span class="arrow" aria-hidden="true">→</span></a>
+    <div class="biz stagger">
+      <article class="biz__card card reveal" id="biz-1">
+        <div class="biz__top"><span class="biz__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></span><span class="biz__no">B—01</span></div>
+        <div>
+          <h3><span data-zh>企业级 AI 基础设施</span><span data-en>Enterprise-Grade AI Infrastructure</span></h3>
+          <p class="biz__en">Enterprise-Grade AI Infrastructure</p>
         </div>
-        <div class="service__detail card">
-          <div class="service__cols">
-            <div>
-              <h4><span data-zh>包含</span><span data-en>Included</span></h4>
-              <ul class="list">
-                <li><span data-zh>硬件选型与配置方案（GPU 服务器 / AI 工作站）</span><span data-en>Hardware sizing and specs (GPU servers / AI workstations)</span></li>
-                <li><span data-zh>开源大模型私有化部署（Qwen、DeepSeek、Llama 等）</span><span data-en>Private deployment of open models (Qwen, DeepSeek, Llama, etc.)</span></li>
-                <li><span data-zh>企业知识库（RAG）搭建与权限设置</span><span data-en>Enterprise knowledge base (RAG) with access control</span></li>
-                <li><span data-zh>对接 OA、企业微信、飞书、钉钉等系统</span><span data-en>Integration with OA, WeCom, Feishu, DingTalk and more</span></li>
-                <li><span data-zh>员工使用培训与操作手册</span><span data-en>Staff training and user handbook</span></li>
-                <li><span data-zh>上线后免费质保期</span><span data-en>Free warranty after go-live</span></li>
-              </ul>
-            </div>
-            <div>
-              <h4><span data-zh>不包含</span><span data-en>Not included</span></h4>
-              <ul class="list list--x">
-                <li><span data-zh>硬件本身的费用（可自购，或由我们按渠道价代采）</span><span data-en>The hardware itself (buy your own, or we source it at channel price)</span></li>
-                <li><span data-zh>机房装修、供电与空调改造</span><span data-en>Server room build-out, power and cooling work</span></li>
-                <li><span data-zh>定制软件开发（在企业定制版中报价）</span><span data-en>Custom software development (quoted under Enterprise)</span></li>
-              </ul>
-            </div>
-          </div>
-          <dl class="service__meta">
-            <div><dt><span data-zh>交付周期</span><span data-en>Timeline</span></dt><dd><span data-zh>5 个工作日 – 6 周，视套餐而定</span><span data-en>5 working days to 6 weeks, by plan</span></dd></div>
-            <div><dt><span data-zh>你需要准备</span><span data-en>You provide</span></dt><dd><span data-zh>机柜位置、网络权限，以及希望 AI 处理的业务资料</span><span data-en>Rack space, network access, and the documents you want AI to work with</span></dd></div>
-          </dl>
-        </div>
+        <p class="biz__desc"><span data-zh>可靠、可扩展的 AI 基础设施，支撑模型部署、推理与业务应用。</span><span data-en>Reliable, scalable AI infrastructure for model deployment, inference, and business applications.</span></p>
+        <ul class="list"><li><span data-zh>私有化大模型部署与推理服务，数据不出企业</span><span data-en>Private LLM deployment and inference, with data kept in-house</span></li><li><span data-zh>企业知识库与智能体，对接 OA、企业微信、飞书等系统</span><span data-en>Knowledge bases and AI agents wired into OA, WeCom, Feishu and more</span></li><li><span data-zh>7×24 运维监控与 SLA 保障，最快 15 分钟响应</span><span data-en>24/7 monitoring and SLAs, with responses in as little as 15 minutes</span></li></ul>
+        <div class="biz__foot"><span class="biz__price"><span data-zh>部署</span><span data-en>Deployment from</span> <strong data-price="deploy.starter">¥19,800</strong><span data-zh> 起 · 售后 </span><span data-en> · support from </span><strong data-price="support.basic">¥2,980</strong><span data-zh> / 月起</span><span data-en> / mo</span></span><a class="link-arrow" href="#pricing" data-goto-tab="deploy"><span data-zh>查看价格</span><span data-en>See pricing</span><span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
-
-      <!-- 服务 2：全天候售后 -->
-      <article class="service reveal" id="svc-support">
-        <div class="service__intro">
-          <div class="service__top">
-            <span class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1.1-1.3 2-3 2h-3"/></svg></span>
-            <span class="tag"><span data-zh>按月订阅</span><span data-en>Monthly subscription</span></span>
-          </div>
-          <span class="service__num">S—02</span>
-          <h3><span data-zh>全天候售后</span><span data-en>24/7 Support &amp; Operations</span></h3>
-          <p class="service__desc"><span data-zh>上线只是开始。我们 7×24 小时盯着你的 AI 系统，出问题第一时间处理，平时持续优化。</span><span data-en>Go-live is only the beginning. We watch your AI systems around the clock, fix issues fast, and keep improving them.</span></p>
-          <p class="service__fit"><b><span data-zh>适合：</span><span data-en>Best for: </span></b><span data-zh>已部署 AI 系统（不论是否由我们部署），需要稳定运行和持续更新的企业。</span><span data-en>teams running AI systems, deployed by us or not, that need them stable and up to date.</span></p>
-          <div class="service__price">
-            <span class="from"><span data-zh>起价</span><span data-en>From</span></span>
-            <strong data-price="support.basic">¥2,980</strong>
-            <span class="unit"><span data-zh>/ 月</span><span data-en>/ month</span></span>
-          </div>
-          <a class="link-arrow" href="#pricing" data-goto-tab="support"><span data-zh>查看售后套餐</span><span data-en>See support plans</span><span class="arrow" aria-hidden="true">→</span></a>
+      <article class="biz__card card reveal" id="biz-2">
+        <div class="biz__top"><span class="biz__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><span class="biz__no">B—02</span></div>
+        <div>
+          <h3><span data-zh>中小企业普惠算力</span><span data-en>Accessible Computing for SMBs</span></h3>
+          <p class="biz__en">Accessible Computing for SMBs</p>
         </div>
-        <div class="service__detail card">
-          <div class="service__cols">
-            <div>
-              <h4><span data-zh>包含</span><span data-en>Included</span></h4>
-              <ul class="list">
-                <li><span data-zh>7×24 系统监控与异常告警</span><span data-en>24/7 monitoring and alerting</span></li>
-                <li><span data-zh>承诺响应时间（SLA），最快 15 分钟</span><span data-en>Guaranteed response times (SLA), as fast as 15 minutes</span></li>
-                <li><span data-zh>远程故障排查与修复</span><span data-en>Remote troubleshooting and fixes</span></li>
-                <li><span data-zh>定期更新模型、系统与安全补丁</span><span data-en>Regular model, system and security updates</span></li>
-                <li><span data-zh>月度运行报告</span><span data-en>Monthly health report</span></li>
-                <li><span data-zh>同城现场支持（按套餐）</span><span data-en>Local on-site support (by plan)</span></li>
-              </ul>
-            </div>
-            <div>
-              <h4><span data-zh>不包含</span><span data-en>Not included</span></h4>
-              <ul class="list list--x">
-                <li><span data-zh>更换损坏硬件的费用（我们协助走厂商保修）</span><span data-en>Replacement hardware costs (we handle vendor warranty claims)</span></li>
-                <li><span data-zh>新功能开发与新系统对接</span><span data-en>New feature development or new integrations</span></li>
-                <li><span data-zh>第三方软件授权费</span><span data-en>Third-party software licenses</span></li>
-              </ul>
-            </div>
-          </div>
-          <dl class="service__meta">
-            <div><dt><span data-zh>计费周期</span><span data-en>Billing</span></dt><dd><span data-zh>按月或按年订阅，年付省 15%，随时可升级</span><span data-en>Monthly or annual (save 15%); upgrade anytime</span></dd></div>
-            <div><dt><span data-zh>你需要准备</span><span data-en>You provide</span></dt><dd><span data-zh>远程访问授权，以及一位对接人</span><span data-en>Authorized remote access and one point of contact</span></dd></div>
-          </dl>
-        </div>
+        <p class="biz__desc"><span data-zh>灵活、高性价比的算力方案，让中小企业也用得起 AI、做得起创新。</span><span data-en>Flexible, cost-effective computing solutions that make AI adoption and innovation accessible to small and medium-sized businesses.</span></p>
+        <ul class="list"><li><span data-zh>从单台 AI 工作站起步，业务增长后再扩容</span><span data-en>Start with one AI workstation and scale as you grow</span></li><li><span data-zh>硬件可自购，或由我们按渠道价代采（5% 服务费）</span><span data-en>Buy your own hardware, or let us source it at channel price for a 5% fee</span></li><li><span data-zh>先跑通一个场景，再决定是否加大投入</span><span data-en>Prove one use case before committing more budget</span></li></ul>
+        <div class="biz__foot"><span class="biz__price"><span data-zh>入门版</span><span data-en>Starter from</span> <strong data-price="deploy.starter">¥19,800</strong><span data-zh> 起</span><span data-en></span></span><a class="link-arrow" href="#pricing" data-goto-tab="deploy"><span data-zh>查看价格</span><span data-en>See pricing</span><span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
-
-      <!-- 服务 3：总裁 AI 顾问 -->
-      <article class="service reveal" id="svc-advisory">
-        <div class="service__intro">
-          <div class="service__top">
-            <span class="service__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
-            <span class="tag"><span data-zh>按次 / 按季 / 按年</span><span data-en>Per session / quarter / year</span></span>
-          </div>
-          <span class="service__num">S—03</span>
-          <h3><span data-zh>总裁 AI 顾问</span><span data-en>Executive AI Advisory</span></h3>
-          <p class="service__desc"><span data-zh>决策者的 AI 私人顾问。不讲概念，只回答三件事：AI 在你的企业里从哪里下手、投多少、怎么见效。</span><span data-en>A private AI advisor for decision-makers. No buzzwords, just three answers: where AI fits in your business, how much to invest, and how to see results.</span></p>
-          <p class="service__fit"><b><span data-zh>适合：</span><span data-en>Best for: </span></b><span data-zh>想用 AI 提升竞争力，又不确定方向、怕踩坑的董事长、总经理与高管团队。</span><span data-en>chairs, CEOs and leadership teams who want AI to sharpen their edge without guessing or wasting budget.</span></p>
-          <div class="service__price">
-            <span class="from"><span data-zh>起价</span><span data-en>From</span></span>
-            <strong data-price="advisory.single">¥3,800</strong>
-            <span class="unit"><span data-zh>/ 次</span><span data-en>/ session</span></span>
-          </div>
-          <a class="link-arrow" href="#pricing" data-goto-tab="advisory"><span data-zh>查看顾问方案</span><span data-en>See advisory plans</span><span class="arrow" aria-hidden="true">→</span></a>
+      <article class="biz__card card reveal" id="biz-3">
+        <div class="biz__top"><span class="biz__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.6 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span><span class="biz__no">B—03</span></div>
+        <div>
+          <h3><span data-zh>AI 商业验证</span><span data-en>AI-Powered Business Validation</span></h3>
+          <p class="biz__en">AI-Powered Business Validation</p>
         </div>
-        <div class="service__detail card">
-          <div class="service__cols">
-            <div>
-              <h4><span data-zh>包含</span><span data-en>Included</span></h4>
-              <ul class="list">
-                <li><span data-zh>一对一深度对话（线上或面谈）</span><span data-en>1-on-1 deep-dive sessions (online or in person)</span></li>
-                <li><span data-zh>行业 AI 机会扫描与竞品分析</span><span data-en>Industry AI opportunity scan and competitor review</span></li>
-                <li><span data-zh>AI 战略路线图与预算规划</span><span data-en>AI roadmap and budget planning</span></li>
-                <li><span data-zh>供应商与产品选型评估（立场中立）</span><span data-en>Independent vendor and product evaluation</span></li>
-                <li><span data-zh>高管及全员 AI 工作坊</span><span data-en>Leadership and company-wide AI workshops</span></li>
-                <li><span data-zh>书面建议书</span><span data-en>Written recommendations</span></li>
-              </ul>
-            </div>
-            <div>
-              <h4><span data-zh>不包含</span><span data-en>Not included</span></h4>
-              <ul class="list list--x">
-                <li><span data-zh>系统的开发与部署（可另选 AI 硬件部署服务）</span><span data-en>Building or deploying systems (see Hardware Deployment)</span></li>
-                <li><span data-zh>法律、财务与投资建议</span><span data-en>Legal, financial or investment advice</span></li>
-              </ul>
-            </div>
-          </div>
-          <dl class="service__meta">
-            <div><dt><span data-zh>服务形式</span><span data-en>Format</span></dt><dd><span data-zh>单次 2 小时，或季度 / 年度长期陪跑</span><span data-en>A single 2-hour session, or a quarterly / annual retainer</span></dd></div>
-            <div><dt><span data-zh>你需要准备</span><span data-en>You provide</span></dt><dd><span data-zh>公司基本情况，以及当前最想解决的问题</span><span data-en>A company overview and the problems you most want solved</span></dd></div>
-          </dl>
+        <p class="biz__desc"><span data-zh>用 AI 做需求验证、商业模式测试与流程自动化，加速从想法到市场。</span><span data-en>AI-powered demand validation, business model testing, and workflow automation to accelerate the journey from idea to market.</span></p>
+        <ul class="list"><li><span data-zh>用 AI 快速验证需求与目标用户</span><span data-en>Validate demand and target users quickly with AI</span></li><li><span data-zh>测试商业模式与定价，少走弯路</span><span data-en>Test business models and pricing before you scale</span></li><li><span data-zh>关键流程自动化，跑通最小闭环</span><span data-en>Automate key workflows to reach a working MVP loop</span></li></ul>
+        <div class="biz__foot"><span class="biz__price"><span data-zh>单次咨询</span><span data-en>Sessions from</span> <strong data-price="advisory.single">¥3,800</strong><span data-zh> 起</span><span data-en></span></span><a class="link-arrow" href="#pricing" data-goto-tab="advisory"><span data-zh>查看价格</span><span data-en>See pricing</span><span class="arrow" aria-hidden="true">→</span></a></div>
+      </article>
+      <article class="biz__card card reveal" id="biz-4">
+        <div class="biz__top"><span class="biz__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><span class="biz__no">B—04</span></div>
+        <div>
+          <h3><span data-zh>早期创业融资对接</span><span data-en>Venture Capital Access for Early-Stage Startups</span></h3>
+          <p class="biz__en">Venture Capital Access for Early-Stage Startups</p>
         </div>
+        <p class="biz__desc"><span data-zh>为 A 轮前的初创团队对接投资人与创投资源，提升融资准备度，助力早期成长。</span><span data-en>Investor connections and venture resources for pre-Series A startups, supporting fundraising readiness and early-stage growth.</span></p>
+        <ul class="list"><li><span data-zh>融资准备度评估与商业计划书打磨</span><span data-en>Fundraising readiness review and pitch deck refinement</span></li><li><span data-zh>对接投资人与创投资源</span><span data-en>Introductions to investors and venture resources</span></li><li><span data-zh>早期增长与里程碑规划</span><span data-en>Early growth and milestone planning</span></li></ul>
+        <div class="biz__foot"><span class="biz__price"><span data-zh>按项目沟通</span><span data-en>Scoped per project</span></span><a class="link-arrow" href="mailto:chenchen@cv-etron.com" data-mail-zh="早期创业融资对接咨询" data-mail-en="Early-stage funding inquiry"><span data-zh>邮件咨询</span><span data-en>Email us</span><span class="arrow" aria-hidden="true">→</span></a></div>
+      </article>
+      <article class="biz__card card reveal" id="biz-5">
+        <div class="biz__top"><span class="biz__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M19 3v5M16.5 5.5h5"/></svg></span><span class="biz__no">B—05</span></div>
+        <div>
+          <h3><span data-zh>赋能独立创业者</span><span data-en>Empowering Independent Entrepreneurs</span></h3>
+          <p class="biz__en">Empowering Independent Entrepreneurs</p>
+        </div>
+        <p class="biz__desc"><span data-zh>整合 AI、算力与资本，帮助创业者和独立专业人士把专业与想法变成可持续的事业。</span><span data-en>Bringing together AI, computing, and capital access to help founders and independent professionals turn expertise and ideas into sustainable businesses.</span></p>
+        <ul class="list"><li><span data-zh>AI 工具与工作流，一个人也能把业务跑起来</span><span data-en>AI tools and workflows that let one person run a real business</span></li><li><span data-zh>按需使用算力，不必重资产投入</span><span data-en>Computing on demand, without heavy upfront investment</span></li><li><span data-zh>从验证到融资，全程有人同行</span><span data-en>Support from validation all the way to fundraising</span></li></ul>
+        <div class="biz__foot"><span class="biz__price"><span data-zh>首次 30 分钟沟通免费</span><span data-en>First 30-minute call is free</span></span><a class="link-arrow" href="#contact"><span data-zh>预约沟通</span><span data-en>Book a call</span><span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============================== 02 价格方案 ============================== -->
+<!-- ============================== 03 价格方案 ============================== -->
 <section class="section section--alt" id="pricing">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow"><span class="num">02</span><span class="bar"></span><span data-zh>价格方案</span><span data-en>Pricing</span></p>
+      <p class="eyebrow"><span class="num">03</span><span class="bar"></span><span data-zh>价格方案</span><span data-en>Pricing</span></p>
       <h2><span data-zh>明码标价，没有隐藏费用</span><span data-en>Clear prices. No hidden fees.</span></h2>
       <p class="lead"><span data-zh>以下均为人民币不含税价格。需求超出套餐范围时，选择「企业定制」，我们通过邮件单独为你报价。</span><span data-en>All prices are in CNY, excluding tax. If your needs go beyond a plan, choose Enterprise and we'll quote you by email.</span></p>
     </header>
@@ -1494,6 +1699,36 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
           </ul>
         </article>
       </div>
+      <details class="scope">
+        <summary><span data-zh>服务范围：包含与不包含</span><span data-en>Scope: what's included and what's not</span></summary>
+        <div class="scope__body">
+          <div class="service__cols">
+          <div>
+          <h4><span data-zh>包含</span><span data-en>Included</span></h4>
+          <ul class="list">
+          <li><span data-zh>硬件选型与配置方案（GPU 服务器 / AI 工作站）</span><span data-en>Hardware sizing and specs (GPU servers / AI workstations)</span></li>
+          <li><span data-zh>开源大模型私有化部署（Qwen、DeepSeek、Llama 等）</span><span data-en>Private deployment of open models (Qwen, DeepSeek, Llama, etc.)</span></li>
+          <li><span data-zh>企业知识库（RAG）搭建与权限设置</span><span data-en>Enterprise knowledge base (RAG) with access control</span></li>
+          <li><span data-zh>对接 OA、企业微信、飞书、钉钉等系统</span><span data-en>Integration with OA, WeCom, Feishu, DingTalk and more</span></li>
+          <li><span data-zh>员工使用培训与操作手册</span><span data-en>Staff training and user handbook</span></li>
+          <li><span data-zh>上线后免费质保期</span><span data-en>Free warranty after go-live</span></li>
+          </ul>
+          </div>
+          <div>
+          <h4><span data-zh>不包含</span><span data-en>Not included</span></h4>
+          <ul class="list list--x">
+          <li><span data-zh>硬件本身的费用（可自购，或由我们按渠道价代采）</span><span data-en>The hardware itself (buy your own, or we source it at channel price)</span></li>
+          <li><span data-zh>机房装修、供电与空调改造</span><span data-en>Server room build-out, power and cooling work</span></li>
+          <li><span data-zh>定制软件开发（在企业定制版中报价）</span><span data-en>Custom software development (quoted under Enterprise)</span></li>
+          </ul>
+          </div>
+          </div>
+          <dl class="service__meta">
+          <div><dt><span data-zh>交付周期</span><span data-en>Timeline</span></dt><dd><span data-zh>5 个工作日 – 6 周，视套餐而定</span><span data-en>5 working days to 6 weeks, by plan</span></dd></div>
+          <div><dt><span data-zh>你需要准备</span><span data-en>You provide</span></dt><dd><span data-zh>机柜位置、网络权限，以及希望 AI 处理的业务资料</span><span data-en>Rack space, network access, and the documents you want AI to work with</span></dd></div>
+          </dl>
+        </div>
+      </details>
       <p class="pricing-note reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
         <span>
@@ -1579,6 +1814,36 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
           </ul>
         </article>
       </div>
+      <details class="scope">
+        <summary><span data-zh>服务范围：包含与不包含</span><span data-en>Scope: what's included and what's not</span></summary>
+        <div class="scope__body">
+          <div class="service__cols">
+          <div>
+          <h4><span data-zh>包含</span><span data-en>Included</span></h4>
+          <ul class="list">
+          <li><span data-zh>7×24 系统监控与异常告警</span><span data-en>24/7 monitoring and alerting</span></li>
+          <li><span data-zh>承诺响应时间（SLA），最快 15 分钟</span><span data-en>Guaranteed response times (SLA), as fast as 15 minutes</span></li>
+          <li><span data-zh>远程故障排查与修复</span><span data-en>Remote troubleshooting and fixes</span></li>
+          <li><span data-zh>定期更新模型、系统与安全补丁</span><span data-en>Regular model, system and security updates</span></li>
+          <li><span data-zh>月度运行报告</span><span data-en>Monthly health report</span></li>
+          <li><span data-zh>同城现场支持（按套餐）</span><span data-en>Local on-site support (by plan)</span></li>
+          </ul>
+          </div>
+          <div>
+          <h4><span data-zh>不包含</span><span data-en>Not included</span></h4>
+          <ul class="list list--x">
+          <li><span data-zh>更换损坏硬件的费用（我们协助走厂商保修）</span><span data-en>Replacement hardware costs (we handle vendor warranty claims)</span></li>
+          <li><span data-zh>新功能开发与新系统对接</span><span data-en>New feature development or new integrations</span></li>
+          <li><span data-zh>第三方软件授权费</span><span data-en>Third-party software licenses</span></li>
+          </ul>
+          </div>
+          </div>
+          <dl class="service__meta">
+          <div><dt><span data-zh>计费周期</span><span data-en>Billing</span></dt><dd><span data-zh>按月或按年订阅，年付省 15%，随时可升级</span><span data-en>Monthly or annual (save 15%); upgrade anytime</span></dd></div>
+          <div><dt><span data-zh>你需要准备</span><span data-en>You provide</span></dt><dd><span data-zh>远程访问授权，以及一位对接人</span><span data-en>Authorized remote access and one point of contact</span></dd></div>
+          </dl>
+        </div>
+      </details>
       <p class="pricing-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
         <span>
@@ -1661,6 +1926,35 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
           </ul>
         </article>
       </div>
+      <details class="scope">
+        <summary><span data-zh>服务范围：包含与不包含</span><span data-en>Scope: what's included and what's not</span></summary>
+        <div class="scope__body">
+          <div class="service__cols">
+          <div>
+          <h4><span data-zh>包含</span><span data-en>Included</span></h4>
+          <ul class="list">
+          <li><span data-zh>一对一深度对话（线上或面谈）</span><span data-en>1-on-1 deep-dive sessions (online or in person)</span></li>
+          <li><span data-zh>行业 AI 机会扫描与竞品分析</span><span data-en>Industry AI opportunity scan and competitor review</span></li>
+          <li><span data-zh>AI 战略路线图与预算规划</span><span data-en>AI roadmap and budget planning</span></li>
+          <li><span data-zh>供应商与产品选型评估（立场中立）</span><span data-en>Independent vendor and product evaluation</span></li>
+          <li><span data-zh>高管及全员 AI 工作坊</span><span data-en>Leadership and company-wide AI workshops</span></li>
+          <li><span data-zh>书面建议书</span><span data-en>Written recommendations</span></li>
+          </ul>
+          </div>
+          <div>
+          <h4><span data-zh>不包含</span><span data-en>Not included</span></h4>
+          <ul class="list list--x">
+          <li><span data-zh>系统的开发与部署（可另选 AI 硬件部署服务）</span><span data-en>Building or deploying systems (see Hardware Deployment)</span></li>
+          <li><span data-zh>法律、财务与投资建议</span><span data-en>Legal, financial or investment advice</span></li>
+          </ul>
+          </div>
+          </div>
+          <dl class="service__meta">
+          <div><dt><span data-zh>服务形式</span><span data-en>Format</span></dt><dd><span data-zh>单次 2 小时，或季度 / 年度长期陪跑</span><span data-en>A single 2-hour session, or a quarterly / annual retainer</span></dd></div>
+          <div><dt><span data-zh>你需要准备</span><span data-en>You provide</span></dt><dd><span data-zh>公司基本情况，以及当前最想解决的问题</span><span data-en>A company overview and the problems you most want solved</span></dd></div>
+          </dl>
+        </div>
+      </details>
     </div>
 
     <!-- 按需加价 -->
@@ -1720,7 +2014,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
 <section class="section" id="calculator">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow"><span class="num">03</span><span class="bar"></span><span data-zh>费用计算器</span><span data-en>Cost estimator</span></p>
+      <p class="eyebrow"><span class="num">04</span><span class="bar"></span><span data-zh>费用计算器</span><span data-en>Cost estimator</span></p>
       <h2><span data-zh>30 秒，算清你的投入</span><span data-en>Work out your investment in 30 seconds</span></h2>
       <p class="lead"><span data-zh>打开需要的服务、选好套餐，明细实时更新。满意的话，一键把清单发到我们邮箱，1 个工作日内给你正式报价。</span><span data-en>Switch on the services you need and pick a plan. The breakdown updates live. When it looks right, send it to us in one click for a formal quote within one business day.</span></p>
     </header>
@@ -1874,7 +2168,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
 <section class="section section--alt" id="process">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow"><span class="num">04</span><span class="bar"></span><span data-zh>合作流程</span><span data-en>How we work</span></p>
+      <p class="eyebrow"><span class="num">05</span><span class="bar"></span><span data-zh>合作流程</span><span data-en>How we work</span></p>
       <h2><span data-zh>从第一封邮件，到稳定运行</span><span data-en>From first email to running smoothly</span></h2>
       <p class="lead"><span data-zh>每一步做什么、要多久、需要你配合什么，提前说清楚。</span><span data-en>What happens at each step, how long it takes, and what we need from you, all set out in advance.</span></p>
     </header>
@@ -1941,7 +2235,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
 <section class="section" id="why">
   <div class="container">
     <header class="section-head reveal">
-      <p class="eyebrow"><span class="num">05</span><span class="bar"></span><span data-zh>为什么是我们</span><span data-en>Why CV-Etron</span></p>
+      <p class="eyebrow"><span class="num">06</span><span class="bar"></span><span data-zh>为什么是我们</span><span data-en>Why CV-Etron</span></p>
       <h2><span data-zh>懂互联网，生于 AI，快速迭代</span><span data-en>Internet-grade. AI-native. Built to iterate.</span></h2>
       <p class="lead"><span data-zh>我们用做互联网产品的方式做企业 AI：以用户为中心，用数据说话，小步快跑。</span><span data-en>We build enterprise AI the way great internet products are built: user-first, data-driven, and shipped in small, fast steps.</span></p>
     </header>
@@ -2010,7 +2304,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   <div class="container">
     <div class="about">
       <div class="reveal">
-        <p class="eyebrow"><span class="num">06</span><span class="bar"></span><span data-zh>关于 CV-Etron · 云想亿创</span><span data-en>About CV-Etron</span></p>
+        <p class="eyebrow"><span class="num">07</span><span class="bar"></span><span data-zh>关于 CV-Etron · 云想亿创</span><span data-en>About CV-Etron</span></p>
         <p class="about__statement"><span data-zh>点子在云上汇聚，<br><em>未来由亿万人共创。</em></span><span data-en>Ideas meet in the cloud.<br><em>The future is built by billions.</em></span></p>
       </div>
       <div class="about__story reveal">
@@ -2033,7 +2327,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
 <section class="section" id="faq">
   <div class="container faq">
     <header class="section-head reveal">
-      <p class="eyebrow"><span class="num">07</span><span class="bar"></span><span data-zh>常见问题</span><span data-en>FAQ</span></p>
+      <p class="eyebrow"><span class="num">08</span><span class="bar"></span><span data-zh>常见问题</span><span data-en>FAQ</span></p>
       <h2><span data-zh>关于费用，你可能想问</span><span data-en>Questions about cost</span></h2>
       <p class="lead"><span data-zh>没找到答案？直接发邮件给我们。</span><span data-en>Can't find your answer? Just email us.</span></p>
     </header>
@@ -2079,7 +2373,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   <div class="container">
     <div class="contact reveal">
       <div>
-        <p class="eyebrow"><span class="num">08</span><span class="bar"></span><span data-zh>联系我们</span><span data-en>Contact</span></p>
+        <p class="eyebrow"><span class="num">09</span><span class="bar"></span><span data-zh>联系我们</span><span data-en>Contact</span></p>
         <h2><span data-zh>聊聊你的<br>AI 计划</span><span data-en>Let's talk about<br>your AI plans</span></h2>
         <p class="contact__lead"><span data-zh>一个模糊的想法也好，一份详细的需求也好，都欢迎来信。</span><span data-en>Whether you have a rough idea or a detailed brief, we'd like to hear it.</span></p>
         <div class="mail">
@@ -2146,16 +2440,19 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
         <p class="footer__slogan"><span data-zh>以人为核，智能环绕。</span><span data-en>People at the core. Intelligence in orbit.</span></p>
       </div>
       <div>
-        <h4><span data-zh>服务</span><span data-en>Services</span></h4>
+        <h4><span data-zh>业务</span><span data-en>Practices</span></h4>
         <ul>
-          <li><a href="#svc-deploy"><span data-zh>AI 硬件部署</span><span data-en>Hardware Deployment</span></a></li>
-          <li><a href="#svc-support"><span data-zh>全天候售后</span><span data-en>24/7 Support</span></a></li>
-          <li><a href="#svc-advisory"><span data-zh>总裁 AI 顾问</span><span data-en>Executive Advisory</span></a></li>
+          <li><a href="#biz-1"><span data-zh>AI 基础设施</span><span data-en>AI infrastructure</span></a></li>
+          <li><a href="#biz-2"><span data-zh>普惠算力</span><span data-en>SMB computing</span></a></li>
+          <li><a href="#biz-3"><span data-zh>AI 商业验证</span><span data-en>Business validation</span></a></li>
+          <li><a href="#biz-4"><span data-zh>早期融资对接</span><span data-en>Startup funding</span></a></li>
+          <li><a href="#biz-5"><span data-zh>独立创业者</span><span data-en>Independent founders</span></a></li>
         </ul>
       </div>
       <div>
         <h4><span data-zh>了解</span><span data-en>Explore</span></h4>
         <ul>
+          <li><a href="#cases"><span data-zh>交付案例</span><span data-en>Case studies</span></a></li>
           <li><a href="#pricing"><span data-zh>价格方案</span><span data-en>Pricing</span></a></li>
           <li><a href="#calculator"><span data-zh>费用计算器</span><span data-en>Estimator</span></a></li>
           <li><a href="#why"><span data-zh>我们的优势</span><span data-en>Why us</span></a></li>
@@ -2368,7 +2665,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
         navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id));
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['services', 'pricing', 'calculator', 'process', 'why', 'about', 'faq', 'contact'].forEach((id) => {
+    ['home', 'cases', 'services', 'pricing', 'calculator', 'process', 'why', 'about', 'faq', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) sectionObs.observe(el);
     });
@@ -2657,7 +2954,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
     });
   }));
 
-  /* ---------- 首屏交付物示例 ---------- */
+  /* ---------- 交付案例 ---------- */
   // 参考配置的首年费用（月付、无加购），与计算器套用该配置后的结果一致
   function estimate(spec) {
     const pairs = spec.split(',').map((p) => p.split(':'));
@@ -2671,6 +2968,7 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
   const scTabs = $$('[role="tab"]', showcase);
   function showCase(i, focus) {
     const n = (i + scTabs.length) % scTabs.length;
+    hideTip();
     scTabs.forEach((tab, j) => {
       const on = j === n;
       tab.setAttribute('aria-selected', String(on));
@@ -2679,35 +2977,15 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
       if (on && focus) tab.focus();
     });
   }
-  const stopAuto = () => showcase.classList.remove('is-auto');
   scTabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => { stopAuto(); showCase(i); });
+    tab.addEventListener('click', () => showCase(i));
     tab.addEventListener('keydown', (e) => {
-      const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: scTabs.length - 1 }[e.key];
+      const to = { ArrowDown: i + 1, ArrowRight: i + 1, ArrowUp: i - 1, ArrowLeft: i - 1, Home: 0, End: scTabs.length - 1 }[e.key];
       if (to === undefined) return;
       e.preventDefault();
-      stopAuto();
       showCase(to, true);
     });
-    // 自动轮播：进度条走完切到下一个；悬停、聚焦、滚出视口时暂停；手动切换后停止
-    $('.showcase__prog', tab).addEventListener('animationend', () => {
-      if (!showcase.classList.contains('is-auto')) return;
-      if (wideView.matches) showCase(i + 1); else stopAuto();
-    });
   });
-  // 在面板里操作（勾选、点选站点、看事件）就不再自动切换；窄屏上不自动轮播，避免页面跳动
-  $('.showcase__panels').addEventListener('pointerdown', stopAuto);
-  $('.showcase__panels').addEventListener('keydown', stopAuto);
-  const wideView = window.matchMedia('(min-width: 1201px)');
-  if (!reduceMotion && wideView.matches) {
-    showcase.classList.add('is-auto');
-    let offscreen = false;
-    const syncPause = () => showcase.classList.toggle('is-paused', offscreen || document.hidden);
-    document.addEventListener('visibilitychange', syncPause);
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => { offscreen = !e.isIntersecting; syncPause(); }).observe(showcase);
-    }
-  }
 
   /* ========================================================================
      首屏看板：演示数据与图表（数据均为虚构样例）
@@ -3239,6 +3517,370 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
     $('#viz-gauge').innerHTML = h;
   }
 
+
+  // ---------- 新增案例的文字（中英） ----------
+  const SCX = {
+    zh: {
+      hours: '小时', underGoal: '不足 7 小时', onGoal: '达标',
+      sleepNote: (n) => `近 14 天 · ${n} 天不足 7 小时`,
+      sleepAdvice: (n) => `近 14 天有 ${n} 天睡眠不足 7 小时：建议 23:30 前入睡，睡前 1 小时放下手机。`,
+      labs: [['收缩压', 'mmHg'], ['空腹血糖', 'mmol/L'], ['总胆固醇', 'mmol/L'], ['尿酸', 'μmol/L'], ['BMI', '']],
+      labStatus: { ok: '正常', high: '偏高', low: '偏低' }, refRange: '参考范围',
+      weekdays: ['周一', '周二', '周三', '周四', '周五'],
+      cats: { meet: '会议', focus: '专注', client: '客户', other: '其他' },
+      aiTag: 'AI 自动排入',
+      schedTotal: (h) => `下周已安排 ${h} 小时`,
+      aiText: '周三下午有两场连续的同步会，建议合并为 30 分钟，空出 1.5 小时专注时间。',
+      aiDone: '已合并为一场 30 分钟同步会，周三下午多出 1.5 小时专注时间。',
+      adopt: '一键采纳', undo: '撤销',
+      assetClasses: ['现金', '债券', '股票', '另类', '海外'],
+      current: '当前', target: '目标',
+      money: (w) => `¥${trim0(w)} 万`,
+      sell: (w) => `卖出约 ¥${trim0(w)} 万`, buy: (w) => `买入约 ¥${trim0(w)} 万`,
+      navSeries: ['组合', '基准'], excess: '超额收益',
+      retNote: (d) => `跑赢基准 ${d} 个百分点`,
+      navMonths: ['12月', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月'],
+      navMonthsFull: ['2025 年 12 月', '2026 年 1 月', '2026 年 2 月', '2026 年 3 月', '2026 年 4 月', '2026 年 5 月', '2026 年 6 月', '2026 年 7 月', '2026 年 8 月', '2026 年 9 月', '2026 年 10 月', '2026 年 11 月'],
+    },
+    en: {
+      hours: 'h', underGoal: 'Under 7 h', onGoal: 'On target',
+      sleepNote: (n) => `Last 14 days · ${n} nights under 7 h`,
+      sleepAdvice: (n) => `${n} of the last 14 nights were under 7 hours. Aim for bed by 11:30 pm and put the phone down an hour before.`,
+      labs: [['Systolic BP', 'mmHg'], ['Fasting glucose', 'mmol/L'], ['Cholesterol', 'mmol/L'], ['Uric acid', 'μmol/L'], ['BMI', '']],
+      labStatus: { ok: 'Normal', high: 'High', low: 'Low' }, refRange: 'Reference range',
+      weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+      cats: { meet: 'Meeting', focus: 'Focus', client: 'Client', other: 'Other' },
+      aiTag: 'Scheduled by AI',
+      schedTotal: (h) => `${h} hours planned next week`,
+      aiText: 'Two back-to-back syncs on Wednesday afternoon. Merge them into one 30-minute meeting to free 1.5 hours of focus time.',
+      aiDone: 'Merged into one 30-minute sync. Wednesday afternoon now has 1.5 more hours of focus time.',
+      adopt: 'Apply', undo: 'Undo',
+      assetClasses: ['Cash', 'Bonds', 'Equities', 'Alternatives', 'Overseas'],
+      current: 'Current', target: 'Target',
+      money: (w) => `¥${Math.round(w * 10)}K`,
+      sell: (w) => `Sell ≈ ¥${Math.round(w * 10)}K`, buy: (w) => `Buy ≈ ¥${Math.round(w * 10)}K`,
+      navSeries: ['Portfolio', 'Benchmark'], excess: 'Excess return',
+      retNote: (d) => `${d} pts above benchmark`,
+      navMonths: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+      navMonthsFull: ['Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026', 'Apr 2026', 'May 2026', 'Jun 2026', 'Jul 2026', 'Aug 2026', 'Sep 2026', 'Oct 2026', 'Nov 2026'],
+    },
+  };
+  const X = () => SCX[lang];
+
+  // ---------- 健康管理 OS ----------
+  const HEALTH = {
+    sleep: [7.4, 6.8, 7.9, 6.2, 7.1, 8.3, 7.6, 6.5, 7.0, 6.1, 7.8, 7.2, 6.9, 7.5],
+    days: ['10/25', '10/26', '10/27', '10/28', '10/29', '10/30', '10/31', '11/01', '11/02', '11/03', '11/04', '11/05', '11/06', '11/07'],
+    // 数值、参考下限、参考上限、刻度最小、刻度最大、小数位
+    labs: [[118, 90, 120, 80, 160, 0], [5.4, 3.9, 6.1, 3, 8, 1], [5.6, 2.8, 5.2, 2, 8, 1], [395, 208, 428, 150, 550, 0], [23.1, 18.5, 24, 15, 32, 1]],
+  };
+  const sleepBox = $('#viz-sleep');
+  function renderSleep() {
+    const T = X();
+    const low = HEALTH.sleep.filter((v) => v < 7).length;
+    $('#hl-sleep-avg').textContent = f1(HEALTH.sleep.reduce((a, b) => a + b, 0) / HEALTH.sleep.length);
+    $('#hl-sleep-note').textContent = T.sleepNote(low);
+    $('#hl-sleep-advice').textContent = T.sleepAdvice(low);
+    const plot = el('div', 'cols__plot');
+    plot.append(el('span', 'cols__band'));
+    HEALTH.sleep.forEach((v, i) => {
+      const c = el('span', `col${v < 7 ? ' is-low' : ''}`);
+      c.tabIndex = 0;
+      c.dataset.i = i;
+      c.setAttribute('role', 'img');
+      c.setAttribute('aria-label', `${HEALTH.days[i]} ${f1(v)} ${T.hours}`);
+      const bar = el('i');
+      bar.style.height = `${v * 10}%`;
+      bar.style.transitionDelay = `${i * 25}ms`;
+      c.append(bar);
+      plot.append(c);
+    });
+    const x = el('div', 'cols__x');
+    [0, 7, 13].forEach((i) => x.append(el('span', '', HEALTH.days[i])));
+    sleepBox.replaceChildren(plot, x);
+  }
+  function sleepFocus(c) {
+    $$('.col', sleepBox).forEach((n) => n.classList.toggle('is-on', n === c));
+    if (!c) { hideTip(); return; }
+    const T = X();
+    const v = HEALTH.sleep[c.dataset.i];
+    const r = $('i', c).getBoundingClientRect();
+    showTip(HEALTH.days[c.dataset.i], [{ value: `${f1(v)} ${T.hours}`, label: v < 7 ? T.underGoal : T.onGoal, color: v < 7 ? 'var(--st-warn)' : 'var(--c-self)', shape: 'k--bar' }], r.left + r.width / 2, r.top);
+  }
+  sleepBox.addEventListener('pointerover', (e) => { const c = e.target.closest('.col'); if (c) sleepFocus(c); });
+  sleepBox.addEventListener('pointerleave', () => sleepFocus(null));
+  sleepBox.addEventListener('focusin', (e) => { const c = e.target.closest('.col'); if (c) sleepFocus(c); });
+  sleepBox.addEventListener('focusout', () => sleepFocus(null));
+
+  const labsBox = $('#viz-labs');
+  const labState = ([v, lo, hi]) => (v > hi ? 'high' : v < lo ? 'low' : 'ok');
+  function renderLabs() {
+    const T = X();
+    labsBox.replaceChildren();
+    HEALTH.labs.forEach((m, i) => {
+      const [v, lo, hi, min, max, dec] = m;
+      const pos = (n) => `${((n - min) / (max - min) * 100).toFixed(2)}%`;
+      const st = labState(m);
+      const name = el('span', 'lab__name', T.labs[i][0]);
+      if (T.labs[i][1]) name.append(el('small', '', T.labs[i][1]));
+      const track = el('span', 'lab__track');
+      track.tabIndex = 0;
+      track.dataset.i = i;
+      track.setAttribute('role', 'img');
+      track.setAttribute('aria-label', `${T.labs[i][0]} ${v.toFixed(dec)}, ${T.refRange} ${lo}–${hi}, ${T.labStatus[st]}`);
+      const band = el('i', 'lab__band');
+      band.style.left = pos(lo);
+      band.style.width = `${((hi - lo) / (max - min) * 100).toFixed(2)}%`;
+      const dot = el('i', `lab__dot${st === 'ok' ? '' : ' is-warn'}`);
+      dot.style.left = pos(v);
+      track.append(band, dot);
+      const badge = el('span', `st st--${st === 'ok' ? 'good' : 'warn'}`);
+      badge.append(el('i'), document.createTextNode(T.labStatus[st]));
+      labsBox.append(name, track, el('span', 'lab__val', v.toFixed(dec)), badge);
+    });
+  }
+  function labFocus(track) {
+    if (!track) { hideTip(); return; }
+    const T = X();
+    const m = HEALTH.labs[track.dataset.i];
+    const st = labState(m);
+    const [x, y] = centerOf($('.lab__dot', track));
+    showTip(T.labs[track.dataset.i][0], [
+      { value: `${m[0].toFixed(m[5])} ${T.labs[track.dataset.i][1]}`.trim(), label: T.labStatus[st], color: st === 'ok' ? 'var(--st-good)' : 'var(--st-warn)', shape: 'k--dot' },
+      { value: `${m[1]}–${m[2]}`, label: T.refRange, color: 'rgba(238, 241, 245, .3)', shape: 'k--bar' },
+    ], x, y);
+  }
+  labsBox.addEventListener('pointerover', (e) => { const tr = e.target.closest('.lab__track'); if (tr) labFocus(tr); });
+  labsBox.addEventListener('pointerleave', () => labFocus(null));
+  labsBox.addEventListener('focusin', (e) => { if (e.target.classList.contains('lab__track')) labFocus(e.target); });
+  labsBox.addEventListener('focusout', () => labFocus(null));
+
+  // ---------- 日程管理 ----------
+  const ev = (d, s, e, c, zh, en, extra) => Object.assign({ d, s, e, c, zh, en }, extra);
+  const SCHED = {
+    days: [9, 10, 11, 12, 13],
+    start: 9,
+    end: 18,
+    base: [
+      ev(0, 9.5, 10, 'meet', '站会', 'Stand-up'), ev(0, 10, 12, 'focus', '产品方案', 'Product spec', { ai: 1 }), ev(0, 14, 15, 'client', '客户 A 沟通', 'Client A call'), ev(0, 15.5, 16.5, 'meet', '设计评审', 'Design review'),
+      ev(1, 9.5, 10, 'meet', '站会', 'Stand-up'), ev(1, 10.5, 11.5, 'meet', '招聘面试', 'Interview'), ev(1, 13.5, 16, 'focus', '深度工作', 'Deep work', { ai: 1 }), ev(1, 16.5, 17.5, 'meet', '周会', 'Weekly sync'),
+      ev(2, 9.5, 10, 'meet', '站会', 'Stand-up'), ev(2, 10, 11, 'client', '客户 B 演示', 'Client B demo'), ev(2, 13.5, 14.5, 'meet', '项目同步', 'Project sync', { merge: 1 }), ev(2, 14.5, 15.5, 'meet', '进度对齐', 'Status check', { merge: 1 }), ev(2, 16, 17, 'meet', '一对一', '1:1'),
+      ev(3, 9.5, 10, 'meet', '站会', 'Stand-up'), ev(3, 10, 12.5, 'focus', '开发', 'Build', { ai: 1 }), ev(3, 14, 15.5, 'client', '客户 C 签约', 'Client C signing'), ev(3, 16, 17, 'other', '健身', 'Workout'),
+      ev(4, 9.5, 10, 'meet', '站会', 'Stand-up'), ev(4, 10, 11, 'meet', '复盘', 'Retro'), ev(4, 11, 12, 'focus', '周报', 'Weekly report', { ai: 1 }), ev(4, 14, 16, 'focus', '学习', 'Learning'), ev(4, 16.5, 17.5, 'other', '团队活动', 'Team social'),
+    ],
+    adopted: [ev(2, 13.5, 14, 'meet', '合并同步', 'Combined sync', { ai: 1, fresh: 1 }), ev(2, 14, 15.5, 'focus', '专注时间', 'Focus time', { ai: 1, fresh: 1 })],
+  };
+  const CAT_ORDER = ['focus', 'meet', 'client', 'other'];
+  const CAT_COLOR = { meet: '#3987e5', focus: '#199e70', client: '#d95926', other: '#3a3f48' };
+  let schedAdopted = false;
+  const schedEvents = () => (schedAdopted ? SCHED.base.filter((e) => !e.merge).concat(SCHED.adopted) : SCHED.base);
+  const hm = (h) => `${Math.floor(h)}:${h % 1 ? '30' : '00'}`;
+  const calBox = $('#viz-cal');
+  function renderCal(animateNew) {
+    const T = X();
+    const span = SCHED.end - SCHED.start;
+    const nodes = [el('span')];
+    T.weekdays.forEach((w, i) => { const d = el('span', 'cal__d', w); d.append(el('b', '', String(SCHED.days[i]))); nodes.push(d); });
+    const times = el('div', 'cal__t');
+    for (let h = SCHED.start; h <= SCHED.end; h += 3) { const s = el('span', '', `${h}:00`); s.style.top = `${(h - SCHED.start) / span * 100}%`; times.append(s); }
+    nodes.push(times);
+    const cols = T.weekdays.map(() => el('div', 'cal__col'));
+    schedEvents().forEach((e, k) => {
+      const n = el('div', `cev cev--${e.c}${e.merge ? ' is-flag' : ''}${e.fresh && animateNew ? ' is-new' : ''}`);
+      n.style.top = `${(e.s - SCHED.start) / span * 100}%`;
+      n.style.height = `${(e.e - e.s) / span * 100}%`;
+      n.tabIndex = 0;
+      n.dataset.k = k;
+      n.setAttribute('aria-label', `${T.weekdays[e.d]} ${hm(e.s)}–${hm(e.e)} ${e[lang]} · ${T.cats[e.c]}`);
+      if (e.e - e.s >= 1) n.append(el('b', '', e[lang]), el('span', '', `${hm(e.s)}–${hm(e.e)}`));
+      if (e.ai) n.append(el('i', 'cev__ai', '✦'));
+      cols[e.d].append(n);
+    });
+    calBox.replaceChildren(...nodes, ...cols);
+  }
+  function evFocus(n) {
+    if (!n) { hideTip(); return; }
+    const T = X();
+    const e = schedEvents()[n.dataset.k];
+    const r = n.getBoundingClientRect();
+    const rows = [{ value: e[lang], label: T.cats[e.c], color: CAT_COLOR[e.c], shape: 'k--bar' }];
+    if (e.ai) rows.push({ value: '✦', label: T.aiTag });
+    showTip(`${T.weekdays[e.d]} ${hm(e.s)}–${hm(e.e)}`, rows, r.right - 6, r.top + 6);
+  }
+  calBox.addEventListener('pointerover', (e) => { const n = e.target.closest('.cev'); if (n) evFocus(n); });
+  calBox.addEventListener('pointerleave', () => evFocus(null));
+  calBox.addEventListener('focusin', (e) => { const n = e.target.closest('.cev'); if (n) evFocus(n); });
+  calBox.addEventListener('focusout', () => evFocus(null));
+
+  const splitBar = $('#viz-split');
+  function schedStats() {
+    const hours = { focus: 0, meet: 0, client: 0, other: 0 };
+    const list = schedEvents();
+    list.forEach((e) => { hours[e.c] += e.e - e.s; });
+    return { hours, meetN: list.filter((e) => e.c === 'meet').length, total: Object.values(hours).reduce((a, b) => a + b, 0) };
+  }
+  function renderSched(animateNew) {
+    const T = X();
+    const st = schedStats();
+    $('#sd-meet-n').textContent = st.meetN;
+    $('#sd-meet-h').textContent = trim0(st.hours.meet);
+    $('#sd-focus-h').textContent = trim0(st.hours.focus);
+    $('#sd-total').textContent = T.schedTotal(trim0(st.total));
+    if (splitBar.children.length !== CAT_ORDER.length) {
+      splitBar.replaceChildren(...CAT_ORDER.map((c) => { const s = el('i', 'seg'); s.dataset.c = c; s.tabIndex = 0; s.setAttribute('role', 'img'); s.style.background = CAT_COLOR[c]; return s; }));
+    }
+    $$('.seg', splitBar).forEach((s) => {
+      const share = st.hours[s.dataset.c] / st.total;
+      s.style.flexGrow = share;
+      s.textContent = share >= 0.12 ? `${Math.round(share * 100)}%` : '';
+      s.setAttribute('aria-label', `${T.cats[s.dataset.c]} ${trim0(st.hours[s.dataset.c])} ${T.hours}, ${Math.round(share * 100)}%`);
+    });
+    $('#sd-ai-text').textContent = schedAdopted ? T.aiDone : T.aiText;
+    $('#sd-adopt').textContent = schedAdopted ? T.undo : T.adopt;
+    renderCal(animateNew);
+  }
+  function segTip(s) {
+    if (!s) { hideTip(); return; }
+    const T = X();
+    const st = schedStats();
+    const r = s.getBoundingClientRect();
+    showTip(T.cats[s.dataset.c], [{ value: `${trim0(st.hours[s.dataset.c])} ${T.hours}`, label: `${Math.round(st.hours[s.dataset.c] / st.total * 100)}%`, color: CAT_COLOR[s.dataset.c], shape: 'k--bar' }], r.left + r.width / 2, r.bottom);
+  }
+  splitBar.addEventListener('pointerover', (e) => { if (e.target.classList.contains('seg')) segTip(e.target); });
+  splitBar.addEventListener('pointerleave', () => segTip(null));
+  splitBar.addEventListener('focusin', (e) => { if (e.target.classList.contains('seg')) segTip(e.target); });
+  splitBar.addEventListener('focusout', () => segTip(null));
+  $('#sd-adopt').addEventListener('click', () => { schedAdopted = !schedAdopted; hideTip(); renderSched(schedAdopted); });
+
+  // ---------- 资产配置 OS ----------
+  const ASSET = {
+    total: 1286, // 万元
+    current: [8, 25, 42, 10, 15],
+    target: [10, 30, 35, 10, 15],
+    colors: ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181'],
+    nav: [100, 101.2, 100.6, 102.3, 103.1, 102.0, 103.8, 104.5, 103.9, 105.2, 106.1, 106.8],
+    bench: [100, 100.8, 99.5, 101.0, 101.6, 100.2, 101.5, 102.4, 101.1, 102.0, 102.9, 103.4],
+    lineColors: ['#3987e5', '#898781'],
+  };
+  function renderAssetKpis() {
+    const ret = ASSET.nav[11] - ASSET.nav[0];
+    let peak = ASSET.nav[0];
+    let dd = 0;
+    ASSET.nav.forEach((v) => { peak = Math.max(peak, v); dd = Math.min(dd, (v - peak) / peak * 100); });
+    $('#as-ret').textContent = `+${f1(ret)}`;
+    $('#as-ret-note').textContent = X().retNote(f1(ret - (ASSET.bench[11] - ASSET.bench[0])));
+    $('#as-dd').textContent = `−${f1(Math.abs(dd))}`;
+  }
+  const allocBox = $('#viz-alloc');
+  function renderAlloc() {
+    const T = X();
+    allocBox.replaceChildren();
+    ['current', 'target'].forEach((key) => {
+      allocBox.append(el('span', 'alloc__label', T[key]));
+      const bar = el('div', 'segbar');
+      ASSET[key].forEach((p, i) => {
+        if (!p) return;
+        const s = el('i', 'seg', p >= 10 ? `${p}%` : '');
+        s.style.flexGrow = p;
+        s.style.background = ASSET.colors[i];
+        s.tabIndex = 0;
+        s.dataset.key = key;
+        s.dataset.i = i;
+        s.setAttribute('role', 'img');
+        s.setAttribute('aria-label', `${T[key]} ${T.assetClasses[i]} ${p}%`);
+        bar.append(s);
+      });
+      allocBox.append(bar);
+    });
+    const lg = $('#as-legend');
+    lg.replaceChildren(...T.assetClasses.map((n, i) => { const sp = el('span'); const k = el('i', 'k k--bar'); k.style.background = ASSET.colors[i]; sp.append(k, document.createTextNode(n)); return sp; }));
+    const rows = ASSET.current.map((c, i) => ({ i, c, t: ASSET.target[i], d: c - ASSET.target[i] })).filter((r) => r.d).sort((a, b) => Math.abs(b.d) - Math.abs(a.d));
+    $('#viz-drift').replaceChildren(...rows.map((r) => {
+      const amt = Math.abs(r.d) / 100 * ASSET.total;
+      const row = el('div', 'drift__row');
+      row.append(el('b', '', T.assetClasses[r.i]), el('span', 'drift__chg', `${r.c}% → ${r.t}%`), el('span', 'drift__act', r.d > 0 ? T.sell(amt) : T.buy(amt)));
+      return row;
+    }));
+  }
+  function allocTip(s) {
+    if (!s) { hideTip(); return; }
+    const T = X();
+    const p = ASSET[s.dataset.key][s.dataset.i];
+    const r = s.getBoundingClientRect();
+    showTip(`${T[s.dataset.key]} · ${T.assetClasses[s.dataset.i]}`, [{ value: `${p}%`, label: `≈ ${T.money(p / 100 * ASSET.total)}`, color: ASSET.colors[s.dataset.i], shape: 'k--bar' }], r.left + r.width / 2, r.bottom);
+  }
+  allocBox.addEventListener('pointerover', (e) => { if (e.target.classList.contains('seg')) allocTip(e.target); });
+  allocBox.addEventListener('pointerleave', () => allocTip(null));
+  allocBox.addEventListener('focusin', (e) => { if (e.target.classList.contains('seg')) allocTip(e.target); });
+  allocBox.addEventListener('focusout', () => allocTip(null));
+
+  const navBox = $('#viz-nav');
+  const navSvg = $('svg', navBox);
+  let navGeo = null;
+  let navIdx = -1;
+  function renderNav(force) {
+    const W = Math.round(navBox.clientWidth);
+    const H = Math.round(navBox.clientHeight);
+    if (W < 60 || (!force && navGeo && navGeo.W === W && navGeo.H === H)) return;
+    const T = X();
+    const padL = 30, padR = 50, padT = 10, padB = 22, lo = 98, hi = 108;
+    const X_ = (i) => padL + i * (W - padL - padR) / 11;
+    const Y_ = (v) => padT + (hi - v) / (hi - lo) * (H - padT - padB);
+    let h = '';
+    for (let v = lo; v <= hi; v += 2) h += `<line class="g" x1="${padL}" x2="${(W - padR + 4).toFixed(1)}" y1="${Y_(v).toFixed(1)}" y2="${Y_(v).toFixed(1)}"/><text class="ax" x="${padL - 6}" y="${(Y_(v) + 3).toFixed(1)}" text-anchor="end">${v}</text>`;
+    T.navMonths.forEach((m, i) => { if (i % 2 === 0 || i === 11) h += `<text class="ax" x="${X_(i).toFixed(1)}" y="${H - 5}" text-anchor="middle">${esc(m)}</text>`; });
+    const series = [ASSET.nav, ASSET.bench];
+    series.slice().reverse().forEach((vals, r) => {
+      const s = 1 - r;
+      h += `<path class="ln" pathLength="1" d="${vals.map((v, i) => `${i ? 'L' : 'M'}${X_(i).toFixed(1)},${Y_(v).toFixed(1)}`).join('')}" stroke="${ASSET.lineColors[s]}"/>`;
+    });
+    series.forEach((vals, s) => {
+      const x = X_(11);
+      const y = Y_(vals[11]);
+      h += `<circle class="end" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${ASSET.lineColors[s]}"/>`;
+      h += `<g class="pill" transform="translate(${(x + 8).toFixed(1)},${(y - 8).toFixed(1)})"><rect width="38" height="16" rx="5" fill="${ASSET.lineColors[s]}"/><text x="19" y="11.5" text-anchor="middle" fill="${s ? '#07080A' : '#fff'}">${f1(vals[11])}</text></g>`;
+    });
+    h += `<g class="xh" visibility="hidden"><line class="xh__l" y1="${padT}" y2="${H - padB}"/>${ASSET.lineColors.map((c) => `<circle class="xh__d" r="4" fill="${c}"/>`).join('')}</g>`;
+    h += `<rect class="hitbox" x="${padL}" y="0" width="${W - padL - padR}" height="${H - padB}"/>`;
+    navSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    navSvg.innerHTML = h;
+    navGeo = { W, H, X: X_, Y: Y_, padL, step: (W - padL - padR) / 11 };
+  }
+  function navFocus(i, cx, cy) {
+    navIdx = i;
+    const xh = $('.xh', navSvg);
+    if (!xh) return;
+    if (i < 0) { xh.setAttribute('visibility', 'hidden'); hideTip(); return; }
+    const T = X();
+    const x = navGeo.X(i);
+    $('.xh__l', xh).setAttribute('x1', x);
+    $('.xh__l', xh).setAttribute('x2', x);
+    const series = [ASSET.nav, ASSET.bench];
+    $$('.xh__d', xh).forEach((c, s) => { c.setAttribute('cx', x); c.setAttribute('cy', navGeo.Y(series[s][i])); });
+    xh.setAttribute('visibility', 'visible');
+    if (cx == null) { const r = navSvg.getBoundingClientRect(); cx = r.left + x; cy = r.top + navGeo.Y(ASSET.nav[i]); }
+    const diff = ASSET.nav[i] - ASSET.bench[i];
+    showTip(T.navMonthsFull[i], [
+      { value: f1(ASSET.nav[i]), label: T.navSeries[0], color: ASSET.lineColors[0] },
+      { value: f1(ASSET.bench[i]), label: T.navSeries[1], color: ASSET.lineColors[1] },
+      { value: `${diff >= 0 ? '+' : '−'}${f1(Math.abs(diff))}`, label: T.excess },
+    ], cx, cy);
+  }
+  navSvg.addEventListener('pointermove', (e) => {
+    if (!navGeo) return;
+    const r = navSvg.getBoundingClientRect();
+    navFocus(Math.max(0, Math.min(11, Math.round((e.clientX - r.left - navGeo.padL) / navGeo.step))), e.clientX, e.clientY);
+  });
+  navSvg.addEventListener('pointerleave', () => navFocus(-1));
+  navSvg.addEventListener('focus', () => navFocus(11));
+  navSvg.addEventListener('blur', () => navFocus(-1));
+  navSvg.addEventListener('keydown', (e) => {
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (!step) return;
+    e.preventDefault();
+    navFocus(Math.max(0, Math.min(11, (navIdx < 0 ? 11 : navIdx) + step)));
+  });
+
   function renderShowcase() {
     hideTip();
     renderRadar();
@@ -3250,15 +3892,22 @@ select.input { appearance: none; -webkit-appearance: none; background-image: url
     renderStation();
     renderTrend(true);
     renderGauge();
+    renderSleep();
+    renderLabs();
+    renderSched(false);
+    renderAlloc();
+    renderAssetKpis();
+    renderNav(true);
   }
   if ('ResizeObserver' in window) {
     let raf = 0;
     const ro = new ResizeObserver(() => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => { renderStrip(false); renderTrend(false); });
+      raf = requestAnimationFrame(() => { renderStrip(false); renderTrend(false); renderNav(false); });
     });
     ro.observe(stripBox);
     ro.observe(trendBox);
+    ro.observe(navBox);
   }
 
   // 复制
