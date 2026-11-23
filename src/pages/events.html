@@ -1,0 +1,67 @@
+<!--
+{
+  "title": { "zh": "活动", "en": "Events" },
+  "description": {
+    "zh": "我们参加和举办的公开活动。目前没有公开活动。",
+    "en": "Public events we host or join. None are scheduled at present."
+  },
+  "section": "company"
+}
+-->
+<section class="wrap">
+  <header class="hero">
+    <h1 class="hero__title">{{活动||Events}}</h1>
+    <div class="hero__side">
+      <p class="lead">{{我们参加和举办的公开活动会列在这里。||Public events we host or join are listed here.}}</p>
+    </div>
+  </header>
+</section>
+
+<section class="wrap section section--flush-top">
+  <div class="postlist__bar">
+    <p class="postlist__count">{{0 场活动||0 events}}</p>
+    <div class="postlist__tools">
+      <div class="seg" role="group" aria-label="{{形式||Format}}">
+        <button type="button" class="seg__btn" aria-pressed="true">{{全部||All}}</button>
+        <button type="button" class="seg__btn" aria-pressed="false" disabled>{{线上||Online}}</button>
+        <button type="button" class="seg__btn" aria-pressed="false" disabled>{{线下||In person}}</button>
+      </div>
+      <div class="seg" role="group" aria-label="{{状态||Status}}">
+        <button type="button" class="seg__btn" aria-pressed="true">{{即将举行||Upcoming}}</button>
+        <button type="button" class="seg__btn" aria-pressed="false" disabled>{{已结束||Past}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="emptybox emptybox--events">
+    <h2 class="h3">{{目前没有公开活动||No public events are scheduled}}</h2>
+    <p>{{有新活动时，会在这里和<a class="link" href="news.html">新闻页</a>公布。||New events will be announced here and on the <a class="link" href="news.html">news page</a>.}}</p>
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head">
+        <h2>{{邀请我们分享||Invite us to speak}}</h2>
+        <p>{{如果你在组织活动，想请我们讲下面这些题目，欢迎来信。||If you are organizing an event and would like us to speak on one of these subjects, write to us.}}</p>
+        <a class="btn btn--primary" <!-- @mailto zh="活动邀请" en="Event invitation" -->>{{写信邀请||Send an invitation}}</a>
+      </div>
+      <div class="split__body">
+        <dl class="deflist deflist--wide">
+          <div><dt>{{企业 AI 基础设施||Enterprise AI infrastructure}}</dt><dd>{{<a class="link" href="research-size-the-workload.html">先算工作负载，再选硬件</a>||<a class="link" href="research-size-the-workload.html">Size the workload before the hardware</a>}}</dd></div>
+          <div><dt>{{算力经济||Compute economics}}</dt><dd>{{<a class="link" href="research-buy-rent-share.html">买、租，还是共用：中小企业的算力账</a>||<a class="link" href="research-buy-rent-share.html">Buy, rent or share: how a smaller business should think about compute</a>}}</dd></div>
+          <div><dt>{{商业验证||Business validation}}</dt><dd>{{<a class="link" href="research-validate-before-building.html">写第一行代码之前，先验证需求</a>||<a class="link" href="research-validate-before-building.html">Validate demand before you write code</a>}}</dd></div>
+          <div><dt>{{创业与资本||Founders and capital}}</dt><dd>{{<a class="link" href="research-before-you-raise.html">融资之前，先准备好这五件事</a>||<a class="link" href="research-before-you-raise.html">Five things to have ready before you raise</a>}}</dd></div>
+          <div><dt>{{工程实践||Engineering}}</dt><dd>{{<a class="link" href="engineering-before-launch.html">AI 系统上线前的一张检查清单</a>||<a class="link" href="engineering-before-launch.html">A checklist before an AI system goes live</a>}}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title">{{不想等活动？直接来信。||Would you rather not wait for an event? Write to us.}}</h2>
+    <a class="btn btn--light" href="contact.html">{{联系我们||Contact us}}</a>
+  </div>
+</section>

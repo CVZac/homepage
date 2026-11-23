@@ -1,0 +1,37 @@
+<!--
+{
+  "title": { "zh": "新闻", "en": "News" },
+  "description": { "zh": "云想亿创集团的公告、文章与观点。", "en": "Announcements, essays and perspectives from CV-Etron Group." },
+  "section": "news"
+}
+-->
+<section class="wrap">
+  <div class="newsbar"><h1>{{新闻||News}}</h1><span>{{最新动态||Latest news}}</span></div>
+  <div class="newsgrid">
+    <div class="newsgrid__side"><!-- @postteasers urls=news-cv-etron-group,news-five-practices --></div>
+    <div class="newsgrid__lead"><!-- @postlead urls=news-new-website --></div>
+    <div class="newsgrid__side"><!-- @postteasers urls=research-size-the-workload,research-buy-rent-share,research-validate-before-building --></div>
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <h2 class="label rowlabel">{{专题||Features}}</h2>
+    <!-- @postcarousel urls=core-views,research-validate-before-building,engineering-before-launch label="{{专题文章||Featured articles}}" -->
+  </div>
+</section>
+
+<section class="wrap section section--flush-top">
+  <!-- @posttable title="{{全部文章||All news}}" tabs=news -->
+</section>
+
+<section class="contactband">
+  <div class="wrap contactband__in">
+    <h2 class="contactband__title">{{媒体与合作联系||Press and partnership enquiries}}</h2>
+    <div class="contactband__list">
+      <a class="contactband__item" href="mailto:sales@cv-etron.com"><b>{{邮件||Email}}</b><span>sales@cv-etron.com</span></a>
+      <a class="contactband__item" href="contact.html"><b>{{联系我们||Contact page}}</b><span>{{写下你的问题||Write down your question}}</span></a>
+      <a class="contactband__item" href="assets/cv-etron-logo.svg" download><b>{{品牌标识||Logo}}</b><span>{{下载 SVG||Download SVG}}</span></a>
+    </div>
+  </div>
+</section>

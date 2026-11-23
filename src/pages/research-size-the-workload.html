@@ -1,0 +1,59 @@
+<!--
+{
+  "title": { "zh": "先算工作负载，再选硬件", "en": "Size the workload before the hardware" },
+  "description": {
+    "zh": "本地部署 AI 最常见的失望，是从一张硬件采购单开始的。先把四个数字写下来。",
+    "en": "The most common disappointment in on-premises AI starts with a hardware shopping list. Write four numbers down first."
+  },
+  "section": "research",
+  "post": { "kind": "research", "category": "infrastructure", "date": "2026-11-23", "order": 2 }
+}
+-->
+<section class="wrap">
+  <header class="dochead dochead--article">
+    <!-- @posthead -->
+    <h1 class="dochead__title">{{先算工作负载，再选硬件||Size the workload before the hardware}}</h1>
+    <p class="lead">{{很多本地部署项目的第一个问题是「买什么显卡」。这个问题问早了。||Many on-premises projects open with the question of which GPU to buy. It is asked too early.}}</p>
+  </header>
+  <div class="article-plate"><figure class="plate"><!-- @plate kind=auto seed=research-size-the-workload ratio=5x2 --></figure></div>
+  <div class="doc">
+    <nav class="doc__side" data-toc aria-label="{{本文内容||On this page}}">
+      <span class="label">{{本文内容||On this page}}</span>
+      <ol class="toc toc--plain">
+        <li><a href="#shopping-list"><span>{{从采购单开始的项目||Projects that start from a shopping list}}</span></a></li>
+        <li><a href="#four-numbers"><span>{{四个数字||Four numbers}}</span></a></li>
+        <li><a href="#decisions"><span>{{数字怎样变成决定||How the numbers become decisions}}</span></a></li>
+        <li><a href="#before-a-quote"><span>{{问报价之前||Before you ask for a quote}}</span></a></li>
+      </ol>
+    </nav>
+    <article class="doc__body prose">
+      <section id="shopping-list">
+        <h2>{{从采购单开始的项目||Projects that start from a shopping list}}</h2>
+        <p>{{硬件看得见、摸得着，所以最容易先谈。可是同一台机器，对一种用法绰绰有余，对另一种用法根本不够。不知道怎么用，就没法判断够不够。||Hardware is visible and tangible, so it is the easiest thing to talk about first. But the same machine is generous for one kind of use and hopeless for another. Until you know how it will be used, you cannot tell whether it is enough.}}</p>
+        <p>{{结果通常是两种。买多了，机器大部分时间空着。买少了，一到高峰就排队，大家很快不再用它。两种情况里，钱都花了，系统都没有真正用起来。||It usually ends one of two ways. Buy too much, and the machine sits idle most of the day. Buy too little, and people queue at busy times and soon stop using it. Either way the money is spent and the system is not truly in use.}}</p>
+      </section>
+      <section id="four-numbers">
+        <h2>{{四个数字||Four numbers}}</h2>
+        <h3>{{同时有多少人在用||How many people at once}}</h3>
+        <p>{{不是员工总数，而是高峰时刻真正在等回答的人数。它决定系统要并行处理多少请求，往往也决定一台机器够不够。||Not the headcount, but the number of people actually waiting for an answer at the busiest moment. It decides how many requests the system must handle in parallel, and often whether one machine will do.}}</p>
+        <h3>{{每次输入有多长||How long the inputs are}}</h3>
+        <p>{{问一句话，和丢进一份上百页的合同，是两种负载。输入越长，占用的显存越多，单次处理也越慢。用知识库检索可以缩短输入，但前提是先知道典型的输入长什么样。||Asking one sentence and dropping in a contract of a hundred pages are different workloads. Longer inputs take more memory and more time per request. Retrieval from a knowledge base can shorten them, but only once you know what a typical input looks like.}}</p>
+        <h3>{{回答要多快||How fast answers must come}}</h3>
+        <p>{{客服对话需要几秒内开始出字，夜间批量整理文档可以等到第二天早上。能等的任务可以排队，用更少的硬件完成。不能等的任务必须留出余量。||A customer conversation needs words on the screen within seconds. Overnight document processing can wait until morning. Work that can wait can queue, and gets done on less hardware. Work that cannot wait needs headroom.}}</p>
+        <h3>{{哪些数据不能离开||Which data cannot leave the building}}</h3>
+        <p>{{这一条决定的不是配置，而是架构：哪些必须留在本地，哪些可以交给外部服务。很多机构其实只有一部分数据需要留在本地。分清楚之后，本地的规模可以小很多。||This one decides architecture, not specification: what must stay on site and what may go to an outside service. In many organizations only part of the data has to stay. Once the line is drawn, the on-site system can be much smaller.}}</p>
+      </section>
+      <section id="decisions">
+        <h2>{{数字怎样变成决定||How the numbers become decisions}}</h2>
+        <p>{{并发人数和速度要求，决定算力的规模。输入长度，决定显存和模型的选择。数据边界，决定本地与外部怎样分工。四个数字放在一起，才回答得了「买什么」。||Concurrency and speed set the scale of computing. Input length sets the memory and the choice of model. The data boundary sets the division of work between on-site and outside. Only the four together can answer what to buy.}}</p>
+        <p>{{这些数字还会变：用的人会增多，用法会变深。所以我们倾向于按现在的数字配置，同时留好扩展的位置，而不是一次买到几年以后。||The numbers also move: more people come to use the system, and they use it more deeply. So we prefer to size for today's numbers and leave room to grow, instead of buying now for several years ahead.}}</p>
+      </section>
+      <section id="before-a-quote">
+        <h2>{{问报价之前||Before you ask for a quote}}</h2>
+        <p>{{在向任何人要报价之前，先把这四个数字写下来。写不出来的那一项，就是最该先弄清楚的事。||Before you ask anyone for a quote, write the four numbers down. The one you cannot write is the first thing to find out.}}</p>
+        <p>{{弄清它的办法通常很简单：让一小组人先用起来，记录一段时间。||Finding it out is usually simple: let a small group start using the system and keep a record for a while.}}</p>
+      </section>
+    </article>
+  </div>
+  <!-- @related -->
+</section>

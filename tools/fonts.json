@@ -1,0 +1,15 @@
+{
+  "always": {
+    "basic": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~©·÷×",
+    "latin": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~©·÷×“”‘’–—…",
+    "cjk": "，。、；：？！「」『』（）《》…—“”‘’"
+  },
+  "fonts": [
+    { "family": "CV Sans", "covers": "latin", "faces": [{ "src": "SchibstedGrotesk.woff2", "out": "cv-sans.woff2", "weights": [1, 1000] }] },
+    { "family": "CV Sans L", "covers": "basic", "faces": [{ "src": "SchibstedGrotesk.woff2", "out": "cv-sans.woff2", "weights": [1, 1000] }] },
+    { "family": "CV Serif", "covers": "latin", "faces": [{ "src": "Newsreader.woff2", "out": "cv-serif.woff2", "weights": [1, 1000] }] },
+    { "family": "CV Serif L", "covers": "basic", "faces": [{ "src": "Newsreader.woff2", "out": "cv-serif.woff2", "weights": [1, 1000] }] },
+    { "family": "CV Hei", "covers": "cjk", "faces": [{ "src": "NotoSansSC-700.ttf", "out": "cv-hei-700.woff2", "weight": 700 }] },
+    { "family": "CV Song", "covers": "cjk", "faces": [{ "src": "NotoSerifSC-500.ttf", "out": "cv-song-500.woff2", "weight": 500 }] }
+  ]
+}

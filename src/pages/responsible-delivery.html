@@ -1,0 +1,84 @@
+<!--
+{
+  "title": { "zh": "负责任交付政策", "en": "Responsible delivery policy" },
+  "description": {
+    "zh": "按数据敏感度分级管理部署风险的自愿框架：四个部署等级、上线前的检查，以及出现问题时的做法。",
+    "en": "Our voluntary framework for managing deployment risk by data sensitivity: four deployment levels, the checks before launch, and what we do when something goes wrong."
+  },
+  "section": "commitments"
+}
+-->
+<section class="wrap">
+  <header class="dochead">
+    <p class="meta"><span class="meta__cat">{{承诺||Commitments}}</span></p>
+    <h1 class="dochead__title">{{负责任交付政策||Responsible delivery policy}}</h1>
+    <p class="lead">{{按数据敏感度分级管理部署风险的自愿框架。||Our voluntary framework for managing deployment risk by data sensitivity.}}</p>
+    <dl class="metastrip">
+      <div><dt>{{最近更新||Last updated}}</dt><dd><!-- @date 2026-11-23 --></dd></div>
+      <div><dt>{{版本||Version}}</dt><dd>1.0</dd></div>
+      <div><dt>{{类型||Type}}</dt><dd>{{自愿承诺||Voluntary commitment}}</dd></div>
+    </dl>
+  </header>
+  <div class="doc">
+    <nav class="doc__side" data-toc aria-label="{{目录||Contents}}">
+      <span class="label">{{目录||Contents}}</span>
+      <ol class="toc">
+        <li><a href="#why"><span class="toc__num">01</span><span>{{为什么有这份政策||Why this policy exists}}</span></a></li>
+        <li><a href="#levels"><span class="toc__num">02</span><span>{{部署等级||Deployment levels}}</span></a></li>
+        <li><a href="#checks"><span class="toc__num">03</span><span>{{上线前的检查||Checks before launch}}</span></a></li>
+        <li><a href="#incidents"><span class="toc__num">04</span><span>{{出现问题时||When something goes wrong}}</span></a></li>
+        <li><a href="#versions"><span class="toc__num">05</span><span>{{版本||Versions}}</span></a></li>
+      </ol>
+    </nav>
+    <article class="doc__body prose">
+      <section id="why">
+        <h2><span class="num">01</span>{{为什么有这份政策||Why this policy exists}}</h2>
+        <p>{{企业里的 AI 系统接触的是真实的数据，影响的是真实的决定。数据越敏感，系统上线之前需要的保护就越强。||An AI system inside a business touches real data and affects real decisions. The more sensitive the data, the stronger the safeguards it needs before it goes live.}}</p>
+        <p>{{这份政策写下我们对自己的要求。它是自愿的：没有人要求我们这样做，我们选择公开它，是为了让客户可以对照检查。||This policy sets out what we require of ourselves. It is voluntary. Nobody obliges us to follow it, and we publish it so that clients can hold us to it.}}</p>
+      </section>
+      <section id="levels">
+        <h2><span class="num">02</span>{{部署等级||Deployment levels}}</h2>
+        <p>{{每一次部署，都按系统会接触到的最敏感的数据归入四个等级之一。||Every deployment is placed in one of four levels, according to the most sensitive data the system will touch.}}</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>{{等级||Level}}</th><th>{{数据||Data}}</th><th>{{运行位置||Where it may run}}</th><th>{{访问与日志||Access and logging}}</th><th>{{人工复核||Human review}}</th></tr></thead>
+          <tbody>
+            <tr><td>D1</td><td>{{公开信息，例如已发布的产品资料||Public information, such as published product material}}</td><td>{{任何合适的环境||Any suitable environment}}</td><td>{{基本的账号管理||Basic account management}}</td><td>{{对外发布前复核||Before anything is published}}</td></tr>
+            <tr><td>D2</td><td>{{内部资料，例如制度、流程、会议记录||Internal material, such as policies, procedures and meeting notes}}</td><td>{{经客户认可的环境||An environment the client has approved}}</td><td>{{按角色授权，保留使用记录||Access by role, with a record of use}}</td><td>{{用于决策前复核||Before use in a decision}}</td></tr>
+            <tr><td>D3</td><td>{{客户信息与个人信息||Customer and personal information}}</td><td>{{客户自己的环境，或客户指定的专有环境||The client's own environment, or a private one the client designates}}</td><td>{{最小权限，完整日志，定期查看||Least privilege, full logs, reviewed regularly}}</td><td>{{涉及个人的输出逐项复核||Every output that concerns an individual}}</td></tr>
+            <tr><td>D4</td><td>{{受监管或高度敏感的数据||Regulated or highly sensitive data}}</td><td>{{仅限客户自己的环境||Inside the client's own environment only}}</td><td>{{最小权限，完整日志，由客户指定专人审查||Least privilege, full logs, audited by a person the client names}}</td><td>{{所有输出在生效前复核||Every output, before it takes effect}}</td></tr>
+          </tbody>
+        </table></div>
+        <p>{{拿不准属于哪一级时，按更高的一级处理。||When it is unclear which level applies, we use the higher one.}}</p>
+      </section>
+      <section id="checks">
+        <h2><span class="num">03</span>{{上线前的检查||Checks before launch}}</h2>
+        <ol class="steps">
+          <li><h3>{{给数据分类||Classify the data}}</h3><p>{{列出系统会接触的每一类数据，并标明敏感程度。||List every kind of data the system will touch and mark its sensitivity.}}</p></li>
+          <li><h3>{{确定等级||Choose the level}}</h3><p>{{按其中最敏感的一类确定部署等级，并与客户确认。||Set the deployment level by the most sensitive kind, and confirm it with the client.}}</p></li>
+          <li><h3>{{落实保护措施||Put the safeguards in place}}</h3><p>{{按该等级的要求配置运行位置、权限、日志和复核方式。||Configure location, access, logging and review as the level requires.}}</p></li>
+          <li><h3>{{用真实问题测试||Test with real questions}}</h3><p>{{使用客户提供的真实问题和期望答案进行测试，结果留档。||Test with real questions and expected answers supplied by the client, and keep the results.}}</p></li>
+          <li><h3>{{客户确认||The client signs off}}</h3><p>{{客户查看测试结果和保护措施，书面确认。||The client reviews the test results and safeguards and confirms in writing.}}</p></li>
+          <li><h3>{{上线||Launch}}</h3><p>{{前五步完成之后，系统才上线。||The system goes live only after the first five steps are complete.}}</p></li>
+        </ol>
+        <p>{{每一步的具体检查项，见<a href="engineering-before-launch.html">上线前的检查清单</a>。||The detailed items for each step are in our <a href="engineering-before-launch.html">pre-launch checklist</a>.}}</p>
+      </section>
+      <section id="incidents">
+        <h2><span class="num">04</span>{{出现问题时||When something goes wrong}}</h2>
+        <ul>
+          <li>{{<strong>及时告知。</strong>发现问题后，我们主动通知客户，说明已知的情况和尚不清楚的部分。||<strong>Tell the client promptly.</strong> When we find a problem we notify the client ourselves, saying what is known and what is not yet clear.}}</li>
+          <li>{{<strong>先控制影响。</strong>必要时停用受影响的功能，退回上一个可用的版本。||<strong>Contain it first.</strong> Where necessary we switch off the affected function and roll back to the last working version.}}</li>
+          <li>{{<strong>修复并验证。</strong>修复之后，重新运行测试，确认问题不再出现。||<strong>Fix and verify.</strong> After the fix, the tests are run again to confirm the problem does not recur.}}</li>
+          <li>{{<strong>写下经过。</strong>记录发生了什么、原因是什么、改了什么，并交给客户。||<strong>Write it down.</strong> We record what happened, why, and what was changed, and give the record to the client.}}</li>
+        </ul>
+      </section>
+      <section id="versions">
+        <h2><span class="num">05</span>{{版本||Versions}}</h2>
+        <div class="doccard"><b>{{当前版本 1.0||Current version 1.0}}</b><span>{{自 2026年11月23日起生效||Effective Nov 23, 2026}}</span></div>
+        <ol class="changelog">
+          <li><!-- @date 2026-11-23 --><span>{{首次发布。||First published.}}</span></li>
+        </ol>
+        <p>{{政策有修改时，我们会在这里列出变更内容和日期。相关内容：<a href="charter.html">服务准则</a>、<a href="security.html">安全与合规</a>。||When the policy changes, the changes and their dates will be listed here. Related: the <a href="charter.html">service charter</a> and <a href="security.html">security and compliance</a>.}}</p>
+      </section>
+    </article>
+  </div>
+</section>

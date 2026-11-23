@@ -1,0 +1,76 @@
+<!--
+{
+  "title": { "zh": "AI 系统上线前的一张检查清单", "en": "A checklist before an AI system goes live" },
+  "description": {
+    "zh": "数据、回答质量、失败时怎么办、权限与日志、交接。上线之前，逐项确认。",
+    "en": "Data, answer quality, failure handling, access and logs, handover. Confirm each one before launch."
+  },
+  "section": "research",
+  "post": { "kind": "research", "category": "engineering", "date": "2026-11-23", "order": 6 }
+}
+-->
+<section class="wrap">
+  <header class="dochead dochead--article">
+    <!-- @posthead -->
+    <h1 class="dochead__title">{{AI 系统上线前的一张检查清单||A checklist before an AI system goes live}}</h1>
+    <p class="lead">{{系统能跑通演示，和系统可以交给每天要用它的人，是两回事。中间差的就是这张清单。||A system that gets through a demo and a system you can hand to people who will rely on it every day are different things. This checklist is the difference.}}</p>
+  </header>
+  <div class="article-plate"><figure class="plate"><!-- @plate kind=auto seed=engineering-before-launch ratio=5x2 --></figure></div>
+  <div class="doc">
+    <nav class="doc__side" data-toc aria-label="{{本文内容||On this page}}">
+      <span class="label">{{本文内容||On this page}}</span>
+      <ol class="toc toc--plain">
+        <li><a href="#data"><span>{{数据||Data}}</span></a></li>
+        <li><a href="#quality"><span>{{回答质量||Answer quality}}</span></a></li>
+        <li><a href="#failure"><span>{{失败的时候||When it fails}}</span></a></li>
+        <li><a href="#access"><span>{{权限与日志||Access and logs}}</span></a></li>
+        <li><a href="#handover"><span>{{交接||Handover}}</span></a></li>
+      </ol>
+    </nav>
+    <article class="doc__body prose">
+      <section id="data">
+        <h2>{{数据||Data}}</h2>
+        <ul class="checklist">
+          <li>{{进入系统的每一类数据都列了出来，并标明敏感程度。||Every kind of data entering the system is listed, with its sensitivity marked.}}</li>
+          <li>{{每一类数据谁可以看到，已经写下来并配置好。||Who may see each kind of data is written down and configured.}}</li>
+          <li>{{测试时用过的真实数据，知道存在哪里、什么时候删除。||For real data used in testing, it is known where it is stored and when it will be deleted.}}</li>
+        </ul>
+      </section>
+      <section id="quality">
+        <h2>{{回答质量||Answer quality}}</h2>
+        <ul class="checklist">
+          <li>{{有一组固定的真实问题和期望答案，由实际使用的人提供。||There is a fixed set of real questions with expected answers, supplied by the people who will use the system.}}</li>
+          <li>{{每次改动之后都重跑这组问题，结果有记录。||The set is re-run after every change, and the results are recorded.}}</li>
+          <li>{{回答能指出依据的来源，使用者可以自己核对。||Answers point to their sources, so users can check them.}}</li>
+          <li>{{已经和使用者约定好：哪些问题系统不该回答。||It has been agreed with users which questions the system should not answer.}}</li>
+        </ul>
+      </section>
+      <section id="failure">
+        <h2>{{失败的时候||When it fails}}</h2>
+        <ul class="checklist">
+          <li>{{系统没有把握时会明说，而不是编一个答案。||When the system is unsure it says so, instead of inventing an answer.}}</li>
+          <li>{{系统不可用时，使用者知道该怎么办、找谁。||When the system is down, users know what to do and whom to ask.}}</li>
+          <li>{{重要的输出在生效之前有人复核。||Outputs that matter are checked by a person before they take effect.}}</li>
+        </ul>
+      </section>
+      <section id="access">
+        <h2>{{权限与日志||Access and logs}}</h2>
+        <ul class="checklist">
+          <li>{{每个人只能访问自己该访问的内容。||Each person can reach only what they should.}}</li>
+          <li>{{谁在什么时候问了什么、得到了什么，有记录可查。||There is a record of who asked what, when, and what came back.}}</li>
+          <li>{{日志本身的访问权限也设置好了。||Access to the logs themselves is restricted too.}}</li>
+        </ul>
+      </section>
+      <section id="handover">
+        <h2>{{交接||Handover}}</h2>
+        <ul class="checklist">
+          <li>{{上线之后由谁负责这个系统，名字已经写下来。||The person responsible for the system after launch is named in writing.}}</li>
+          <li>{{出问题时怎样退回上一个版本，已经演练过一次。||Rolling back to the previous version has been rehearsed once.}}</li>
+          <li>{{使用者接受过培训，知道它擅长什么、不擅长什么。||Users have been trained and know what the system is good at and what it is not.}}</li>
+        </ul>
+        <p>{{清单上没有一项是难事。难的是在赶进度的时候，仍然一项一项去确认。||Nothing on the list is hard. What is hard is confirming each item, one by one, when the schedule is pressing.}}</p>
+      </section>
+    </article>
+  </div>
+  <!-- @related -->
+</section>

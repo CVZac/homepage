@@ -76,6 +76,28 @@ function expandI18n(html, pageName) {
   return html;
 }
 
+// Chinese headings: allow line breaks only between words (CSS sets word-break: keep-all on headings).
+const seg = new Intl.Segmenter('zh', { granularity: 'word' });
+const BIND_PREV = new Set([...'的了着过们吗呢吧啊地得者性化式型级线页']); // never start a line
+const BIND_NEXT = new Set([...'把被和与及或在对从向为是不也就都很最更还再又让给']); // never end a line
+function breakable(text) {
+  const words = [...seg.segment(text)].map((x) => x.segment);
+  let out = '';
+  words.forEach((w, i) => {
+    out += w;
+    const next = words[i + 1];
+    if (!next) return;
+    const cjk = (c) => /[\u4e00-\u9fff]/.test(c);
+    if (cjk(w[w.length - 1]) && cjk(next[0]) && !BIND_PREV.has(next) && !BIND_NEXT.has(w)) out += '<wbr>';
+  });
+  return out;
+}
+function tuneHeadings(html) {
+  return html.replace(/<(h[1-3])\b[^>]*>[\s\S]*?<\/\1>/g, (block) =>
+    block.replace(/(<span data-zh lang="zh-CN">)([\s\S]*?)(<\/span>)/g, (_, a, inner, c) =>
+      a + inner.replace(/(^|>)([^<]+)/g, (m, lead, text) => lead + breakable(text)) + c));
+}
+
 // ---------- assets ----------
 function bundle(dir, out) {
   const files = fs.readdirSync(dir).filter((f) => !f.startsWith('_')).sort();
@@ -114,7 +136,7 @@ for (const page of pages) {
     .replaceAll('%BODY_CLASS%', m.bodyClass || '')
     .replaceAll('%CSS_V%', cssV).replaceAll('%JS_V%', jsV);
   html = expandDirectives(html, page, ctx);
-  html = expandI18n(html, page.name);
+  html = tuneHeadings(expandI18n(html, page.name));
   built.push({ page, html });
 }
 

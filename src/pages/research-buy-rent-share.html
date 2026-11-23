@@ -1,0 +1,64 @@
+<!--
+{
+  "title": { "zh": "买、租，还是共用：中小企业的算力账", "en": "Buy, rent or share: how a smaller business should think about compute" },
+  "description": {
+    "zh": "算力有三种拿法。哪一种划算，取决于机器一天里真正忙几个小时。",
+    "en": "There are three ways to get compute. Which one pays depends on how many hours a day the machine is really busy."
+  },
+  "section": "research",
+  "post": { "kind": "research", "category": "compute", "date": "2026-11-23", "order": 3 }
+}
+-->
+<section class="wrap">
+  <header class="dochead dochead--article">
+    <!-- @posthead -->
+    <h1 class="dochead__title">{{买、租，还是共用：中小企业的算力账||Buy, rent or share: how a smaller business should think about compute}}</h1>
+    <p class="lead">{{中小企业问算力，常常只问价格。更该先问的是：这台机器一天里有几个小时在干活。||Smaller businesses asking about compute often ask only about price. The better first question is how many hours a day the machine will be working.}}</p>
+  </header>
+  <div class="article-plate"><figure class="plate"><!-- @plate kind=auto seed=research-buy-rent-share ratio=5x2 --></figure></div>
+  <div class="doc">
+    <nav class="doc__side" data-toc aria-label="{{本文内容||On this page}}">
+      <span class="label">{{本文内容||On this page}}</span>
+      <ol class="toc toc--plain">
+        <li><a href="#three-ways"><span>{{三种拿法||Three ways to get it}}</span></a></li>
+        <li><a href="#four-variables"><span>{{四个变量||Four variables}}</span></a></li>
+        <li><a href="#the-sum"><span>{{一笔简单的账||A simple sum}}</span></a></li>
+        <li><a href="#sharing"><span>{{什么时候适合共用||When sharing makes sense}}</span></a></li>
+        <li><a href="#measure"><span>{{从测量开始||Start by measuring}}</span></a></li>
+      </ol>
+    </nav>
+    <article class="doc__body prose">
+      <section id="three-ways">
+        <h2>{{三种拿法||Three ways to get it}}</h2>
+        <p>{{<strong>自有。</strong>买下设备，放在自己的地方。钱一次花出去，之后用多用少，成本都在。还要有人维护。||<strong>Own.</strong> You buy the equipment and keep it on your premises. The money goes out once, and the cost stays whether you use it a lot or a little. Someone also has to look after it.}}</p>
+        <p>{{<strong>租用。</strong>按小时或按月向云服务付费。用多少付多少，随时可以停。长期满负荷使用时，累计花费会超过买一台。||<strong>Rent.</strong> You pay a cloud provider by the hour or the month. You pay for what you use and can stop at any time. Under heavy, constant use the total passes the price of owning.}}</p>
+        <p>{{<strong>共用。</strong>几个团队或几家公司分摊同一批设备，在不同时段使用。单位成本低，但需要协调排期，并把各方的数据隔离开。||<strong>Share.</strong> Several teams or companies split the cost of the same equipment and use it at different times. The unit cost is low, but schedules must be coordinated and each party's data kept apart.}}</p>
+      </section>
+      <section id="four-variables">
+        <h2>{{四个变量||Four variables}}</h2>
+        <ul>
+          <li>{{<strong>使用率。</strong>设备真正在处理任务的时间占多少。这是最重要的一项。||<strong>Utilization.</strong> The share of time the equipment is actually processing work. This matters most.}}</li>
+          <li>{{<strong>数据敏感度。</strong>有些数据不适合放到外部环境，这会直接排除一些选项。||<strong>Data sensitivity.</strong> Some data should not sit in an outside environment, which rules some options out directly.}}</li>
+          <li>{{<strong>需求变化的速度。</strong>半年后要的东西如果和今天不一样，买下来的设备就可能不合用。||<strong>How fast needs change.</strong> If what you need in six months differs from today, equipment you bought may no longer fit.}}</li>
+          <li>{{<strong>谁来维护。</strong>没有人管的机器迟早出问题。没有这个人，自有的真实成本要高得多。||<strong>Who maintains it.</strong> A machine nobody looks after fails sooner or later. Without that person, the true cost of owning is much higher.}}</li>
+        </ul>
+      </section>
+      <section id="the-sum">
+        <h2>{{一笔简单的账||A simple sum}}</h2>
+        <p class="formula">{{每月自有成本 ÷ 每月实际使用小时数 = 自有的每小时成本||Monthly cost of ownership ÷ hours actually used per month = cost per hour of owning}}</p>
+        <p>{{把这个数和租用的每小时价格放在一起比。每月自有成本包括设备折旧、电费、场地，以及维护它的人力。||Compare that figure with the hourly price of renting. The monthly cost of ownership includes depreciation, electricity, space, and the labor of maintaining the equipment.}}</p>
+        <p>{{示例：设每月自有成本为 C，每月实际使用 H 小时，租用同等算力的价格为每小时 P。当 C ÷ H 小于 P 时，自有更划算；大于 P 时，租用更划算。H 很小的时候，自有几乎总是吃亏。||Illustration: let the monthly cost of ownership be C, the hours actually used per month be H, and the rental price of equivalent computing be P per hour. When C ÷ H is below P, owning is cheaper; when it is above P, renting is. When H is small, owning almost always loses.}}</p>
+        <p>{{关键在 H。它不是开机时间，而是实际在处理任务的时间。很多团队会高估它。||Everything turns on H. It is not the time the machine is switched on, but the time it is doing work. Many teams overestimate it.}}</p>
+      </section>
+      <section id="sharing">
+        <h2>{{什么时候适合共用||When sharing makes sense}}</h2>
+        <p>{{共用适合三个条件同时成立的情况：用量不大，但数据不便外出；几方的使用高峰彼此错开；有人负责隔离和排期。少了最后一条，共用很快会变成争用。||Sharing suits the case where three things hold together: usage is modest but the data should not leave; the parties' busy hours do not overlap; and someone is responsible for isolation and scheduling. Without the last, sharing soon turns into contention.}}</p>
+      </section>
+      <section id="measure">
+        <h2>{{从测量开始||Start by measuring}}</h2>
+        <p>{{如果现在说不出 H 是多少，就先租用，量一个月的真实使用小时数，再做决定。花一个月的租金，换一个不会后悔的决定，是划算的。||If you cannot say what H is today, rent first, measure a month of real usage, and then decide. A month of rental is a fair price for a decision you will not regret.}}</p>
+      </section>
+    </article>
+  </div>
+  <!-- @related -->
+</section>

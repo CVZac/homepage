@@ -1,0 +1,73 @@
+<!--
+{
+  "title": { "zh": "安全与合规", "en": "Security and compliance" },
+  "description": {
+    "zh": "我们的安全做法、合规说明，以及如何向我们报告安全问题。",
+    "en": "Our security practices, our compliance notes, and how to report a security issue to us."
+  },
+  "section": "commitments"
+}
+-->
+<section class="wrap">
+  <header class="hero">
+    <h1 class="hero__title">{{安全与合规||Security and compliance}}</h1>
+    <div class="hero__side">
+      <p class="lead">{{安全是交付的一部分，不是交付之后的事。||Security is part of delivery, not something that follows it.}}</p>
+    </div>
+  </header>
+</section>
+
+<section class="wrap section section--flush-top">
+  <div class="colset">
+    <h2 class="label">{{我们的做法||Our approach}}</h2>
+    <div class="cols">
+      <div class="col"><h3 class="col__title">{{最小够用||Only what is needed}}</h3><p>{{只索取工作所需的数据，只开放完成工作所需的权限。||We ask only for the data the work needs, and open only the access the work requires.}}</p></div>
+      <div class="col"><h3 class="col__title">{{数据不出环境||Data stays in place}}</h3><p>{{敏感数据可以留在客户自己的环境里处理。本地部署就是为此而设。||Sensitive data can be processed inside the client's own environment. On-premises deployment exists for this.}}</p></div>
+      <div class="col"><h3 class="col__title">{{留痕可查||Everything leaves a trace}}</h3><p>{{谁在什么时候用了什么，有记录可查。日志本身也受权限保护。||There is a record of who used what, and when. The logs themselves are access-controlled.}}</p></div>
+      <div class="col"><h3 class="col__title">{{人工复核||A person checks}}</h3><p>{{涉及敏感数据的输出，在生效之前由人复核。||Outputs that involve sensitive data are checked by a person before they take effect.}}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section section--flush-top">
+  <figure class="plate plate--band"><!-- @plate kind=auto seed=security ratio=5x2 --></figure>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head">
+        <h2>{{合规||Compliance}}</h2>
+        <p>{{我们不在这里罗列认证。下面是可以核实的事实。||We do not list certifications here. What follows are facts that can be verified.}}</p>
+      </div>
+      <div class="split__body">
+        <dl class="deflist deflist--wide">
+          <div><dt>{{网站备案||Website filing}}</dt><dd><a class="link" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">京ICP备2026070946号</a></dd></div>
+          <div><dt>{{本网站的数据处理||This website's data practices}}</dt><dd>{{不使用 Cookie、统计脚本或跟踪工具。详见<a class="link" href="privacy.html">隐私政策</a>。||No cookies, no analytics scripts and no trackers. See the <a class="link" href="privacy.html">privacy policy</a>.}}</dd></div>
+          <div><dt>{{客户的合规要求||Client compliance requirements}}</dt><dd>{{我们在客户自身的合规要求之内工作。某项要求超出我们的能力时，我们会在开始之前说明。||We work within the client's own compliance requirements. When a requirement is beyond what we can meet, we say so before work begins.}}</dd></div>
+          <div><dt>{{部署保护措施||Deployment safeguards}}</dt><dd>{{按数据敏感度分为四个等级。详见<a class="link" href="responsible-delivery.html">负责任交付政策</a>。||Four levels, set by data sensitivity. See the <a class="link" href="responsible-delivery.html">responsible delivery policy</a>.}}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head">
+        <h2>{{报告安全问题||Report a security issue}}</h2>
+        <p>{{如果你发现本网站或我们交付的系统存在安全问题，请告诉我们。||If you find a security problem in this website or in a system we delivered, please tell us.}}</p>
+        <a class="btn btn--primary" <!-- @mailto zh="安全问题" en="Security issue" -->>{{写信报告||Report by email}}</a>
+      </div>
+      <div class="split__body">
+        <ol class="steps">
+          <li><h3>{{写信给我们||Write to us}}</h3><p>{{发到 sales@cv-etron.com，邮件标题写「安全问题」。||Send it to sales@cv-etron.com with the subject line "Security issue".}}</p></li>
+          <li><h3>{{说明细节||Include the details}}</h3><p>{{问题出在哪里、怎样重现，以及你认为可能造成的影响。||Where the problem is, how to reproduce it, and what you think its impact could be.}}</p></li>
+          <li><h3>{{我们确认并调查||We acknowledge and investigate}}</h3><p>{{我们会回信确认收到，进行调查，并把结论告诉你。||We write back to confirm receipt, investigate, and tell you what we found.}}</p></li>
+          <li><h3>{{修复之后再公开||Disclose after the fix}}</h3><p>{{在我们有机会修复之前，请不要公开细节。||Please do not make the details public before we have had a chance to fix the problem.}}</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

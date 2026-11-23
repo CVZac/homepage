@@ -92,6 +92,8 @@ html[lang="en"] [data-zh], html:not([lang="en"]) [data-en] { display: none !impo
 h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 h1, h2, h3, h4 { font-family: var(--f-head); font-weight: 700; line-height: var(--lh-head); letter-spacing: var(--ls-head); text-wrap: balance; }
+/* Chinese headings break only between words; the build inserts the break opportunities */
+html:not([lang="en"]) :is(h1, h2, h3) { word-break: keep-all; overflow-wrap: anywhere; }
 p { text-wrap: pretty; }
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }

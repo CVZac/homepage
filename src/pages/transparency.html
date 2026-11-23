@@ -1,0 +1,68 @@
+<!--
+{
+  "title": { "zh": "透明度", "en": "Transparency" },
+  "description": {
+    "zh": "我们如何工作、如何对待数据，以及我们公开作出的承诺。",
+    "en": "How we work, how we treat data, and the commitments we have made in public."
+  },
+  "section": "commitments"
+}
+-->
+<section class="wrap">
+  <header class="hero">
+    <h1 class="hero__title">{{透明度||Transparency}}</h1>
+    <div class="hero__side">
+      <p class="lead">{{我们如何工作、如何对待数据，以及我们公开作出的承诺。这一页把分散在各处的说明放在一起。||How we work, how we treat data, and the commitments we have made in public. This page brings together what is stated elsewhere on the site.}}</p>
+    </div>
+  </header>
+</section>
+
+<section class="wrap section section--flush-top">
+  <div class="tiles" role="tablist" aria-label="{{透明度分区||Transparency sections}}">
+    <button type="button" class="tile" role="tab" id="tab-work" aria-controls="panel-work" aria-selected="true"><span class="tile__num">01</span><span class="tile__title">{{我们如何工作||How we work}}</span><span class="tile__text">{{业务、合作方式，以及我们自己怎样使用 AI。||Our practices, how engagements run, and how we use AI ourselves.}}</span></button>
+    <button type="button" class="tile" role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false"><span class="tile__num">02</span><span class="tile__title">{{数据与系统||Data and systems}}</span><span class="tile__text">{{本网站收集什么，客户的数据如何处理。||What this website collects, and how client data is handled.}}</span></button>
+    <button type="button" class="tile" role="tab" id="tab-commitments" aria-controls="panel-commitments" aria-selected="false"><span class="tile__num">03</span><span class="tile__title">{{自愿承诺||Voluntary commitments}}</span><span class="tile__text">{{我们公开作出、可以对照检查的承诺。||Commitments we have made in public and can be held to.}}</span></button>
+  </div>
+
+  <div class="tabpanel" role="tabpanel" id="panel-work" aria-labelledby="tab-work" tabindex="0">
+    <dl class="deflist deflist--wide">
+      <div><dt>{{我们做什么||What we do}}</dt><dd>{{五条业务线：企业级 AI 基础设施、中小企业普惠算力、AI 商业验证、早期创业融资对接、赋能独立创业者。详见<a class="link" href="practices.html">业务总览</a>。||Five practices: Enterprise-Grade AI Infrastructure, Accessible Computing for SMBs, AI-Powered Business Validation, Venture Capital Access for Early-Stage Startups, and Empowering Independent Entrepreneurs. See <a class="link" href="practices.html">all practices</a>.}}</dd></div>
+      <div><dt>{{合作怎样进行||How engagements run}}</dt><dd>{{范围、周期、交付物和费用在开始前以书面形式约定，验收以写下的内容为准。完整说明见<a class="link" href="charter.html">服务准则</a>。||Scope, timeline, deliverables and fees are agreed in writing before work begins, and acceptance is judged against what was written. The full account is in the <a class="link" href="charter.html">service charter</a>.}}</dd></div>
+      <div><dt>{{我们怎样使用 AI||How we use AI ourselves}}</dt><dd>{{我们在自己的工作流程中全程使用 AI 工具。交给客户的内容，在交出之前由人复核。||We use AI tools throughout our own workflow. Anything that goes to a client is reviewed by a person first.}}</dd></div>
+      <div><dt>{{我们不做什么||What we do not do}}</dt><dd>{{我们的服务不构成投资、法律或财务建议。我们不承诺融资结果，也不承诺无法保证的业务结果。||Our services are not investment, legal or financial advice. We do not promise fundraising outcomes, or business results we cannot guarantee.}}</dd></div>
+      <div><dt>{{怎样联系我们||How to reach us}}</dt><dd>{{唯一的联系渠道是 <a class="link" href="mailto:sales@cv-etron.com">sales@cv-etron.com</a>。来信由团队成员阅读和回复。||The only contact channel is <a class="link" href="mailto:sales@cv-etron.com">sales@cv-etron.com</a>. Messages are read and answered by members of the team.}}</dd></div>
+    </dl>
+  </div>
+
+  <div class="tabpanel" role="tabpanel" id="panel-data" aria-labelledby="tab-data" tabindex="0" hidden>
+    <dl class="deflist deflist--wide">
+      <div><dt>{{本网站||This website}}</dt><dd>{{本网站由静态页面组成，不使用 Cookie、统计脚本或跟踪工具，也不向第三方发起请求。字体由本站提供。||This website is made of static pages. It uses no cookies, no analytics scripts and no trackers, and makes no requests to third parties. Fonts are served from the site itself.}}</dd></div>
+      <div><dt>{{浏览器里保存什么||What is stored in your browser}}</dt><dd>{{只保存一项：你选择的语言。它留在你的浏览器里，不会发送给我们。||One thing only: the language you chose. It stays in your browser and is not sent to us.}}</dd></div>
+      <div><dt>{{联系表单||The contact form}}</dt><dd>{{表单在你自己的邮件应用里生成一封邮件，由你发送。表单不向任何服务器发送内容。详见<a class="link" href="privacy.html">隐私政策</a>。||The form composes an email in your own mail app for you to send. It sends nothing to any server. See the <a class="link" href="privacy.html">privacy policy</a>.}}</dd></div>
+      <div><dt>{{客户的数据||Client data}}</dt><dd>{{只索取工作所需的数据，只用于客户自己的项目，不用于为其他任何人训练模型。详见<a class="link" href="charter.html#data">服务准则第 3 节</a>。||We ask only for the data the work needs, use it only for the client's own project, and do not use it to train models for anyone else. See <a class="link" href="charter.html#data">section 3 of the service charter</a>.}}</dd></div>
+      <div><dt>{{部署等级||Deployment levels}}</dt><dd>{{每一次部署按数据的敏感程度归入 D1 至 D4 四个等级，等级越高，保护措施越强。详见<a class="link" href="responsible-delivery.html">负责任交付政策</a>。||Each deployment is placed in one of four levels, D1 to D4, by the sensitivity of its data. The higher the level, the stronger the safeguards. See the <a class="link" href="responsible-delivery.html">responsible delivery policy</a>.}}</dd></div>
+    </dl>
+  </div>
+
+  <div class="tabpanel" role="tabpanel" id="panel-commitments" aria-labelledby="tab-commitments" tabindex="0" hidden>
+    <dl class="deflist deflist--wide">
+      <div><dt><a class="link" href="charter.html">{{服务准则||Service charter}}</a></dt><dd>{{我们在每一次合作中如何做事的完整说明。版本 1.0，自 2026年11月23日起生效。||A full account of how we conduct ourselves in every engagement. Version 1.0, effective Nov 23, 2026.}}</dd></div>
+      <div><dt><a class="link" href="responsible-delivery.html">{{负责任交付政策||Responsible delivery policy}}</a></dt><dd>{{按数据敏感度分级管理部署风险的自愿框架。版本 1.0，自 2026年11月23日起生效。||Our voluntary framework for managing deployment risk by data sensitivity. Version 1.0, effective Nov 23, 2026.}}</dd></div>
+      <div><dt><a class="link" href="security.html">{{安全与合规||Security and compliance}}</a></dt><dd>{{我们的安全做法、合规说明，以及如何向我们报告安全问题。||Our security practices, our compliance notes, and how to report a security issue to us.}}</dd></div>
+      <div><dt><a class="link" href="privacy.html">{{隐私政策||Privacy policy}}</a></dt><dd>{{本网站如何对待访客的信息。自 2026年11月23日起生效。||How this website treats visitors' information. Effective Nov 23, 2026.}}</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="colset">
+      <h2 class="label">{{相关内容||Related content}}</h2>
+      <div class="cols cols--3">
+        <div class="col"><h3 class="col__title">{{我们对 AI 落地的核心看法||Core views on putting AI to work}}</h3><p>{{这些承诺背后的理由。||The reasoning behind these commitments.}}</p><a class="link" href="core-views.html">{{阅读全文||Read the document}}</a></div>
+        <div class="col"><h3 class="col__title">{{AI 系统上线前的一张检查清单||A checklist before an AI system goes live}}</h3><p>{{部署等级在工程上怎样落实。||How the deployment levels are carried out in practice.}}</p><a class="link" href="engineering-before-launch.html">{{阅读文章||Read the article}}</a></div>
+        <div class="col"><h3 class="col__title">{{关于我们||About us}}</h3><p>{{我们是谁、看重什么。||Who we are and what we value.}}</p><a class="link" href="company.html">{{查看页面||View the page}}</a></div>
+      </div>
+    </div>
+  </div>
+</section>

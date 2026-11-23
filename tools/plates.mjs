@@ -290,10 +290,26 @@ function quiet() {
   return { w: 640, h: 480, fx: cx, fy: cy, s };
 }
 
-const DIAGRAMS = { about, conjunction, tiers, steady, armillary, many, areas, transfer, solo, horizon, binary, five, gauge, three, ascent, checks, cutaway, trio, quiet };
+// four systems in a row: the more sensitive the data, the denser the shading and the more rings of safeguard (D1 to D4)
+function levels() {
+  const y = 240, xs = [104, 236, 382, 540], ids = [uid('h'), uid('h'), uid('h')];
+  let s = `<defs>${hatch(ids[0], 9, 35)}${hatch(ids[1], 5.6, 35)}${hatch(ids[2], 3.2, 35)}</defs>`;
+  s += line(30, y, 610, y, 'pl-ln-s');
+  xs.forEach((x, i) => {
+    if (i > 0) s += `<circle cx="${x}" cy="${y}" r="30" fill="url(#${ids[i - 1]})"/>`;
+    s += circ(x, y, 30);
+    for (let k = 1; k <= i; k++) s += circ(x, y, 30 + k * 13, k === i ? 'pl-ln' : 'pl-ln-s');
+    s += circ(x, y, 4.5, 'pl-fill') + body(ring(x, y, 30 + i * 13), [215, 305, 150, 40][i], [3.4, 4, 4.8, 5.6][i]);
+    s += line(x, y + 30 + i * 13 + 10, x, y + 104, 'pl-ln-d') + line(x - 5, y + 104, x + 5, y + 104);
+  });
+  return { w: 640, h: 480, fx: 320, fy: 240, s };
+}
+
+const DIAGRAMS = { levels, about, conjunction, tiers, steady, armillary, many, areas, transfer, solo, horizon, binary, five, gauge, three, ascent, checks, cutaway, trio, quiet };
 
 // Which diagram a seed gets. First match wins; anything else is spread across the general-purpose set by hash.
 const RULES = [
+  [/before-launch|checklist/, 'checks'], [/security/, 'levels'],
   [/new-website|launch/, 'horizon'], [/cv-etron-group|name|rename/, 'binary'], [/five-practices|practices?$|overview/, 'five'],
   [/size-the-workload|workload/, 'gauge'], [/buy-rent-share|economics/, 'three'], [/validate|validation/, 'areas'],
   [/before-you-raise|raise|capital/, 'transfer'], [/before-launch|checklist|engineering/, 'checks'],
@@ -319,7 +335,8 @@ export function renderPlate({ kind = 'auto', seed = 'plate', ratio = '4x5' } = {
   const OH = 400, OW = Math.round((OH * rw) / rh);
   const meet = Math.min(OW / d.w, OH / d.h), slice = Math.max(OW / d.w, OH / d.h);
   const mismatch = slice / meet; // 1 when the ratios agree
-  const cover = mismatch > 2.2 ? 0.52 : mismatch > 1.5 ? 0.42 : 0.3;
+  const portraitInWide = d.h > d.w && rw / rh > 1.3;
+  const cover = portraitInWide ? 0.22 : mismatch > 2.2 ? 0.52 : mismatch > 1.5 ? 0.42 : 0.3;
   const sc = Math.pow(meet, 1 - cover) * Math.pow(slice, cover) * (mismatch < 1.15 ? 0.96 : 1);
   const tx = OW / 2 - d.fx * sc, ty = OH / 2 - d.fy * sc;
   return `<svg class="plate__art" viewBox="0 0 ${OW} ${OH}" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true" data-plate="${k}"><g transform="translate(${f(tx)} ${f(ty)}) scale(${f(sc)})">${d.s}</g></svg>`;

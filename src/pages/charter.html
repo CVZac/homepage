@@ -1,0 +1,115 @@
+<!--
+{
+  "title": { "zh": "服务准则", "en": "Service charter" },
+  "description": {
+    "zh": "我们在每一次合作中如何做事的完整说明：开始之前、数据与保密、交付、上线之后，以及我们不做的事。",
+    "en": "A full account of how we conduct ourselves in every engagement: before we start, data and confidentiality, delivery, after launch, and what we will not do."
+  },
+  "section": "commitments"
+}
+-->
+<section class="wrap">
+  <header class="dochead">
+    <p class="meta"><span class="meta__cat">{{承诺||Commitments}}</span></p>
+    <h1 class="dochead__title">{{服务准则||Service charter}}</h1>
+    <p class="lead">{{这是我们在一次合作中如何做事的完整说明。它与已签署的合同不一致时，以合同为准。||This is the full account of how we conduct ourselves in an engagement. Where it differs from a signed contract, the contract governs.}}</p>
+    <dl class="metastrip">
+      <div><dt>{{生效日期||Effective}}</dt><dd><!-- @date 2026-11-23 --></dd></div>
+      <div><dt>{{版本||Version}}</dt><dd>1.0</dd></div>
+      <div><dt>{{适用对象||Audience}}</dt><dd>{{客户与合作方||Clients and partners}}</dd></div>
+    </dl>
+  </header>
+  <div class="doc">
+    <nav class="doc__side" data-toc aria-label="{{目录||Contents}}">
+      <span class="label">{{目录||Contents}}</span>
+      <ol class="toc">
+        <li><a href="#overview"><span class="toc__num">01</span><span>{{概览||Overview}}</span></a></li>
+        <li><a href="#before"><span class="toc__num">02</span><span>{{开始之前||Before we start}}</span></a></li>
+        <li><a href="#data"><span class="toc__num">03</span><span>{{数据与保密||Data and confidentiality}}</span></a></li>
+        <li><a href="#delivery"><span class="toc__num">04</span><span>{{交付||Delivery}}</span></a></li>
+        <li><a href="#after"><span class="toc__num">05</span><span>{{上线之后||After launch}}</span></a></li>
+        <li><a href="#founders"><span class="toc__num">06</span><span>{{与创业者合作||Working with founders}}</span></a></li>
+        <li><a href="#never"><span class="toc__num">07</span><span>{{我们不做的事||What we will not do}}</span></a></li>
+        <li><a href="#revisions"><span class="toc__num">08</span><span>{{修订||Revisions}}</span></a></li>
+      </ol>
+    </nav>
+    <article class="doc__body prose">
+      <aside class="summary">
+        <span class="label">{{按先后顺序||In order of priority}}</span>
+        <ol>
+          <li>{{对客户诚实||Be honest with the client}}</li>
+          <li>{{保护客户的数据||Protect the client's data}}</li>
+          <li>{{交付可用的东西||Deliver something that works}}</li>
+          <li>{{让客户自己能接手||Leave the client able to run it}}</li>
+        </ol>
+      </aside>
+      <section id="overview">
+        <h2><span class="num">01</span>{{概览||Overview}}</h2>
+        <p>{{上面四条是我们的优先顺序。它们冲突的时候，排在前面的优先。例如，照实说明一个系统还不能上线，比按期交付更重要。||The four points above are our order of priority. When they conflict, the earlier one wins. Saying plainly that a system is not ready to go live, for example, matters more than delivering on schedule.}}</p>
+        <p>{{这份准则适用于我们全部五条<a href="practices.html">业务线</a>。||This charter applies to all five of our <a href="practices.html">practices</a>.}}</p>
+      </section>
+      <section id="before">
+        <h2><span class="num">02</span>{{开始之前||Before we start}}</h2>
+        <ul>
+          <li>{{我们说明能做什么，也说明不能做什么。不适合我们的项目，我们会直说。||We say what we can do and what we cannot. When a project is not right for us, we say so.}}</li>
+          <li>{{范围、周期和交付物以书面形式约定。||Scope, timeline and deliverables are agreed in writing.}}</li>
+          <li>{{费用在开始工作之前以书面形式约定。约定之外的工作，先说明、经你同意，再进行。||Fees are agreed in writing before work begins. Work beyond what was agreed is explained first and goes ahead only with your consent.}}</li>
+        </ul>
+      </section>
+      <section id="data">
+        <h2><span class="num">03</span>{{数据与保密||Data and confidentiality}}</h2>
+        <ul>
+          <li>{{我们只索取工作所需的数据。||We ask only for the data the work needs.}}</li>
+          <li>{{客户的数据只用于客户自己的项目。||Client data is used only for the client's own project.}}</li>
+          <li>{{采用本地部署时，数据留在客户自己的环境里。||With on-premises deployment, the data stays in the client's own environment.}}</li>
+          <li>{{我们不使用客户的数据为其他任何人训练模型。||We do not use client data to train models for anyone else.}}</li>
+          <li>{{保密义务在合作结束之后继续有效。||Confidentiality continues after the engagement ends.}}</li>
+        </ul>
+        <p>{{部署时的具体保护措施，按<a href="responsible-delivery.html">负责任交付政策</a>中的等级执行。||The specific safeguards for a deployment follow the levels in our <a href="responsible-delivery.html">responsible delivery policy</a>.}}</p>
+      </section>
+      <section id="delivery">
+        <h2><span class="num">04</span>{{交付||Delivery}}</h2>
+        <ul>
+          <li>{{我们以短周期推进，尽早交出可以使用的版本。||We work in short cycles and hand over a usable version early.}}</li>
+          <li>{{客户随时可以看到进展。出现延误或问题，我们主动说明。||The client can see progress at any time. When there is a delay or a problem, we raise it ourselves.}}</li>
+          <li>{{验收以事先写下的内容为准。||Acceptance is judged against what was written down beforehand.}}</li>
+          <li>{{经 AI 协助完成的工作成果，在交给客户之前由人复核。||Work produced with the help of AI is reviewed by a person before it goes to the client.}}</li>
+        </ul>
+      </section>
+      <section id="after">
+        <h2><span class="num">05</span>{{上线之后||After launch}}</h2>
+        <ul>
+          <li>{{我们交付文档并提供培训，让客户的团队能够自己使用和维护系统。||We hand over documentation and provide training so that the client's team can use and maintain the system themselves.}}</li>
+          <li>{{客户知道出了问题该联系谁。||The client knows whom to contact when something goes wrong.}}</li>
+          <li>{{持续支持的范围，在合同中写明。||The scope of ongoing support is set out in the contract.}}</li>
+        </ul>
+      </section>
+      <section id="founders">
+        <h2><span class="num">06</span>{{与创业者合作||Working with founders}}</h2>
+        <ul>
+          <li>{{建议就是建议，决定由创业者自己作出。||Advice is advice. The decisions are the founder's own.}}</li>
+          <li>{{我们的服务不构成投资建议。||Our services are not investment advice.}}</li>
+          <li>{{我们不承诺任何融资结果。||We do not promise any fundraising outcome.}}</li>
+          <li>{{我们认为一个想法还没有准备好的时候，会直说，并说明理由。||When we think an idea is not ready, we say so and give our reasons.}}</li>
+        </ul>
+      </section>
+      <section id="never">
+        <h2><span class="num">07</span>{{我们不做的事||What we will not do}}</h2>
+        <ul>
+          <li>{{夸大可以达到的结果。||Overstate the results that can be achieved.}}</li>
+          <li>{{隐瞒已经发现的问题。||Conceal a problem we have found.}}</li>
+          <li>{{承接我们没有能力做好的工作。||Take on work we are not equipped to do well.}}</li>
+          <li>{{未经许可使用客户的名称或数据。||Use a client's name or data without permission.}}</li>
+        </ul>
+      </section>
+      <section id="revisions">
+        <h2><span class="num">08</span>{{修订||Revisions}}</h2>
+        <div class="doccard"><b>{{当前版本 1.0||Current version 1.0}}</b><span>{{自 2026年11月23日起生效||Effective Nov 23, 2026}}</span></div>
+        <ol class="changelog">
+          <li><!-- @date 2026-11-23 --><span>{{首次发布。||First published.}}</span></li>
+        </ol>
+        <p>{{准则有修改时，我们会在这里列出变更内容和日期。||When the charter changes, the changes and their dates will be listed here.}}</p>
+      </section>
+    </article>
+  </div>
+</section>

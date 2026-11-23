@@ -98,3 +98,6 @@ html[lang="en"] .prose { line-height: 1.68; }
 .prose .changelog, .prose .steps, .prose .summary ol, .prose .summary ul, .prose .toc, .prose .linklist { list-style: none; padding-left: 0; }
 .prose .summary li + li, .prose .changelog li + li, .prose .steps li + li { margin-top: 0; }
 .prose .doccard + .changelog { margin-top: 1.5rem; }
+.prose .steps h3 { margin-top: 0; font-size: 1rem; }
+.prose .steps p { margin-top: 0.25rem; font-size: 0.9375rem; line-height: var(--lh-body); }
+.prose .steps + p, .prose .tablewrap + p { margin-top: 1.5rem; }

@@ -22,7 +22,7 @@
 html:not([lang="en"]) .statement:not(.statement--sans) { max-width: 27.6em; }
 html[lang="en"] .statement { line-height: 1.25; letter-spacing: -0.01em; }
 html[lang="en"] .statement b { letter-spacing: -0.022em; }
-.statement--sans { font-family: var(--f-head); font-weight: 700; font-size: var(--fs-display); line-height: var(--lh-display); max-width: 62rem; }
+.statement--sans { font-family: var(--f-head); font-weight: 700; font-size: var(--fs-display); line-height: var(--lh-display); max-width: 62rem; text-wrap: balance; }
 html[lang="en"] .statement--sans { letter-spacing: var(--ls-display); line-height: 1.12; }
 .statement--serif { max-width: 66rem; }
 .statement-block { padding-block: 3.5rem clamp(3rem, 6.5vw, 6rem); }
@@ -360,3 +360,10 @@ html[lang="en"] .statement--sans { letter-spacing: var(--ls-display); line-heigh
 .bodytext a, .readmore a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
 .bodytext a:hover { text-decoration-color: currentColor; }
 .readmore { margin-top: 1.5rem; color: var(--ink-2); }
+.newsbar { margin-top: 1.5rem; }
+.newsgrid { padding-bottom: var(--section); }
+.emptybox--events { margin-top: 1.5rem; }
+.seg__btn:disabled { opacity: 0.45; cursor: default; }
+.note--spaced { margin-top: 2.5rem; }
+.linklist--large > li + li { margin-top: 0; }
+@media (max-width: 639px) { .seg { flex-wrap: wrap; max-width: 100%; } }
