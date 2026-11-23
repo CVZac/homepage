@@ -1,4 +1,4 @@
-// Page-specific behaviour: site search and the contact message composer.
+// Page-specific behavior: site search and the contact message composer.
 (function () {
   'use strict';
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -53,7 +53,7 @@
     var note = composer.querySelector('[data-composer-status]');
     var L = {
       zh: { subject: '来自官网的咨询', name: '称呼', org: '机构', topic: '想了解', message: '想说的话', need: '请先写下想说的话。', copied: '内容已复制，可以粘贴到任何邮件或聊天工具里。', opened: '已在你的邮件应用中生成邮件。没有弹出窗口时，请使用「复制内容」。', failed: '无法自动复制，请手动选择文字复制。' },
-      en: { subject: 'Enquiry from the website', name: 'Name', org: 'Organization', topic: 'Topic', message: 'Message', need: 'Please write your message first.', copied: 'Copied. You can paste it into any email or chat.', opened: 'A draft has been created in your mail app. If nothing opened, use "Copy text".', failed: 'Could not copy automatically. Please select the text and copy it.' }
+      en: { subject: 'Inquiry from the website', name: 'Name', org: 'Organization', topic: 'Topic', message: 'Message', need: 'Please write your message first.', copied: 'Copied. You can paste it into any email or chat.', opened: 'A draft has been created in your mail app. If nothing opened, use "Copy text".', failed: 'Could not copy automatically. Please select the text and copy it.' }
     };
     var field = function (n) { return composer.elements[n]; };
     var build = function () {

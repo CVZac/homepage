@@ -124,7 +124,7 @@ export function postteasers(args, ctx) {
     </article>`).join('');
 }
 
-// ---- lead story (centre of the news page) ----
+// ---- lead story (center of the news page) ----
 export function postlead(args, ctx) {
   const p = pick(ctx, args)[0];
   if (!p) return '';
