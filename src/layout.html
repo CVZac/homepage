@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN" data-title-zh="%TITLE_ZH%" data-title-en="%TITLE_EN%" data-desc-zh="%DESC_ZH%" data-desc-en="%DESC_EN%">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>%TITLE_ZH%</title>
+<meta name="description" content="%DESC_ZH%">
+<meta name="theme-color" content="#F6F5F1">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cvetron-lang')}catch(e){}if(q){q=q==='en'?'en':'zh';try{localStorage.setItem('cvetron-lang',q)}catch(e){}}var l=q||s||((navigator.language||'zh').toLowerCase().indexOf('zh')===0?'zh':'en');document.documentElement.lang=l==='en'?'en':'zh-CN'}catch(e){}})();</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css?v=%CSS_V%">
+</head>
+<body data-section="%SECTION%" data-page="%PAGE%" class="%BODY_CLASS%">
+<a class="skip" href="#main">{{跳到正文||Skip to main content}}</a>
+<!-- @include header -->
+<main id="main">
+%CONTENT%
+</main>
+<!-- @include footer -->
+<!-- @include menu -->
+<script src="assets/site.js?v=%JS_V%" defer></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* Tokens, reset and base typography.
+   Colours and type sizes live here; change them once and the whole site follows. */
+:root {
+  /* colour */
+  --paper: #F6F5F1;        /* 宣纸: page ground. A rice-paper white with a trace of warm grey, not a cream */
+  --paper-2: #ECEBE5;      /* 石: tinted panels, cards and plates */
+  --paper-3: #E2E1DA;      /* soft buttons, pressed states */
+  --ink: #16181C;          /* 墨: a blue-black, like ground ink stick */
+  --ink-2: #3B3D42;        /* secondary text */
+  --ink-3: #5C5E63;        /* meta, captions */
+  --rule: #D6D5CD;         /* hairlines on paper */
+  --night: #0E1013;        /* footer */
+  --night-2: #181B20;      /* dark bands and raised surfaces on night */
+  --on-night: #ECEBE6;
+  --on-night-2: #9EA0A5;
+  --rule-night: #2A2D33;
+  --accent: #1E3FA8;       /* 青金 lapis: the only accent (the electron, focus rings, one body in the hero) */
+  --accent-night: #B5CDF5; /* lapis as it appears on dark surfaces */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .11 0 0 0 .46 -.17'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)'/%3E%3C/svg%3E");
+
+  /* type families: Latin face first, then the Chinese face (see 00-fonts.css) */
+  --f-sans: "CV Sans L", "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --f-head: "CV Sans L", "CV Hei", "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", sans-serif;
+  --f-serif: "CV Serif L", "CV Song", "Songti SC", "STSong", "Noto Serif SC", "Noto Serif CJK SC", "SimSun", serif;
+
+  /* type sizes */
+  --fs-statement: clamp(1.625rem, 1.28rem + 1.41vw, 2.5625rem);
+  --fs-h1: clamp(2.125rem, 1.7rem + 1.714vw, 3.25rem);
+  --fs-display: clamp(1.875rem, 1.59rem + 1.14vw, 2.625rem);
+  --fs-h2: clamp(1.375rem, 1.28rem + 0.38vw, 1.625rem);
+  --fs-h3: clamp(1.1875rem, 1.14rem + 0.19vw, 1.3125rem);
+  --fs-lead: clamp(1.125rem, 1.05rem + 0.29vw, 1.3125rem);
+  --fs-body: 0.9375rem;
+  --fs-small: 0.8125rem;
+
+  /* line heights and tracking: Chinese needs more air and no negative tracking */
+  --lh-display: 1.3;
+  --lh-head: 1.4;
+  --lh-lead: 1.7;
+  --lh-body: 1.8;
+  --ls-display: 0;
+  --ls-head: 0;
+  --w-serif: 500;
+
+  /* space */
+  --gutter: clamp(1.5rem, 5.556vw, 5rem);
+  --gap: 1rem;
+  --section: clamp(3.5rem, 2.6rem + 3.8vw, 6.5rem);
+  --header-h: 5.25rem;
+
+  /* shape */
+  --r-pill: 999px;
+  --r-btn: 0.5625rem;
+  --r-card: 1.125rem;
+  --r-plate: 0.1875rem;
+}
+
+html[lang="en"] {
+  --f-sans: "CV Sans", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --f-head: "CV Sans", "CV Hei", "Helvetica Neue", Arial, "PingFang SC", "Noto Sans SC", sans-serif;
+  --f-serif: "CV Serif", "CV Song", Georgia, "Songti SC", "Noto Serif SC", serif;
+  --lh-display: 1.1;
+  --lh-head: 1.22;
+  --lh-lead: 1.42;
+  --lh-body: 1.55;
+  --ls-display: -0.022em;
+  --ls-head: -0.012em;
+  --w-serif: 400;
+}
+
+@media (max-width: 720px) {
+  :root { --header-h: 4.5rem; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 1rem); background: var(--night); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+}
+html[lang="en"] [data-zh], html:not([lang="en"]) [data-en] { display: none !important; }
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3, h4 { font-family: var(--f-head); font-weight: 700; line-height: var(--lh-head); letter-spacing: var(--ls-head); text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+table { border-collapse: collapse; width: 100%; }
+[hidden] { display: none !important; }
+::selection { background: var(--ink); color: var(--paper); }
+mark { background: color-mix(in srgb, var(--accent) 16%, transparent); color: inherit; padding: 0 0.1em; }
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.on-night :focus-visible, .footer :focus-visible, .cta :focus-visible { outline-color: var(--accent-night); }
+
+.sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: fixed; left: var(--gutter); top: 0.75rem; z-index: 200; padding: 0.5rem 0.875rem; background: var(--ink); color: var(--paper); border-radius: var(--r-btn); transform: translateY(-200%); }
+.skip:focus { transform: none; }
+
+/* shared text styles */
+.h1 { font-size: var(--fs-display); line-height: var(--lh-display); letter-spacing: var(--ls-display); font-weight: 700; }
+.h2 { font-size: var(--fs-h2); }
+.h3 { font-size: var(--fs-h3); }
+.lead { font-family: var(--f-serif); font-weight: var(--w-serif); font-size: var(--fs-lead); line-height: var(--lh-lead); color: var(--ink); }
+.label { font-family: var(--f-sans); font-size: var(--fs-small); font-weight: 600; line-height: 1.5; letter-spacing: 0; color: var(--ink); }
+.small { font-size: var(--fs-small); color: var(--ink-3); }
+.link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+.link:hover { text-decoration-color: currentColor; }
+.icon { width: 1.25rem; height: 1.25rem; flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+}

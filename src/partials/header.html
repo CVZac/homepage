@@ -1,0 +1,61 @@
+<header class="header" data-header>
+  <div class="header__in wrap">
+    <nav class="header__left" aria-label="{{主导航||Main}}">
+      <a class="chip" data-nav="news" href="news.html">{{新闻||News}}</a>
+      <div class="drop" data-dropdown>
+        <button type="button" class="chip" data-nav="research" aria-expanded="false" aria-controls="dd-research">{{研究||Research}}<!-- @icon chevron-down --></button>
+        <div class="drop__menu" id="dd-research" data-dropdown-menu hidden>
+          <a href="research.html">{{概览||Overview}}</a>
+          <a href="research.html?area=infrastructure">{{企业 AI 基础设施||Enterprise AI infrastructure}}</a>
+          <a href="research.html?area=compute">{{算力经济||Compute economics}}</a>
+          <a href="research.html?area=validation">{{商业验证||Business validation}}</a>
+          <a href="research.html?area=founders">{{创业与资本||Founders and capital}}</a>
+          <a href="engineering.html">{{工程实践||Engineering}}</a>
+        </div>
+      </div>
+      <div class="drop" data-dropdown>
+        <button type="button" class="chip" data-nav="perspectives" aria-expanded="false" aria-controls="dd-perspectives">{{观点||Perspectives}}<!-- @icon chevron-down --></button>
+        <div class="drop__menu" id="dd-perspectives" data-dropdown-menu hidden>
+          <a href="perspectives.html">{{概览||Overview}}</a>
+          <a href="core-views.html">{{我们对 AI 落地的核心看法||Core views on putting AI to work}}</a>
+        </div>
+      </div>
+      <div class="drop" data-dropdown>
+        <button type="button" class="chip" data-nav="commitments" aria-expanded="false" aria-controls="dd-commitments">{{承诺||Commitments}}<!-- @icon chevron-down --></button>
+        <div class="drop__menu" id="dd-commitments" data-dropdown-menu hidden>
+          <a href="charter.html">{{服务准则||Service charter}}</a>
+          <a href="responsible-delivery.html">{{负责任交付政策||Responsible delivery policy}}</a>
+          <a href="transparency.html">{{透明度||Transparency}}</a>
+          <a href="security.html">{{安全与合规||Security and compliance}}</a>
+        </div>
+      </div>
+    </nav>
+    <a class="brand" href="index.html" aria-label="{{云想亿创集团首页||CV-Etron Group home}}" data-no-current><!-- @include brand --></a>
+    <div class="header__right">
+      <div class="drop drop--end drop--company" data-dropdown>
+        <button type="button" class="chip" data-nav="company" aria-expanded="false" aria-controls="dd-company">{{公司||Company}}<!-- @icon chevron-down --></button>
+        <div class="drop__menu" id="dd-company" data-dropdown-menu hidden>
+          <div class="drop__group">
+            <p class="drop__label">{{我们是谁||Who we are}}</p>
+            <a href="company.html">{{关于我们||About us}}</a>
+            <a href="team.html">{{团队||Team}}</a>
+            <a href="practices.html">{{业务总览||Practices}}</a>
+          </div>
+          <div class="drop__group">
+            <p class="drop__label">{{加入我们||Join us}}</p>
+            <a href="careers.html">{{招聘||Careers}}</a>
+            <a href="events.html">{{活动||Events}}</a>
+          </div>
+          <div class="drop__group">
+            <p class="drop__label">{{项目||Programs}}</p>
+            <a href="founder-futures.html">{{创业未来||Founder Futures}}</a>
+          </div>
+        </div>
+      </div>
+      <a class="chip chip--solid" href="contact.html" data-no-current>{{联系我们||Contact}}</a>
+      <button type="button" class="chip chip--lang" data-lang-toggle aria-label="{{Switch to English||切换到中文}}">{{EN||中文}}</button>
+      <a class="iconbtn" href="search.html" aria-label="{{搜索||Search}}" data-no-current><!-- @icon search --></a>
+      <button type="button" class="iconbtn" data-menu-open aria-haspopup="dialog" aria-label="{{打开菜单||Open menu}}"><!-- @icon menu --></button>
+    </div>
+  </div>
+</header>

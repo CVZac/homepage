@@ -1,0 +1,24 @@
+<!--
+{
+  "title": { "zh": "站内搜索", "en": "Search" },
+  "description": { "zh": "搜索云想亿创集团官网的全部页面。", "en": "Search every page of the CV-Etron Group website." },
+  "section": "",
+  "noindex": true
+}
+-->
+<section class="wrap">
+  <header class="hero hero--solo">
+    <h1 class="hero__title">{{站内搜索||Search}}</h1>
+  </header>
+  <div class="section section--flush-top">
+    <form class="searchbox" role="search" data-search-form>
+      <!-- @icon search -->
+      <label class="sr" for="q">{{搜索关键词||Search terms}}</label>
+      <input id="q" type="search" name="q" autocomplete="off" placeholder="{{例如：算力、验证、数据||For example: compute, validation, data}}">
+      <button type="submit" class="btn btn--primary">{{搜索||Search}}</button>
+    </form>
+    <p class="search-status" data-search-status role="status" aria-live="polite"></p>
+    <ul class="results" data-search-results></ul>
+  </div>
+</section>
+<script src="assets/search-index.js" defer></script>

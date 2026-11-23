@@ -1,0 +1,10 @@
+/* Web fonts (all open-source, SIL OFL), served from this site. Files are produced by tools/fonts.mjs.
+   "CV Sans" / "CV Serif": Latin. The "L" aliases cover only basic Latin so that, in Chinese text,
+   dashes, ellipses and quotation marks come from the Chinese face.
+   "CV Hei" / "CV Song": Chinese, subset to the characters the site uses. */
+@font-face { font-family: "CV Sans"; font-weight: 400 900; font-style: normal; font-display: swap; src: url("fonts/cv-sans.woff2") format("woff2"); }
+@font-face { font-family: "CV Sans L"; font-weight: 400 900; font-style: normal; font-display: swap; src: url("fonts/cv-sans.woff2") format("woff2"); unicode-range: U+0020-007E, U+00A0-00FF; }
+@font-face { font-family: "CV Serif"; font-weight: 300 700; font-style: normal; font-display: swap; src: url("fonts/cv-serif.woff2") format("woff2"); }
+@font-face { font-family: "CV Serif L"; font-weight: 300 700; font-style: normal; font-display: swap; src: url("fonts/cv-serif.woff2") format("woff2"); unicode-range: U+0020-007E, U+00A0-00FF; }
+@font-face { font-family: "CV Hei"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/cv-hei-700.woff2") format("woff2"); }
+@font-face { font-family: "CV Song"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/cv-song-500.woff2") format("woff2"); }

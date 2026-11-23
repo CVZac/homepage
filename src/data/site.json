@@ -1,0 +1,109 @@
+{
+  "name": { "zh": "云想亿创集团", "en": "CV-Etron Group" },
+  "email": "sales@cv-etron.com",
+  "icp": "京ICP备2026070946号",
+  "categories": {
+    "company": { "zh": "公司", "en": "Company" },
+    "practices": { "zh": "业务", "en": "Practices" },
+    "perspectives": { "zh": "观点", "en": "Perspectives" },
+    "infrastructure": { "zh": "企业 AI 基础设施", "en": "Enterprise AI infrastructure" },
+    "compute": { "zh": "算力经济", "en": "Compute economics" },
+    "validation": { "zh": "商业验证", "en": "Business validation" },
+    "founders": { "zh": "创业与资本", "en": "Founders and capital" },
+    "engineering": { "zh": "工程实践", "en": "Engineering" }
+  },
+  "areas": [
+    {
+      "key": "infrastructure",
+      "url": "research.html?area=infrastructure",
+      "desc": {
+        "zh": "模型部署与推理在企业环境里，怎样才算可靠。",
+        "en": "What makes model deployment and inference dependable inside a business."
+      }
+    },
+    {
+      "key": "compute",
+      "url": "research.html?area=compute",
+      "desc": {
+        "zh": "算力的成本从哪里来，中小企业怎样才用得起。",
+        "en": "Where the cost of computing comes from, and how smaller businesses can afford it."
+      }
+    },
+    {
+      "key": "validation",
+      "url": "research.html?area=validation",
+      "desc": {
+        "zh": "怎样用 AI 更快、更诚实地检验需求与商业模式。",
+        "en": "How AI can test demand and business models faster and more honestly."
+      }
+    },
+    {
+      "key": "founders",
+      "url": "research.html?area=founders",
+      "desc": {
+        "zh": "早期团队与独立创业者在融资和成长中遇到的真实障碍。",
+        "en": "The real obstacles early teams and independent founders meet in fundraising and growth."
+      }
+    },
+    {
+      "key": "engineering",
+      "url": "engineering.html",
+      "desc": {
+        "zh": "把 AI 系统交付到生产环境的方法与教训。",
+        "en": "Methods and lessons from shipping AI systems into production."
+      }
+    }
+  ],
+  "practices": [
+    {
+      "key": "infrastructure",
+      "url": "practice-infrastructure.html",
+      "audience": "business",
+      "name": { "zh": "企业级 AI 基础设施", "en": "Enterprise-Grade AI Infrastructure" },
+      "desc": {
+        "zh": "为模型部署、推理和业务应用提供可靠、可扩展的 AI 基础设施。",
+        "en": "Reliable, scalable AI infrastructure for model deployment, inference, and business applications."
+      }
+    },
+    {
+      "key": "compute",
+      "url": "practice-compute.html",
+      "audience": "business",
+      "name": { "zh": "中小企业普惠算力", "en": "Accessible Computing for SMBs" },
+      "desc": {
+        "zh": "灵活、划算的算力方案，让中小企业也能用上 AI、放手创新。",
+        "en": "Flexible, cost-effective computing solutions that make AI adoption and innovation accessible to small and medium-sized businesses."
+      }
+    },
+    {
+      "key": "validation",
+      "url": "practice-validation.html",
+      "audience": "business",
+      "name": { "zh": "AI 商业验证", "en": "AI-Powered Business Validation" },
+      "desc": {
+        "zh": "用 AI 做需求验证、商业模式测试和流程自动化，缩短从想法到市场的路。",
+        "en": "AI-powered demand validation, business model testing, and workflow automation to accelerate the journey from idea to market."
+      }
+    },
+    {
+      "key": "capital",
+      "url": "practice-capital.html",
+      "audience": "founders",
+      "name": { "zh": "早期创业融资对接", "en": "Venture Capital Access for Early-Stage Startups" },
+      "desc": {
+        "zh": "为 A 轮前的创业团队对接投资人与创投资源，帮助做好融资准备、支持早期成长。",
+        "en": "Investor connections and venture resources for pre-Series A startups, supporting fundraising readiness and early-stage growth."
+      }
+    },
+    {
+      "key": "founders",
+      "url": "practice-founders.html",
+      "audience": "founders",
+      "name": { "zh": "赋能独立创业者", "en": "Empowering Independent Entrepreneurs" },
+      "desc": {
+        "zh": "把 AI、算力与资本对接放在一起，帮助创业者和独立专业人士把专长与想法变成可持续的事业。",
+        "en": "Bringing together AI, computing, and capital access to help founders and independent professionals turn expertise and ideas into sustainable businesses."
+      }
+    }
+  ]
+}

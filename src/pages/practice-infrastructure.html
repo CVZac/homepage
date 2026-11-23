@@ -1,0 +1,79 @@
+<!--
+{
+  "title": { "zh": "企业级 AI 基础设施", "en": "Enterprise-Grade AI Infrastructure" },
+  "description": {
+    "zh": "在机构自己的环境里部署模型与推理服务，接入业务系统，并在上线后持续看护。",
+    "en": "Models and inference deployed inside your own environment, connected to your business systems, and looked after once they are live."
+  },
+  "section": "practices"
+}
+-->
+<section class="wrap">
+  <header class="hero">
+    <h1 class="hero__title">{{企业级 AI 基础设施||Enterprise-Grade AI Infrastructure}}</h1>
+    <div class="hero__side">
+      <p class="lead">{{为模型部署、推理和业务应用提供可靠、可扩展的 AI 基础设施。||Reliable, scalable AI infrastructure for model deployment, inference, and business applications.}}</p>
+      <a class="btn btn--primary" <!-- @mailto zh="企业级 AI 基础设施" en="Enterprise-Grade AI Infrastructure" -->>{{联系我们||Contact us}}</a>
+    </div>
+  </header>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head">
+        <h2>{{适合谁||Who it is for}}</h2>
+        <p>{{这条业务线适合把 AI 当作正式系统来建设的机构。||This practice is for organizations building AI as a permanent system.}}</p>
+      </div>
+      <div class="split__body">
+        <dl class="deflist deflist--wide">
+          <div><dt>{{数据不能外出||Data that cannot leave}}</dt><dd>{{合同、病历、图纸、客户资料这类内容，需要留在机构自己的环境里处理。||Contracts, medical records, drawings and customer files need to be processed inside the organization's own environment.}}</dd></div>
+          <div><dt>{{用量大而稳定||Heavy, steady use}}</dt><dd>{{每天都有很多人在用，按量租用已经不划算，也不好预算。||Many people use it every day, and paying by the hour has become both costly and hard to budget.}}</dd></div>
+          <div><dt>{{从试用转为正式||Moving past the pilot}}</dt><dd>{{试用阶段的做法撑不住全员使用，需要按生产系统的标准重新搭建。||What worked in a pilot will not carry the whole organization. It needs rebuilding to production standards.}}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section section--flush-top">
+  <div class="colset">
+    <h2 class="label">{{我们做什么||What we do}}</h2>
+    <div class="cols">
+      <div class="col"><h3 class="col__title">{{部署与推理||Deployment and inference}}</h3><p>{{按实际工作负载选定硬件与模型，在你的机房或专有环境里部署，把推理服务调到稳定可用。||We choose hardware and models from the real workload, deploy them in your server room or private environment, and tune inference until it is stable.}}</p></div>
+      <div class="col"><h3 class="col__title">{{接入业务系统||Connecting business systems}}</h3><p>{{把模型接进你已经在用的系统，让员工在原来的工作流程里用上它。||We connect the models to the systems you already run, so people use them inside the work they already do.}}</p></div>
+      <div class="col"><h3 class="col__title">{{知识库||Knowledge bases}}</h3><p>{{用机构自己的文档建立知识库，让回答有据可查，并且只对有权限的人可见。||We build knowledge bases from your own documents, so answers can be traced to a source and are seen only by those allowed to see them.}}</p></div>
+      <div class="col"><h3 class="col__title">{{运维与售后||Operations and support}}</h3><p>{{上线后持续看护：监控、更新、排障，以及用量变化时的调整。||After launch we stay with the system: monitoring, updates, troubleshooting, and adjustments as usage changes.}}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section section--flush-top">
+  <figure class="plate plate--band"><!-- @plate kind=auto seed=practice-infrastructure ratio=5x2 --></figure>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head">
+        <h2>{{我们怎么做||How we work on it}}</h2>
+      </div>
+      <div class="split__body">
+        <p class="bodytext">{{先算工作负载，再选硬件。上线前，我们按数据的敏感程度确定部署等级和保护措施，用你的真实问题做测试，由你确认之后再上线。完整的做法写在<a href="charter.html">服务准则</a>和<a href="responsible-delivery.html">负责任交付政策</a>里。||We size the workload before we choose hardware. Before launch we set the deployment level and safeguards by how sensitive the data is, test with your real questions, and go live only once you have signed off. The full account is in our <a href="charter.html">service charter</a> and <a href="responsible-delivery.html">responsible delivery policy</a>.}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section section--flush-top">
+  <h2 class="label rowlabel">{{延伸阅读||Further reading}}</h2>
+  <!-- @postfeature urls=research-size-the-workload -->
+  <p class="readmore">{{另见：<a class="link" href="engineering-before-launch.html">AI 系统上线前的一张检查清单</a>||See also: <a class="link" href="engineering-before-launch.html">A checklist before an AI system goes live</a>}}</p>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title">{{想把 AI 部署在自己的环境里？||Want AI running inside your own environment?}}</h2>
+    <a class="btn btn--light" <!-- @mailto zh="企业级 AI 基础设施" en="Enterprise-Grade AI Infrastructure" -->>{{写信给我们||Email us}}</a>
+  </div>
+</section>

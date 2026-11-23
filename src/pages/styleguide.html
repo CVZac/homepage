@@ -1,0 +1,231 @@
+<!--
+{
+  "title": { "zh": "组件样例", "en": "Component reference" },
+  "description": { "zh": "本站使用的全部版式组件，供维护者参考。", "en": "Every layout component used on this site, for maintainers." },
+  "section": "",
+  "noindex": true
+}
+-->
+<!-- 1. HERO (sub-page): big title left, serif lead and one button right -->
+<section class="wrap">
+  <header class="hero">
+    <h1 class="hero__title">{{组件样例||Component reference}}</h1>
+    <div class="hero__side">
+      <p class="lead">{{这一页列出本站用到的全部版式组件。新页面从这里复制结构，不另写样式。||This page shows every layout component on the site. New pages copy their structure from here and add no styles of their own.}}</p>
+      <a class="btn btn--primary" href="contact.html">{{联系我们||Contact us}}</a>
+    </div>
+  </header>
+</section>
+
+<!-- 2. HAIRLINE COLUMNS under a small label. cols (4), cols--3, cols--5 -->
+<section class="wrap section section--flush-top">
+  <div class="colset">
+    <h2 class="label">{{我们的立场||Where we stand}}</h2>
+    <div class="cols">
+      <div class="col"><h3 class="col__title">{{可靠先于新奇||Dependable before novel}}</h3><p>{{企业需要的是每天都能用的系统。我们优先采用经过验证的方案。||Businesses need systems that work every day. We reach for proven approaches first.}}</p></div>
+      <div class="col"><h3 class="col__title">{{门槛应当更低||A lower barrier}}</h3><p>{{算力和 AI 能力不该只属于大公司。||Computing and AI should not belong only to large companies.}}</p></div>
+      <div class="col"><h3 class="col__title">{{先验证，再投入||Validate, then invest}}</h3><p>{{好想法值得被认真检验。||Good ideas deserve a serious test.}}</p></div>
+      <div class="col"><h3 class="col__title">{{与创业者同行||Alongside founders}}</h3><p>{{从第一个想法到第一轮融资。||From the first idea to the first round.}}</p><a class="link" href="founder-futures.html">{{了解创业未来||About Founder Futures}}</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. LARGE PLATE on its own -->
+<section class="wrap section section--flush-top">
+  <figure class="plate plate--wide"><!-- @plate kind=auto seed=styleguide-wide ratio=16x9 --></figure>
+</section>
+
+<!-- 4. TINTED PANEL WITH CAROUSEL. Slides come from @practices view=slides, or write <article class="slide" data-slide> by hand -->
+<section class="wrap section section--flush-top">
+  <section class="panel" data-carousel aria-roledescription="carousel" aria-label="{{五条业务线||Five practices}}">
+    <div class="panel__head">
+      <h2 class="panel__title">{{五条业务线||Five practices}}</h2>
+      <p class="panel__intro">{{三条为企业，两条为创业者。||Three for businesses, two for founders.}}</p>
+    </div>
+    <div class="panel__stage" aria-live="polite">
+      <!-- @practices view=slides -->
+    </div>
+    <!-- @pager -->
+  </section>
+</section>
+
+<!-- 5. SPLIT with a hairline above (section--rule): title + intro left, content right. Right side here: values -->
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head">
+        <h2>{{我们看重什么，如何行事||What we value and how we act}}</h2>
+        <p>{{这些原则决定我们接什么项目、怎么交付，以及在两难时怎么选。||These principles decide which projects we take, how we deliver them, and what we choose when a choice is hard.}}</p>
+      </div>
+      <div class="split__body">
+        <div class="values">
+          <div class="value"><h3>{{以人为核。||People at the core.}}</h3><p>{{技术围着人转，而不是相反。每个方案都从使用它的人出发。||Technology revolves around people, not the reverse. Every design starts from the person who will use it.}}</p></div>
+          <div class="value"><h3>{{说清楚，再动手。||Say it clearly, then start.}}</h3><p>{{范围、周期和交付物在开始前写明白。||Scope, timeline and deliverables are written down before work begins.}}</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SPLIT with a definition list -->
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head"><h2>{{集团信息||Company information}}</h2></div>
+      <div class="split__body">
+        <dl class="deflist">
+          <div><dt>{{中文名称||Chinese name}}</dt><dd>云想亿创集团</dd></div>
+          <div><dt>{{联系邮箱||Email}}</dt><dd><a class="link" href="mailto:sales@cv-etron.com">sales@cv-etron.com</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. SPLIT with an accordion (native <details>; give one group the same name= so only one stays open) -->
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head"><h2>{{常见问题||Frequently asked questions}}</h2><p>{{每个问题一段话。||One short paragraph per question.}}</p></div>
+      <div class="split__body">
+        <details class="acc" name="sg-faq"><summary>{{目前有公开职位吗？||Are there open roles?}}<!-- @icon chevron-down --></summary><div class="acc__body"><p>{{我们不在网站上列出固定职位，但每一封来信都会读。||We do not list fixed openings on this site, but we read every letter.}}</p></div></details>
+        <details class="acc" name="sg-faq"><summary>{{信里写什么？||What should I include?}}<!-- @icon chevron-down --></summary><div class="acc__body"><p>{{你是谁，做过什么，对哪条业务线感兴趣。||Who you are, what you have built, and which practice interests you.}}</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SPLIT with numbered steps: only for a real sequence -->
+<section class="section section--rule">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__head"><h2>{{怎样开始||How to start}}</h2></div>
+      <div class="split__body">
+        <ol class="steps">
+          <li><h3>{{写信||Write to us}}</h3><p>{{说明你的情况和想解决的问题。||Tell us where you are and what you want to solve.}}</p></li>
+          <li><h3>{{一次沟通||A first conversation}}</h3><p>{{我们把问题问清楚。||We make sure we understand the problem.}}</p></li>
+        </ol>
+        <p class="note" style="margin-top:1.5rem">{{本页所述服务不构成投资建议，也不承诺任何融资结果。||The services described here are not investment advice and do not promise any fundraising outcome.}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FEATURED POST (generated). Use urls=page-name to pick the post -->
+<section class="wrap section">
+  <!-- @postfeature kind=research limit=1 -->
+</section>
+
+<!-- 10. LARGE ROWS (generated): @practices audience=business|founders -->
+<section class="wrap section section--flush-top">
+  <h2 class="label" style="margin-bottom:1rem">{{为企业||For businesses}}</h2>
+  <!-- @practices audience=business -->
+</section>
+
+<!-- 11. RESEARCH AREAS (generated) -->
+<section class="wrap section section--flush-top">
+  <!-- @areas -->
+</section>
+
+<!-- 12. POST TABLE (generated). tabs=news adds the filter tabs; kind= / category= narrow the list -->
+<section class="wrap section section--flush-top">
+  <!-- @posttable title="{{全部文章||All news}}" tabs=news id=sg-table -->
+</section>
+
+<!-- 13. POST GALLERY (generated). filter=areas adds area buttons -->
+<section class="wrap section section--flush-top">
+  <!-- @postgallery kind=research filter=areas id=sg-gallery -->
+</section>
+
+<!-- 14. DARK FEATURED CAROUSEL (generated), full-bleed: wrap goes inside the band -->
+<section class="band-dark">
+  <div class="wrap">
+    <!-- @postcarousel kind=research limit=3 tone=dark -->
+  </div>
+</section>
+
+<!-- 15. TABS AS TILES + PANELS -->
+<section class="wrap section">
+  <div class="tiles" role="tablist" aria-label="{{透明度分区||Transparency sections}}">
+    <button type="button" class="tile" role="tab" id="sg-t1" aria-controls="sg-p1" aria-selected="true"><span class="tile__num">01</span><span class="tile__title">{{我们如何工作||How we work}}</span><span class="tile__text">{{业务、流程与 AI 的使用。||Practices, process and our use of AI.}}</span></button>
+    <button type="button" class="tile" role="tab" id="sg-t2" aria-controls="sg-p2" aria-selected="false"><span class="tile__num">02</span><span class="tile__title">{{数据与系统||Data and systems}}</span><span class="tile__text">{{本网站与客户数据。||This website and client data.}}</span></button>
+    <button type="button" class="tile" role="tab" id="sg-t3" aria-controls="sg-p3" aria-selected="false"><span class="tile__num">03</span><span class="tile__title">{{自愿承诺||Voluntary commitments}}</span><span class="tile__text">{{我们公开作出的承诺。||Commitments we have made in public.}}</span></button>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="sg-p1" aria-labelledby="sg-t1" tabindex="0"><dl class="deflist"><div><dt>{{我们做什么||What we do}}</dt><dd>{{五条业务线。||Five practices.}}</dd></div></dl></div>
+  <div class="tabpanel" role="tabpanel" id="sg-p2" aria-labelledby="sg-t2" tabindex="0" hidden><p>{{第二个面板。||Second panel.}}</p></div>
+  <div class="tabpanel" role="tabpanel" id="sg-p3" aria-labelledby="sg-t3" tabindex="0" hidden><p>{{第三个面板。||Third panel.}}</p></div>
+</section>
+
+<!-- 16. EMPTY STATE -->
+<section class="wrap section section--flush-top">
+  <div class="emptybox"><h3>{{目前没有公开活动||No public events are scheduled}}</h3><p>{{有新活动时会在这里和新闻页公布。||New events will be announced here and on the news page.}}</p></div>
+</section>
+
+<!-- 17. DOCUMENT HEAD + TWO-COLUMN DOCUMENT (long documents, policies, articles) -->
+<section class="wrap">
+  <header class="dochead">
+    <p class="meta"><span class="meta__cat">{{承诺||Commitments}}</span><!-- @date 2026-11-23 --></p>
+    <p class="dochead__title">{{文档标题的样子||What a document title looks like}}</p>
+    <p class="lead">{{一到两句导语，用衬线体。||A lead of one or two sentences, set in the serif.}}</p>
+    <dl class="metastrip">
+      <div><dt>{{生效日期||Effective}}</dt><dd><!-- @date 2026-11-23 --></dd></div>
+      <div><dt>{{类型||Type}}</dt><dd>{{政策||Policy}}</dd></div>
+      <div><dt>{{适用对象||Audience}}</dt><dd>{{网站访客||Website visitors}}</dd></div>
+    </dl>
+  </header>
+  <div class="doc">
+    <nav class="doc__side" data-toc aria-label="{{目录||Contents}}">
+      <span class="label">{{目录||Contents}}</span>
+      <ol class="toc">
+        <li><a href="#sg-s1"><span class="toc__num">01</span><span>{{概览||Overview}}</span></a></li>
+        <li><a href="#sg-s2"><span class="toc__num">02</span><span>{{数据与保密||Data and confidentiality}}</span></a></li>
+      </ol>
+    </nav>
+    <article class="doc__body prose">
+      <aside class="summary">
+        <span class="label">{{要点||In short}}</span>
+        <ol>
+          <li>{{对客户诚实||Be honest with the client}}</li>
+          <li>{{保护客户的数据||Protect the client's data}}</li>
+        </ol>
+      </aside>
+      <section id="sg-s1">
+        <h2><span class="num">01</span>{{概览||Overview}}</h2>
+        <p>{{正文段落使用无衬线体，行距宽松。<a href="charter.html">文内链接</a>带下划线，<strong>强调</strong>用加粗。||Body paragraphs are set in the sans with generous leading. <a href="charter.html">Links in text</a> are underlined and <strong>emphasis</strong> is bold.}}</p>
+        <ul><li>{{无序列表的一项||An item in a list}}</li><li>{{另一项||Another item}}</li></ul>
+        <blockquote>{{引用或需要强调的一句话，用衬线体。||A quotation, or one sentence that deserves weight, set in the serif.}}</blockquote>
+      </section>
+      <section id="sg-s2">
+        <h2><span class="num">02</span>{{数据与保密||Data and confidentiality}}</h2>
+        <h3>{{小标题||A subheading}}</h3>
+        <p class="formula">{{每月自有成本 ÷ 每月实际使用小时数，对比每小时租用价格。||Monthly cost of ownership ÷ hours actually used per month, compared with the hourly rental price.}}</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>{{等级||Level}}</th><th>{{数据||Data}}</th><th>{{运行位置||Where it runs}}</th></tr></thead>
+          <tbody><tr><td>D1</td><td>{{公开信息||Public information}}</td><td>{{任何合适的环境||Any suitable environment}}</td></tr><tr><td>D4</td><td>{{受监管或高度敏感数据||Regulated or highly sensitive data}}</td><td>{{仅限客户自己的环境||Inside the client's own environment only}}</td></tr></tbody>
+        </table></div>
+        <ul class="checklist"><li>{{检查清单的一项||A checklist item}}</li><li>{{另一项||Another item}}</li></ul>
+        <div class="doccard"><b>{{当前版本 1.0||Current version 1.0}}</b><span>{{自 2026年11月23日起生效||Effective Nov 23, 2026}}</span></div>
+        <ol class="changelog"><li><!-- @date 2026-11-23 --><span>{{首次发布。||First published.}}</span></li></ol>
+        <p class="note">{{说明性文字，用于免责声明。||A plain note, used for disclaimers.}}</p>
+      </section>
+    </article>
+  </div>
+</section>
+
+<!-- 18. DARK CONTACT BAND (news page) and DARK CTA BAND (end of most pages). Both are full-bleed. -->
+<section class="contactband">
+  <div class="wrap contactband__in">
+    <h2 class="contactband__title">{{媒体与合作联系||Press and partnership enquiries}}</h2>
+    <div class="contactband__list">
+      <a class="contactband__item" href="mailto:sales@cv-etron.com"><b>{{邮件||Email}}</b><span>sales@cv-etron.com</span></a>
+      <a class="contactband__item" href="contact.html"><b>{{联系我们||Contact page}}</b><span>{{写下你的问题||Write down your question}}</span></a>
+      <a class="contactband__item" href="assets/cv-etron-logo.svg" download><b>{{品牌标识||Logo}}</b><span>{{下载 SVG||Download SVG}}</span></a>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title">{{有一个想法，或者一个想解决的问题？||Have an idea, or a problem worth solving?}}</h2>
+    <a class="btn btn--light" href="mailto:sales@cv-etron.com">{{写信给我们||Email us}}</a>
+  </div>
+</section>
