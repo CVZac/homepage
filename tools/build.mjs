@@ -134,6 +134,7 @@ for (const page of pages) {
     .replaceAll('%DESC_ZH%', esc(m.description.zh)).replaceAll('%DESC_EN%', esc(m.description.en))
     .replaceAll('%SECTION%', m.section || '').replaceAll('%PAGE%', page.name)
     .replaceAll('%BODY_CLASS%', m.bodyClass || '')
+    .replaceAll('%ROBOTS%', m.noindex ? '\n<meta name="robots" content="noindex">' : '')
     .replaceAll('%CSS_V%', cssV).replaceAll('%JS_V%', jsV);
   html = expandDirectives(html, page, ctx);
   html = tuneHeadings(expandI18n(html, page.name));

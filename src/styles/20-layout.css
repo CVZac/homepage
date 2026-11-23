@@ -54,6 +54,11 @@ html[lang="en"] .brand__name { letter-spacing: 0.01em; font-size: 1.125rem; }
   .header .brand { position: static; transform: none; }
   .header .drop--company { display: none; }
 }
+/* larger touch targets on phones and tablets */
+@media (max-width: 1099px) {
+  .header .chip, .menu .chip { height: 2.125rem; }
+  .header .iconbtn, .menu .iconbtn { width: 2.125rem; height: 2.125rem; border-radius: 0.5rem; }
+}
 @media (max-width: 479px) {
   .header .brand__name { display: none; }
   .header__right { gap: 0.375rem; }
