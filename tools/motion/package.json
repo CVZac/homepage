@@ -1,0 +1,10 @@
+{
+  "name": "cv-etron-motion",
+  "private": true,
+  "description": "Sources for assets/scene.js (WebGL views) and assets/smooth.js (smooth scrolling). Run: npm install && node bundle.mjs",
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "lenis": "1.3.11",
+    "three": "0.180.0"
+  }
+}

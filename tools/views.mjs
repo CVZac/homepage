@@ -14,6 +14,7 @@ const ICONS = {
   mail: '<rect x="3" y="5" width="14" height="10" rx="1.5"/><path d="M3.5 6l6.5 5 6.5-5"/>',
   pause: '<path d="M7 5v10M13 5v10"/>',
   play: '<path d="M7 4.5v11l9-5.5z"/>',
+  'arrow-up': '<path d="M10 16.5v-13M5 8.5l5-5 5 5"/>',
   grid: '<rect x="3.5" y="3.5" width="5.5" height="5.5"/><rect x="11" y="3.5" width="5.5" height="5.5"/><rect x="3.5" y="11" width="5.5" height="5.5"/><rect x="11" y="11" width="5.5" height="5.5"/>',
   list: '<path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13"/>',
 };
@@ -40,6 +41,9 @@ function pick(ctx, args) {
 }
 
 export const heroart = () => heroWide() + heroTall();
+
+// page-transition squares, staggered on a diagonal
+export function wipe() { let s = ''; for (let r = 0; r < 5; r++) for (let c = 0; c < 8; c++) s += `<i style="--d:${r + c}"></i>`; return s; }
 
 // ---- meta row for an article page, from its own front matter ----
 export function posthead(args, ctx, page) {

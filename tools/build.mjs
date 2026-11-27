@@ -134,6 +134,7 @@ for (const page of pages) {
     .replaceAll('%DESC_ZH%', esc(m.description.zh)).replaceAll('%DESC_EN%', esc(m.description.en))
     .replaceAll('%SECTION%', m.section || '').replaceAll('%PAGE%', page.name)
     .replaceAll('%BODY_CLASS%', m.bodyClass || '')
+    .replaceAll('%SCENE%', /data-3d=/.test(page.body) ? '\n<script src="assets/scene.js" defer></script>' : '')
     .replaceAll('%ROBOTS%', m.noindex ? '\n<meta name="robots" content="noindex">' : '')
     .replaceAll('%CSS_V%', cssV).replaceAll('%JS_V%', jsV);
   html = expandDirectives(html, page, ctx);

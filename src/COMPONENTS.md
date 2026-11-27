@@ -62,6 +62,7 @@ The executable reference for every component is `src/pages/styleguide.html` (bui
 | `doccard`, `changelog` | current version and dated changes |
 | `note` | a plain disclaimer |
 | `cta` | the dark closing band: one question or statement and one `.btn btn--light` |
+| `stage3d` | a live 3D model in a wide cell: `<div class="stage3d" data-3d="rack">` with a fallback plate and a `.stage3d__hint` inside. Kinds: bot, atom, rack, grid, cage, steps, solo |
 | `contactband` | dark band with three contact entries |
 | Icons | `<!-- @icon arrow-right -->`; names: arrow-right, arrow-left, arrow-up-right, chevron-down, search, menu, close, download, mail |
 

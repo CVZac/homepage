@@ -1,56 +1,43 @@
-/* Plates: artwork drawn in code (tools/plates.mjs). Printed matter is square-cornered with a plate mark;
-   interface (pills, panels, buttons) is round. */
+/* Plates: technical line drawings generated at build time (tools/plates.mjs). Square, flat, with corner ticks. */
 .plate {
-  --plate-bg: var(--paper-2);
+  --plate-bg: var(--cell);
   --plate-ink: var(--ink);
-  --plate-mark: 9px;
-  position: relative; margin: 0; overflow: hidden; isolation: isolate;
-  border-radius: var(--r-plate); background: var(--plate-bg);
+  position: relative; margin: 0; overflow: hidden; background: var(--plate-bg);
 }
-.plate::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: var(--grain); mix-blend-mode: multiply; pointer-events: none; }
-.plate::after { content: ""; position: absolute; inset: var(--plate-mark); z-index: 1; border: 1px solid var(--plate-ink); opacity: 0.26; pointer-events: none; }
-.plate > .plate__art { position: absolute; z-index: 1; inset: var(--plate-mark); width: calc(100% - 2 * var(--plate-mark)); height: calc(100% - 2 * var(--plate-mark)); max-width: none; }
-.plate--hero { --plate-mark: 14px; aspect-ratio: 2 / 1; }
+.plate::after { content: ""; position: absolute; inset: 0.75rem; pointer-events: none; opacity: 0.9;
+  background:
+    linear-gradient(var(--plate-ink), var(--plate-ink)) top left / 0.75rem 1.5px no-repeat, linear-gradient(var(--plate-ink), var(--plate-ink)) top left / 1.5px 0.75rem no-repeat,
+    linear-gradient(var(--plate-ink), var(--plate-ink)) top right / 0.75rem 1.5px no-repeat, linear-gradient(var(--plate-ink), var(--plate-ink)) top right / 1.5px 0.75rem no-repeat,
+    linear-gradient(var(--plate-ink), var(--plate-ink)) bottom left / 0.75rem 1.5px no-repeat, linear-gradient(var(--plate-ink), var(--plate-ink)) bottom left / 1.5px 0.75rem no-repeat,
+    linear-gradient(var(--plate-ink), var(--plate-ink)) bottom right / 0.75rem 1.5px no-repeat, linear-gradient(var(--plate-ink), var(--plate-ink)) bottom right / 1.5px 0.75rem no-repeat; }
+.plate > .plate__art { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; }
+.plate--hero { aspect-ratio: 2 / 1; }
 .plate--wide { aspect-ratio: 16 / 9; }
 .plate--land { aspect-ratio: 4 / 3; }
 .plate--portrait { aspect-ratio: 4 / 5; }
 .plate--square { aspect-ratio: 1 / 1; }
 .plate--band { aspect-ratio: 5 / 2; }
-.plate--thumb { --plate-mark: 4px; width: 5.5rem; aspect-ratio: 1 / 1; flex: none; }
-/* a plate mounted on a tinted surface sits on paper */
-.panel .plate, .acard .plate { --plate-bg: var(--paper); }
+.plate--thumb { width: 6rem; aspect-ratio: 1 / 1; flex: none; }
+.plate--thumb::after { inset: 0.3rem; background-size: 0.4rem 1px, 1px 0.4rem, 0.4rem 1px, 1px 0.4rem, 0.4rem 1px, 1px 0.4rem, 0.4rem 1px, 1px 0.4rem; }
+.row:hover .plate--thumb { --plate-bg: var(--night-2); --plate-ink: var(--on-night); }
+@media (max-width: 720px) { .plate--band { aspect-ratio: 16 / 10; } }
 
-.pl-ln, .pl-ln-s, .pl-ln-d, .pl-ln-dot, .pl-ln-dash { stroke: var(--plate-ink); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.pl-ln, .pl-ln-s, .pl-ln-d, .pl-ln-dot, .pl-ln-dash { stroke: var(--plate-ink); stroke-width: 1.1; vector-effect: non-scaling-stroke; }
 .pl-ln-dash { stroke-dasharray: 5 4; }
-.pl-ln-s { stroke-opacity: 0.34; }
-.pl-ln-d { stroke-opacity: 0.62; stroke-dasharray: 1 5; stroke-linecap: round; }
+.pl-ln-s { stroke-opacity: 0.32; }
+.pl-ln-d { stroke-opacity: 0.6; stroke-dasharray: 1 5; stroke-linecap: round; }
 .pl-ln-dot { stroke-dasharray: 1 4; stroke-linecap: round; }
-.pl-hatch { stroke: var(--plate-ink); stroke-width: 0.9; stroke-opacity: 0.55; vector-effect: non-scaling-stroke; }
+.pl-hatch { stroke: var(--plate-ink); stroke-width: 0.9; stroke-opacity: 0.5; vector-effect: non-scaling-stroke; }
 .pl-fill { fill: var(--plate-ink); }
-.pl-body { fill: var(--plate-ink); stroke: var(--plate-bg); stroke-width: 6; paint-order: stroke; vector-effect: non-scaling-stroke; }
-.pl-body--accent { fill: var(--accent); }
-.pl-body--hollow { fill: var(--plate-bg); stroke: var(--plate-ink); stroke-width: 1; paint-order: normal; }
-.pl-label { font-family: var(--f-sans); font-size: 12.5px; font-weight: 500; letter-spacing: 0.03em; fill: var(--ink-2); }
+.pl-body { fill: var(--signal); stroke: var(--plate-bg); stroke-width: 5; paint-order: stroke; vector-effect: non-scaling-stroke; }
+.pl-body--accent { fill: var(--signal); }
+.pl-body--hollow { fill: var(--plate-bg); stroke: var(--plate-ink); stroke-width: 1.2; paint-order: normal; }
+.pl-label { font-family: var(--f-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; fill: var(--ink-2); }
 .pl-label--zh { letter-spacing: 0.16em; }
-.pl-label--core { font-weight: 700; fill: var(--plate-ink); stroke: var(--plate-bg); stroke-width: 7px; stroke-linejoin: round; paint-order: stroke; }
+.pl-label--core { font-weight: 700; fill: var(--plate-ink); }
 
-/* hero: wide drawing on desktop, tall on phones */
-.plate__art--tall { display: none; }
-.plate__ctrl { position: absolute; right: 1.875rem; bottom: 1.875rem; z-index: 2; display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border: 1px solid var(--rule); border-radius: 50%; background: var(--paper); color: var(--ink); transition: border-color 0.15s; }
-.plate__ctrl:hover { border-color: var(--ink); }
-.plate__ctrl > .icon { width: 1rem; height: 1rem; }
-.plate__ctrl > .icon:last-child, .plate__ctrl[aria-pressed="true"] > .icon:first-child { display: none; }
-.plate__ctrl[aria-pressed="true"] > .icon:last-child { display: block; }
-@media (max-width: 899px) { .pl-labels { display: none; } }
-@media (max-width: 720px) {
-  .plate--hero { --plate-mark: 9px; aspect-ratio: 4 / 5; }
-  .plate--band { aspect-ratio: 16 / 10; }
-  .plate > .plate__art--wide { display: none; }
-  .plate > .plate__art--tall { display: block; }
-  .plate__ctrl { right: 1.25rem; bottom: 1.25rem; }
+/* slow orbit on the bodies of every plate in view (transform only; paused when reduced motion is set) */
+@media (prefers-reduced-motion: no-preference) {
+  .plate.is-live .pl-body { animation: pl-pulse 2.6s var(--ease-io) infinite alternate; transform-box: fill-box; transform-origin: center; }
+  @keyframes pl-pulse { to { transform: scale(1.35); } }
 }
-@media (prefers-reduced-motion: reduce) { .plate__ctrl { display: none; } }
-
-/* on night surfaces */
-.fcarousel--dark .plate { --plate-bg: var(--night-2); --plate-ink: var(--on-night); }
-.fcarousel--dark .plate::before { mix-blend-mode: screen; opacity: 0.35; }

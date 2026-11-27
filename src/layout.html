@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%TITLE_EN%</title>
 <meta name="description" content="%DESC_EN%">
-<meta name="theme-color" content="#F6F5F1">
+<meta name="theme-color" content="#E3E3E0">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CV-Etron Group 云想亿创集团">
 <meta property="og:title" content="%TITLE_EN%">
 <meta property="og:description" content="%DESC_EN%">%ROBOTS%
-<script>(function(){try{var q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cvetron-lang')}catch(e){}if(q){q=q==='en'?'en':'zh';try{localStorage.setItem('cvetron-lang',q)}catch(e){}}var l=q||s||'en';document.documentElement.lang=l==='en'?'en':'zh-CN'}catch(e){}})();</script>
+<script>(function(){try{var q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cvetron-lang')}catch(e){}if(q){q=q==='en'?'en':'zh';try{localStorage.setItem('cvetron-lang',q)}catch(e){}}var l=q||s||'en';document.documentElement.lang=l==='en'?'en':'zh-CN';if(sessionStorage.getItem('cv-wipe')){sessionStorage.removeItem('cv-wipe');document.documentElement.classList.add('is-entering')}}catch(e){}})();</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css?v=%CSS_V%">
 </head>
@@ -22,6 +22,9 @@
 </main>
 <!-- @include footer -->
 <!-- @include menu -->
-<script src="assets/site.js?v=%JS_V%" defer></script>
+<div class="cursor" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="wipe" aria-hidden="true"><!-- @wipe --></div>
+<script src="assets/smooth.js" defer></script>
+<script src="assets/site.js?v=%JS_V%" defer></script>%SCENE%
 </body>
 </html>
