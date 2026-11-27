@@ -78,12 +78,13 @@ node tools/build.mjs
 - 新增一篇文章：在 `src/pages/` 新建文件，文件头里写上 `"post": { "kind": "research", "category": "compute", "date": "…" }`。新闻表、研究画廊、相关文章和搜索会自动收录。
 - 导航、页脚和全屏菜单在 `src/partials/`。
 - 五条业务线的名称和描述、文章分类在 `src/data/site.json`。
-- 联系邮箱 `sales@cv-etron.com` 写在 `src/data/site.json` 和若干页面里，全局搜索即可一次找全。备案号在 `src/partials/footer.html`。
+- 联系邮箱 `sales@cv-etron.com` 写在 `src/data/site.json` 和若干页面里，全局搜索即可一次找全。
 
 ## 双语
 
 - 每个页面同时包含中文和英文，由 `<html lang>` 决定显示哪一种。
-- 语言来源依次是：网址里的 `?lang=en` 或 `?lang=zh`、访客上次的选择（保存在浏览器本地）、浏览器语言。默认中文。
+- 语言来源依次是：网址里的 `?lang=en` 或 `?lang=zh`、访客上次的选择（保存在浏览器本地）。默认英文；访客点右上角「中文」切换后会被记住。
+- 中文入口可以直接链接 `index.html?lang=zh`。
 - 中文标题只在词与词之间折行（构建时用分词插入断行点），不会把「问题」拆成两行。
 
 ## 视觉
@@ -121,6 +122,6 @@ node tools/fonts.mjs --src <存放源字体的文件夹>
 任意静态托管都可以：
 
 - **GitHub Pages**：仓库 Settings → Pages → 选择分支，根目录。
-- **国内服务器或对象存储**（阿里云 OSS、腾讯云 COS 等）：上传根目录下的全部 `.html` 和 `assets/` 文件夹，绑定已备案的域名。`src/` 和 `tools/` 不需要上传。
+- **国内服务器或对象存储**（阿里云 OSS、腾讯云 COS 等）：上传根目录下的全部 `.html` 和 `assets/` 文件夹，绑定域名。`src/` 和 `tools/` 不需要上传。
 
-ICP 备案号（京ICP备2026070946号）在每一页的页脚，链接到工信部备案查询网站。
+网站目前不显示 ICP 备案号。如果部署在中国大陆的服务器上并使用备案域名，法规要求在页脚展示备案号，届时在 `src/partials/footer.html` 的版权行下方加回即可。
